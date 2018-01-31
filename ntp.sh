@@ -1,4 +1,14 @@
 #!/bin/bash
+#######################################################
+#  Function: Inspection Time
+#  Author: davie
+#  Date: 2017-12-02
+#  Version: 1.0
+#  QQ: 178570692
+#  Script name: /usr/local/scripts/Sync_NTP.sh
+#  http://www.cnblogs.com/bjx2020/
+#######################################################
+#  List of NTP's servers
 ntp_cmd="/usr/sbin/ntpdate"
 if [ ! -f "${ntp_cmd}" ]; then
     echo "/usr/sbin/ntpdate does not exists!"
@@ -7,7 +17,7 @@ fi
 
 #NTP服务器数组列表
 ntpServer=(
-[0]=1231.cn.pool.ntp.org
+[0]=1.cn.pool.ntp.org
 [1]=0.cn.pool.ntp.org
 [2]=2.cn.pool.ntp.org
 [3]=3.cn.pool.ntp.org
