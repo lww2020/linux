@@ -5,7 +5,7 @@
 # Date: 2018-02-01
 # Version: 1.0
 # QQ: 178570692
-
+#######################################################
 dir_log_1="/home/log/cli_log"
 dir_log_2="/home/log/dn"
 if  [ -d "${dir_log_1}" ]; then 
