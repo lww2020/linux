@@ -1,3 +1,3 @@
 # -*- coding:utf-8 -*-
-# A uthor: davie
+# Author: davie
 print("Hello, world!")
