@@ -96,5 +96,7 @@ fi 	# Doublecheck if in right directory, before messing with log file.
   	echo "Cannot change to necessary directory." >&2
 }
 
+# 看到这里了： http://www.engr.iupui.edu/~dskim/tutorials/bash-advanced/html/sha-bang.html
+
 
 
