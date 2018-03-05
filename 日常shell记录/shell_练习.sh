@@ -226,7 +226,119 @@ exit 0
 $ sh shift-past.sh 1 2 3 4 5
 4
 
-http://www.engr.iupui.edu/~dskim/tutorials/bash-advanced/html/quotingvar.html
-http://www.engr.iupui.edu/~dskim/tutorials/bash-advanced/html/index.html
+5.1. Quoting Variables
+variable1="a variable containing five words"
+COMMAND This is $variable1		# Executes COMMAND with 7 arguments:
+# "This" "is" "a" "variable" "containg" "five" "words"
+
+COMMAND "This is $variable1" 	# Executes COMMAND with 1 argument:
+# "This is a variable containing five words"
+
+variable2=""			# Empty
+
+COMMAND $variable2 $variable2 $variable2
+						# Executes COMMAND with no arguments.
+COMMAND "$variable2" "$variable2" "$variable2"
+						# Executes COMMAND with 3 empty arguments.
+COMMAND "$variable2 $variable2 $variable2"
+						# Executes COMMAND with 1 argument (2 spaces).
+
+# Thanks, Stephase Chazelas.
+
+Example 5-1. Echoing Weird Variables
+#!/bin/bash
+# weirdvars.sh: Echoing weird variables.
+
+var="'(]\\{}\$\""
+echo $var 			# '(]\{}$"
+echo "$var"			# '(]\{}$"	Doesn't make a fifference.
+
+echo 
+
+IFS='\'
+echo $var 			# '(]{}$"	\ converted to spavce. Why?
+echo "$var"			# '(]\{}$"
+
+# Examples above supplied by Stephazelas.
+exit 0
+
+Example 5-2. Escaped Characters
+#!/bin/bash
+# escaped.sh: escaped characters
+
+echo; echo
+
+# Escaping a newline.
+# -------------------
+
+echo ""
+
+echo "This will print
+as two lines."
+# This will print
+# as two lines.
+
+echo "This will print \
+as on line."
+# This will print as one line.
+
+echo; echo
+
+echo "==============="
+
+echo "\v\v\v\v"		# Prints \v\v\v\v literally.
+# Use the -e option with 'echo' to print escaped characters.
+echo "==============="
+echo "$VERTICAL TABS"
+echo -e "\v\v\v\v"	# prints 4 vertical tabs.
+echo "==============="
+
+echo "QUOTATION MARK"
+echo -e "\042"		# print " (quota,octal ASCII character 42).
+echo "==============="
+
+# This $\'x' construct makes the -e option unnecessary.
+echo; echo "NEWLINE AND BEEP"
+echo $'\n'			# Newline.
+echo $'\a'			# Alert (beep)
+
+echo "==============="
+echo "QUOTATION MARKS"
+# Version 2 and later of Bash permits using the $'\nnn' construct.
+# Note that in this case, '\nnn' is an octal values.
+echo $'\t \042 \t'	# Quote (") framed by tabs.
+
+# It also works with hexadecimal values, in an $'\xhhh' construct.
+echo $'\t \x22 \t'	# Quote (") framed by tabs.
+# Thanks you, Grep Keraunen, for pointing this out.
+# Earlier Bash versions allowed '\x022'.
+echo "================"
+echo 
+
+# Assigning ASCII characters to a variable.
+# -----------------------------------------
+quote=$'\042'		# " assigned to a variable.
+echo "$quote This is a quoted string string, $quote and this lines outside the quotes."
+echo
+
+# Concatenating ASCII chars in a variable.
+triple_underline=$'\137\137\137'	# 137 is octal ASCII code for '_'.
+echo "$triple_underline UNDERLINE $triple_underline"
+
+echo 
+ABC=$'\101\102\103\010'		# 101,102,103 are octal A, B, C.
+echo $ABC
+
+echo; echo
+
+escape=$'\033'		# 033 is octal for escape.
+echo "\"escape\" echoes as $escape"
+#					no visible output.
+echo; echo
+exit 0
+
+
 # 看到这里
-http://www.engr.iupui.edu/~dskim/tutorials/bash-advanced/html/othertypesv.html
+http://www.engr.iupui.edu/~dskim/tutorials/bash-advanced/html/exit-status.html
+
+http://www.engr.iupui.edu/~dskim/tutorials/bash-advanced/html/index.html
