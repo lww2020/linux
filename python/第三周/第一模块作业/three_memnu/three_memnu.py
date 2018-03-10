@@ -84,11 +84,6 @@ provinces_name = {
         }
 }
 exit_flag = False
-# def pname():
-#     print("----------一级菜单-开始----------")
-#     for pname in provinces_name:
-#         print(pname)
-#     print("----------一级菜单-结束----------")
 while not exit_flag:
     for pname1 in provinces_name:
         print(pname1)
