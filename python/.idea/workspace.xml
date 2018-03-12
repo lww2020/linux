@@ -11,40 +11,103 @@
   </component>
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/python$copy.coverage" NAME="copy Coverage Results" MODIFIED="1517787056989" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第二周" />
-    <SUITE FILE_PATH="coverage/python$jindutiao.coverage" NAME="jindutiao Coverage Results" MODIFIED="1518307806781" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第三周" />
-    <SUITE FILE_PATH="coverage/python$var.coverage" NAME="var Coverage Results" MODIFIED="1517613680561" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第一周" />
-    <SUITE FILE_PATH="coverage/python$while_age.coverage" NAME="while_age Coverage Results" MODIFIED="1517623545188" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第一周" />
-    <SUITE FILE_PATH="coverage/python$multi_dict.coverage" NAME="multi_dict Coverage Results" MODIFIED="1517925816380" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第二周" />
-    <SUITE FILE_PATH="coverage/python$guess_age.coverage" NAME="guess_age Coverage Results" MODIFIED="1517619804897" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第一周" />
-    <SUITE FILE_PATH="coverage/python$for.coverage" NAME="for Coverage Results" MODIFIED="1517744537954" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第一周" />
-    <SUITE FILE_PATH="coverage/python$input_password.coverage" NAME="input_password Coverage Results" MODIFIED="1517619139038" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第一周" />
-    <SUITE FILE_PATH="coverage/python$three_menu_update.coverage" NAME="three_menu_update Coverage Results" MODIFIED="1518095494164" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第二周" />
-    <SUITE FILE_PATH="coverage/python$jisuan.coverage" NAME="jisuan Coverage Results" MODIFIED="1517739900465" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第一周" />
-    <SUITE FILE_PATH="coverage/python$three_yunsuan.coverage" NAME="three_yunsuan Coverage Results" MODIFIED="1517755971175" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第二周" />
-    <SUITE FILE_PATH="coverage/python$age_3.coverage" NAME="age_3 Coverage Results" MODIFIED="1517745185072" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第一周" />
-    <SUITE FILE_PATH="coverage/python$hello.coverage" NAME="hello Coverage Results" MODIFIED="1517726058033" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第一周" />
-    <SUITE FILE_PATH="coverage/python$age_guess.coverage" NAME="age_guess Coverage Results" MODIFIED="1517745123225" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第一周" />
+    <SUITE FILE_PATH="coverage/python$Unittests_in_def_c_py.coverage" NAME="Unittests in def_c.py Coverage Results" MODIFIED="1519652367273" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第三周" />
+    <SUITE FILE_PATH="coverage/python$qiantao_dict_update3.coverage" NAME="qiantao_dict_update3 Coverage Results" MODIFIED="1520136146230" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第三周/字典类型及特性/字典练习题/题目要求" />
+    <SUITE FILE_PATH="coverage/python$bian_ma.coverage" NAME="bian_ma Coverage Results" MODIFIED="1520379598461" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第三周/文件操作" />
     <SUITE FILE_PATH="coverage/python$for_loop.coverage" NAME="for_loop Coverage Results" MODIFIED="1517659291055" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第一周" />
-    <SUITE FILE_PATH="coverage/python$while.coverage" NAME="while Coverage Results" MODIFIED="1517744732265" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第一周" />
-    <SUITE FILE_PATH="coverage/python$dict.coverage" NAME="dict Coverage Results" MODIFIED="1517758414521" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第二周" />
-    <SUITE FILE_PATH="coverage/python$three_memu.coverage" NAME="three_memu Coverage Results" MODIFIED="1518009441863" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第二周" />
-    <SUITE FILE_PATH="coverage/python$for_for.coverage" NAME="for_for Coverage Results" MODIFIED="1517624571347" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第一周" />
-    <SUITE FILE_PATH="coverage/python$login_welcome.coverage" NAME="login_welcome Coverage Results" MODIFIED="1517661069382" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第一周" />
     <SUITE FILE_PATH="coverage/python$sys_module.coverage" NAME="sys_module Coverage Results" MODIFIED="1517751175726" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第二周" />
-    <SUITE FILE_PATH="coverage/python$dicts.coverage" NAME="dicts Coverage Results" MODIFIED="1517924988490" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第二周" />
-    <SUITE FILE_PATH="coverage/python$input_user.coverage" NAME="input_user Coverage Results" MODIFIED="1517617201054" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第一周" />
-    <SUITE FILE_PATH="coverage/python$goods.coverage" NAME="goods Coverage Results" MODIFIED="1517875104231" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第二周" />
-    <SUITE FILE_PATH="coverage/python$files_comannnd.coverage" NAME="files_comannnd Coverage Results" MODIFIED="1518268587650" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第三周" />
+    <SUITE FILE_PATH="coverage/python$di_gui.coverage" NAME="di_gui Coverage Results" MODIFIED="1520421438352" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第三周" />
+    <SUITE FILE_PATH="coverage/python$func_test5.coverage" NAME="func_test5 Coverage Results" MODIFIED="1520425060566" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第三周/函数" />
+    <SUITE FILE_PATH="coverage/python$funct_test6.coverage" NAME="funct_test6 Coverage Results" MODIFIED="1520510099998" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第三周/函数" />
     <SUITE FILE_PATH="coverage/python$file_com.coverage" NAME="file_com Coverage Results" MODIFIED="1518307989812" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第三周" />
+    <SUITE FILE_PATH="coverage/python$gaojie_hanshu.coverage" NAME="gaojie_hanshu Coverage Results" MODIFIED="1519743398609" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第三周" />
+    <SUITE FILE_PATH="coverage/python$hash_funct.coverage" NAME="hash_funct Coverage Results" MODIFIED="1519950314773" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第三周/hash函数" />
+    <SUITE FILE_PATH="coverage/python$file_ops.coverage" NAME="file_ops Coverage Results" MODIFIED="1520294877458" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第三周/文件操作" />
+    <SUITE FILE_PATH="coverage/python$1_1.coverage" NAME="1_1 Coverage Results" MODIFIED="1520693331949" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python_cook/第一章_数据结构和算法" />
+    <SUITE FILE_PATH="coverage/python$with_open.coverage" NAME="with_open Coverage Results" MODIFIED="1518341428598" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第三周" />
     <SUITE FILE_PATH="coverage/python$for_1_2.coverage" NAME="for_1_2 Coverage Results" MODIFIED="1517623384787" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第一周" />
-    <SUITE FILE_PATH="coverage/python$login_user_3.coverage" NAME="login_user_3 Coverage Results" MODIFIED="1517745734194" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第一周" />
-    <SUITE FILE_PATH="coverage/python$strings.coverage" NAME="strings Coverage Results" MODIFIED="1517923815012" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第二周" />
+    <SUITE FILE_PATH="coverage/python$Unittests_for_def_c_test2.coverage" NAME="Unittests for def_c.test2 Coverage Results" MODIFIED="1519652766518" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第三周" />
+    <SUITE FILE_PATH="coverage/python$login_user_3.coverage" NAME="login_user_3 Coverage Results" MODIFIED="1520550511500" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第一周" />
+    <SUITE FILE_PATH="coverage/python$Unittests_for_def_c_test1.coverage" NAME="Unittests for def_c.test1 Coverage Results" MODIFIED="1519652381843" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第三周" />
     <SUITE FILE_PATH="coverage/python$for_dict.coverage" NAME="for_dict Coverage Results" MODIFIED="1517788454098" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第二周" />
+    <SUITE FILE_PATH="coverage/python$str.coverage" NAME="str Coverage Results" MODIFIED="1517738759533" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第一周" />
+    <SUITE FILE_PATH="coverage/python$funct_test7.coverage" NAME="funct_test7 Coverage Results" MODIFIED="1519736260198" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第三周" />
+    <SUITE FILE_PATH="coverage/python$multi_dict.coverage" NAME="multi_dict Coverage Results" MODIFIED="1517925816380" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第二周" />
+    <SUITE FILE_PATH="coverage/python$for.coverage" NAME="for Coverage Results" MODIFIED="1517744537954" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第一周" />
+    <SUITE FILE_PATH="coverage/python$func_test3.coverage" NAME="func_test3 Coverage Results" MODIFIED="1520422400711" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第三周/函数" />
+    <SUITE FILE_PATH="coverage/python$three_menu_update.coverage" NAME="three_menu_update Coverage Results" MODIFIED="1518095494164" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第二周" />
+    <SUITE FILE_PATH="coverage/python$carts_2.coverage" NAME="carts_2 Coverage Results" MODIFIED="1519908384271" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第三周/列表练习题" />
+    <SUITE FILE_PATH="coverage/python$del_dict_kv_no_exist.coverage" NAME="del_dict_kv_no_exist Coverage Results" MODIFIED="1520125430888" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第三周/字典类型及特性/字典练习题/题目要求" />
+    <SUITE FILE_PATH="coverage/python$qiantao_dict_update2.coverage" NAME="qiantao_dict_update2 Coverage Results" MODIFIED="1520136142215" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第三周/字典类型及特性/字典练习题/题目要求" />
+    <SUITE FILE_PATH="coverage/python$Unittests_in_docrate_py.coverage" NAME="Unittests in docrate.py Coverage Results" MODIFIED="1520603692754" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第四周" />
+    <SUITE FILE_PATH="coverage/python$age_3.coverage" NAME="age_3 Coverage Results" MODIFIED="1517745185072" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第一周" />
+    <SUITE FILE_PATH="coverage/python$dicts_texing.coverage" NAME="dicts_texing Coverage Results" MODIFIED="1520090081728" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第三周/字典类型及特性" />
+    <SUITE FILE_PATH="coverage/python$3_4.coverage" NAME="3_4 Coverage Results" MODIFIED="1520727028205" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python_cook/第一章_数据结构和算法" />
+    <SUITE FILE_PATH="coverage/python$age_guess.coverage" NAME="age_guess Coverage Results" MODIFIED="1517745123225" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第一周" />
+    <SUITE FILE_PATH="coverage/python$for_for.coverage" NAME="for_for Coverage Results" MODIFIED="1517624571347" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第一周" />
+    <SUITE FILE_PATH="coverage/python$.coverage" NAME="局部变量 Coverage Results" MODIFIED="1519740913980" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第三周" />
+    <SUITE FILE_PATH="coverage/python$with_file.coverage" NAME="with_file Coverage Results" MODIFIED="1520345484272" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第三周/文件操作" />
+    <SUITE FILE_PATH="coverage/python$for_dict_keys.coverage" NAME="for_dict_keys Coverage Results" MODIFIED="1520134993948" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第三周/字典类型及特性/字典练习题/题目要求" />
+    <SUITE FILE_PATH="coverage/python$input_user.coverage" NAME="input_user Coverage Results" MODIFIED="1517617201054" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第一周" />
+    <SUITE FILE_PATH="coverage/python$goods.coverage" NAME="goods Coverage Results" MODIFIED="1520671886443" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第三周/第一模块作业" />
+    <SUITE FILE_PATH="coverage/python$files_comannnd.coverage" NAME="files_comannnd Coverage Results" MODIFIED="1518268587650" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第三周" />
+    <SUITE FILE_PATH="coverage/python$3_1_3_.coverage" NAME="3.1.3_讨论 Coverage Results" MODIFIED="1520691860176" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python_cook/第一章_数据结构和算法" />
+    <SUITE FILE_PATH="coverage/python$funct_test5.coverage" NAME="funct_test5 Coverage Results" MODIFIED="1519734090149" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第三周" />
+    <SUITE FILE_PATH="coverage/python$copy_sq.coverage" NAME="copy_sq Coverage Results" MODIFIED="1519914073955" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第三周/lists/深浅copy" />
     <SUITE FILE_PATH="coverage/python$user_login.coverage" NAME="user_login Coverage Results" MODIFIED="1517741199562" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第一周" />
     <SUITE FILE_PATH="coverage/python$info.coverage" NAME="info Coverage Results" MODIFIED="1517957920182" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第二周" />
+    <SUITE FILE_PATH="coverage/python$union_dic.coverage" NAME="union_dic Coverage Results" MODIFIED="1520125956062" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第三周/字典类型及特性/字典练习题/题目要求" />
+    <SUITE FILE_PATH="coverage/python$list_di.coverage" NAME="list_di Coverage Results" MODIFIED="1519820392136" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第三周/lists" />
+    <SUITE FILE_PATH="coverage/python$jindutiao.coverage" NAME="jindutiao Coverage Results" MODIFIED="1519734664679" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第三周" />
+    <SUITE FILE_PATH="coverage/python$var.coverage" NAME="var Coverage Results" MODIFIED="1517613680561" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第一周" />
+    <SUITE FILE_PATH="coverage/python$while_age.coverage" NAME="while_age Coverage Results" MODIFIED="1517623545188" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第一周" />
+    <SUITE FILE_PATH="coverage/python$get_dict_kv.coverage" NAME="get_dict_kv Coverage Results" MODIFIED="1520125691939" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第三周/字典类型及特性/字典练习题/题目要求" />
+    <SUITE FILE_PATH="coverage/python$1_3.coverage" NAME="1_3 Coverage Results" MODIFIED="1520726861880" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python_cook/第一章_数据结构和算法" />
+    <SUITE FILE_PATH="coverage/python$set1.coverage" NAME="set1 Coverage Results" MODIFIED="1520143532626" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第三周/集合" />
+    <SUITE FILE_PATH="coverage/python$hello.coverage" NAME="hello Coverage Results" MODIFIED="1517726058033" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第一周" />
+    <SUITE FILE_PATH="coverage/python$while.coverage" NAME="while Coverage Results" MODIFIED="1517744732265" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第一周" />
+    <SUITE FILE_PATH="coverage/python$dict.coverage" NAME="dict Coverage Results" MODIFIED="1517758414521" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第二周" />
+    <SUITE FILE_PATH="coverage/python$for_dict_kv.coverage" NAME="for_dict_kv Coverage Results" MODIFIED="1520122973039" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第三周/字典类型及特性/字典练习题/题目要求" />
+    <SUITE FILE_PATH="coverage/python$login_welcome.coverage" NAME="login_welcome Coverage Results" MODIFIED="1517661069382" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第一周" />
+    <SUITE FILE_PATH="coverage/python$Unittests_in_def_py.coverage" NAME="Unittests in def.py Coverage Results" MODIFIED="1519652240398" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第三周" />
+    <SUITE FILE_PATH="coverage/python$dicts.coverage" NAME="dicts Coverage Results" MODIFIED="1517924988490" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第二周" />
+    <SUITE FILE_PATH="coverage/python$shop_carts3.coverage" NAME="shop_carts3 Coverage Results" MODIFIED="1520676820547" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第三周/第一模块作业/shop_carts" />
+    <SUITE FILE_PATH="coverage/python$tuple_type.coverage" NAME="tuple_type Coverage Results" MODIFIED="1519950292966" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第三周/元组" />
+    <SUITE FILE_PATH="coverage/python$three_menu2.coverage" NAME="three_menu2 Coverage Results" MODIFIED="1520649137700" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第三周/第一模块作业" />
+    <SUITE FILE_PATH="coverage/python$wr_files.coverage" NAME="wr_files Coverage Results" MODIFIED="1520295650168" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第三周/文件操作" />
+    <SUITE FILE_PATH="coverage/python$funct.coverage" NAME="funct Coverage Results" MODIFIED="1519651331587" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第三周" />
+    <SUITE FILE_PATH="coverage/python$create_lists.coverage" NAME="create_lists Coverage Results" MODIFIED="1519858298825" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第三周/列表练习题" />
+    <SUITE FILE_PATH="coverage/python$decorater1.coverage" NAME="decorater1 Coverage Results" MODIFIED="1520604032053" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第四周" />
+    <SUITE FILE_PATH="coverage/python$func_test2.coverage" NAME="func_test2 Coverage Results" MODIFIED="1520422011239" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第三周/函数" />
+    <SUITE FILE_PATH="coverage/python$strings.coverage" NAME="strings Coverage Results" MODIFIED="1517923815012" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第二周" />
+    <SUITE FILE_PATH="coverage/python$var_func.coverage" NAME="var_func Coverage Results" MODIFIED="1520549274915" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第三周/函数" />
+    <SUITE FILE_PATH="coverage/python$strings_type.coverage" NAME="strings_type Coverage Results" MODIFIED="1519949155738" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第三周/字符串" />
+    <SUITE FILE_PATH="coverage/python$Unittests_in__py.coverage" NAME="Unittests in 装饰器.py Coverage Results" MODIFIED="1520603673894" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第四周" />
+    <SUITE FILE_PATH="coverage/python$shop_carts2.coverage" NAME="shop_carts2 Coverage Results" MODIFIED="1520678129270" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第三周/第一模块作业/shop_carts" />
+    <SUITE FILE_PATH="coverage/python$func_test1.coverage" NAME="func_test1 Coverage Results" MODIFIED="1520381984159" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第三周/函数" />
     <SUITE FILE_PATH="coverage/python$sets.coverage" NAME="sets Coverage Results" MODIFIED="1518236713700" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第三周" />
-    <SUITE FILE_PATH="coverage/python$str.coverage" NAME="str Coverage Results" MODIFIED="1517738759533" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第一周" />
+    <SUITE FILE_PATH="coverage/python$1_2.coverage" NAME="1_2 Coverage Results" MODIFIED="1520696833710" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python_cook/第一章_数据结构和算法" />
+    <SUITE FILE_PATH="coverage/python$def.coverage" NAME="def Coverage Results" MODIFIED="1519652216971" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第三周" />
+    <SUITE FILE_PATH="coverage/python$file_rw_update.coverage" NAME="file_rw_update Coverage Results" MODIFIED="1520159124416" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第三周/文件操作" />
+    <SUITE FILE_PATH="coverage/python$guess_age.coverage" NAME="guess_age Coverage Results" MODIFIED="1517619804897" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第一周" />
+    <SUITE FILE_PATH="coverage/python$input_password.coverage" NAME="input_password Coverage Results" MODIFIED="1517619139038" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第一周" />
+    <SUITE FILE_PATH="coverage/python$jisuan.coverage" NAME="jisuan Coverage Results" MODIFIED="1517739900465" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第一周" />
+    <SUITE FILE_PATH="coverage/python$three_yunsuan.coverage" NAME="three_yunsuan Coverage Results" MODIFIED="1517755971175" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第二周" />
+    <SUITE FILE_PATH="coverage/python$three_memu.coverage" NAME="three_memu Coverage Results" MODIFIED="1518009441863" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第二周" />
+    <SUITE FILE_PATH="coverage/python$add_dict_kv.coverage" NAME="add_dict_kv Coverage Results" MODIFIED="1520123137494" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第三周/字典类型及特性/字典练习题/题目要求" />
+    <SUITE FILE_PATH="coverage/python$code_str.coverage" NAME="code_str Coverage Results" MODIFIED="1518348726891" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第三周" />
+    <SUITE FILE_PATH="coverage/python$for_dic_values.coverage" NAME="for_dic_values Coverage Results" MODIFIED="1520135003684" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第三周/字典类型及特性/字典练习题/题目要求" />
+    <SUITE FILE_PATH="coverage/python$products_list.coverage" NAME="products_list Coverage Results" MODIFIED="1519862825161" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第三周/列表练习题" />
+    <SUITE FILE_PATH="coverage/python$jie_ya_fuzhi_gei.coverage" NAME="jie_ya_fuzhi_gei Coverage Results" MODIFIED="1520691485643" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python_cook/第一章_数据结构和算法" />
+    <SUITE FILE_PATH="coverage/python$file_update.coverage" NAME="file_update Coverage Results" MODIFIED="1520156676464" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第三周/文件操作" />
+    <SUITE FILE_PATH="coverage/python$Python3_.coverage" NAME="Python3转码_执行过程 Coverage Results" MODIFIED="1520292548085" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第三周" />
+    <SUITE FILE_PATH="coverage/python$qiantao_dict_update.coverage" NAME="qiantao_dict_update Coverage Results" MODIFIED="1520135438073" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第三周/字典类型及特性/字典练习题/题目要求" />
+    <SUITE FILE_PATH="coverage/python$login_auth.coverage" NAME="login_auth Coverage Results" MODIFIED="1520551016963" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第三周/第一模块作业" />
+    <SUITE FILE_PATH="coverage/python$del_dict_kv.coverage" NAME="del_dict_kv Coverage Results" MODIFIED="1520124684714" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第三周/字典类型及特性/字典练习题/题目要求" />
+    <SUITE FILE_PATH="coverage/python$list_icud.coverage" NAME="list_icud Coverage Results" MODIFIED="1519777512802" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第三周/lists" />
+    <SUITE FILE_PATH="coverage/python$up_login_au.coverage" NAME="up_login_au Coverage Results" MODIFIED="1520554984868" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第三周/第一模块作业" />
     <SUITE FILE_PATH="coverage/python$copy_1.coverage" NAME="copy_1 Coverage Results" MODIFIED="1517787360785" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第二周" />
+    <SUITE FILE_PATH="coverage/python$func_test4.coverage" NAME="func_test4 Coverage Results" MODIFIED="1520423938830" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/第三周/函数" />
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -61,61 +124,91 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="sets.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/第三周/sets.py">
+      <file leaf-file-name="shop_carts.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/第三周/第一模块作业/shop_carts/shop_carts.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="471">
-              <caret line="58" column="0" lean-forward="true" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
+            <state relative-caret-position="351">
+              <caret line="9" column="15" lean-forward="true" selection-start-line="9" selection-start-column="15" selection-end-line="9" selection-end-column="15" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="files_comannnd.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/第三周/files_comannnd.py">
+      <file leaf-file-name="shop_carts2.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/第三周/第一模块作业/shop_carts/shop_carts2.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="293">
-              <caret line="57" column="0" lean-forward="true" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
+            <state relative-caret-position="-2391">
+              <caret line="14" column="12" lean-forward="true" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="jindutiao.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/第三周/jindutiao.py">
+      <file leaf-file-name="1_1.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/python_cook/第一章_数据结构和算法/1_1.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="230">
+              <caret line="52" column="26" lean-forward="false" selection-start-line="52" selection-start-column="26" selection-end-line="52" selection-end-column="26" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="1_2.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/python_cook/第一章_数据结构和算法/1_2.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="160">
+              <caret line="96" column="22" lean-forward="false" selection-start-line="96" selection-start-column="22" selection-end-line="96" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="1_3.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/python_cook/第一章_数据结构和算法/1_3.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="172">
+              <caret line="60" column="0" lean-forward="true" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="1_4.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/python_cook/第一章_数据结构和算法/1_4.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="267">
+              <caret line="56" column="3" lean-forward="false" selection-start-line="56" selection-start-column="3" selection-end-line="56" selection-end-column="3" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="1_5.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/python_cook/第一章_数据结构和算法/1_5.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="345">
+              <caret line="16" column="8" lean-forward="false" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="8" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="three_menu2.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/第三周/第一模块作业/three_memnu/three_menu2.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="117">
-              <caret line="12" column="28" lean-forward="false" selection-start-line="12" selection-start-column="28" selection-end-line="12" selection-end-column="28" />
+              <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="29" selection-end-column="3" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="file_com.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/第三周/file_com.py">
+      <file leaf-file-name="product_list" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/第三周/第一模块作业/shop_carts/product_list">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="156">
-              <caret line="4" column="19" lean-forward="true" selection-start-line="4" selection-start-column="19" selection-end-line="4" selection-end-column="19" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="yesterday.bak" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/第三周/yesterday.bak">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="yesterday.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/第三周/yesterday.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="8" column="8" lean-forward="false" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
+            <state relative-caret-position="312">
+              <caret line="8" column="1" lean-forward="true" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -133,54 +226,72 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>&quot;</find>
+      <find>{&quot;辖区&quot;:</find>
+      <find>请选择</find>
+      <find>jy</find>
+      <find>yj</find>
     </findStrings>
+    <replaceStrings>
+      <replace>请输入选择</replace>
+      <replace>jy</replace>
+      <replace>yj</replace>
+      <replace>user_info</replace>
+    </replaceStrings>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/第一周/hello_wrold.py" />
-        <option value="$PROJECT_DIR$/第一周/hello_world.py" />
-        <option value="$PROJECT_DIR$/第一周/var.py" />
-        <option value="$PROJECT_DIR$/第一周/input_user.py" />
-        <option value="$PROJECT_DIR$/第一周/input_password.py" />
-        <option value="$PROJECT_DIR$/第一周/guess_age.py" />
-        <option value="$PROJECT_DIR$/第一周/for_1_2.py" />
-        <option value="$PROJECT_DIR$/第一周/while_age.py" />
-        <option value="$PROJECT_DIR$/第一周/for_for.py" />
-        <option value="$PROJECT_DIR$/第一周/for_loop.py" />
-        <option value="$PROJECT_DIR$/第一周/login_welcome.py" />
-        <option value="$PROJECT_DIR$/第一周/hello.py" />
-        <option value="$PROJECT_DIR$/第一周/tab.py" />
-        <option value="$PROJECT_DIR$/第一周/str.py" />
-        <option value="$PROJECT_DIR$/第一周/jisuan.py" />
-        <option value="$PROJECT_DIR$/第一周/user_login.py" />
-        <option value="$PROJECT_DIR$/第一周/age_guess.py" />
-        <option value="$PROJECT_DIR$/第一周/for.py" />
-        <option value="$PROJECT_DIR$/第一周/while.py" />
-        <option value="$PROJECT_DIR$/第一周/age_3.py" />
-        <option value="$PROJECT_DIR$/第一周/login_user_3.py" />
-        <option value="$PROJECT_DIR$/第一周/menue_3.py" />
-        <option value="$PROJECT_DIR$/第二周/sys_module.py" />
-        <option value="$PROJECT_DIR$/第二周/three_yunsuan.py" />
-        <option value="$PROJECT_DIR$/第二周/dict.py" />
-        <option value="$PROJECT_DIR$/第二周/copy.py" />
-        <option value="$PROJECT_DIR$/第二周/copy_1.py" />
-        <option value="$PROJECT_DIR$/第二周/for_dict.py" />
-        <option value="$PROJECT_DIR$/第二周/refer_http.py" />
-        <option value="$PROJECT_DIR$/第二周/qie_pian.py" />
-        <option value="$PROJECT_DIR$/第二周/goods.py" />
-        <option value="$PROJECT_DIR$/第二周/strings.py" />
-        <option value="$PROJECT_DIR$/第二周/dicts.py" />
-        <option value="$PROJECT_DIR$/第二周/multi_dict.py" />
-        <option value="$PROJECT_DIR$/第二周/info.py" />
-        <option value="$PROJECT_DIR$/第二周/three_memu.py" />
-        <option value="$PROJECT_DIR$/第二周/three_menu_update.py" />
-        <option value="$PROJECT_DIR$/第三周/sets.py" />
-        <option value="$PROJECT_DIR$/第三周/files_comannnd.py" />
-        <option value="$PROJECT_DIR$/第三周/jindutiao.py" />
-        <option value="$PROJECT_DIR$/第三周/yesterday.py2" />
-        <option value="$PROJECT_DIR$/第三周/yesterday.py" />
-        <option value="$PROJECT_DIR$/第三周/file_com.py" />
+        <option value="$PROJECT_DIR$/第三周/字典类型及特性/字典练习题/题目要求/qiantao_dict_update2.py" />
+        <option value="$PROJECT_DIR$/第三周/字典类型及特性/字典练习题/题目要求/qiantao_dict_update3.py" />
+        <option value="$PROJECT_DIR$/第三周/集合/set1.py" />
+        <option value="$PROJECT_DIR$/第三周/集合/set_yunsuan.py" />
+        <option value="$PROJECT_DIR$/第三周/文件操作/yesterday" />
+        <option value="$PROJECT_DIR$/第三周/文件操作/file_update.py" />
+        <option value="$PROJECT_DIR$/第三周/文件操作/file_rw_update.py" />
+        <option value="$PROJECT_DIR$/第三周/16进制/进制拾遗漏.py" />
+        <option value="$PROJECT_DIR$/第三周/16进制/进制拾遗.py" />
+        <option value="$PROJECT_DIR$/第三周/Python3转码_执行过程.py" />
+        <option value="$PROJECT_DIR$/第三周/文件操作/file_ops.py" />
+        <option value="$PROJECT_DIR$/第三周/文件操作/wr_files.py" />
+        <option value="$PROJECT_DIR$/第三周/文件操作/yesterday2" />
+        <option value="$PROJECT_DIR$/第三周/文件操作/update_file.py" />
+        <option value="$PROJECT_DIR$/第三周/文件操作/with_file.py" />
+        <option value="$PROJECT_DIR$/第三周/文件操作/bian_ma.py" />
+        <option value="$PROJECT_DIR$/第三周/函数/func_test1.py" />
+        <option value="$PROJECT_DIR$/第三周/a.txt" />
+        <option value="$PROJECT_DIR$/第三周/函数/func_test2.py" />
+        <option value="$PROJECT_DIR$/第三周/函数/func_test3.py" />
+        <option value="$PROJECT_DIR$/第三周/函数/func_test4.py" />
+        <option value="$PROJECT_DIR$/第三周/函数/func_test5.py" />
+        <option value="$PROJECT_DIR$/第三周/函数/funct_test6.py" />
+        <option value="$PROJECT_DIR$/第三周/函数/var_func.py" />
+        <option value="$PROJECT_DIR$/第三周/第一模块作业/login.py" />
+        <option value="$PROJECT_DIR$/第三周/第一模块作业/login_auth.py" />
+        <option value="$PROJECT_DIR$/第三周/第一模块作业/passwords.py" />
+        <option value="$PROJECT_DIR$/第三周/第一模块作业/passwords_file.py" />
+        <option value="$PROJECT_DIR$/第三周/第一模块作业/lock_users_file.py" />
+        <option value="$PROJECT_DIR$/第三周/第一模块作业/up_login_au.py" />
+        <option value="$PROJECT_DIR$/第四周/装饰器.py" />
+        <option value="$PROJECT_DIR$/第四周/docrate.py" />
+        <option value="$PROJECT_DIR$/第四周/decorater1.py" />
+        <option value="$PROJECT_DIR$/第三周/第一模块作业/three_memnu/three_memnu.py" />
+        <option value="$PROJECT_DIR$/第三周/第一模块作业/three_menu2.py" />
+        <option value="$PROJECT_DIR$/第三周/第一模块作业/shop_carts/product_list" />
+        <option value="$PROJECT_DIR$/第三周/第一模块作业/goods.py" />
+        <option value="$PROJECT_DIR$/第三周/第一模块作业/salary.txt" />
+        <option value="$PROJECT_DIR$/第三周/第一模块作业/name.txt" />
+        <option value="$PROJECT_DIR$/第三周/第一模块作业/shop_carts/shop_carts3.py" />
+        <option value="$PROJECT_DIR$/第三周/第一模块作业/shop_carts/user_shopping" />
+        <option value="$PROJECT_DIR$/第三周/第一模块作业/shop_carts/shop_carts2.py" />
+        <option value="$PROJECT_DIR$/python_cook/第一章_数据结构和算法/jie_ya_fuzhi_gei.py" />
+        <option value="$PROJECT_DIR$/python_cook/第一章_数据结构和算法/3.1.3_讨论.py" />
+        <option value="$PROJECT_DIR$/python_cook/第一章_数据结构和算法/1_1.py" />
+        <option value="$PROJECT_DIR$/python_cook/第一章_数据结构和算法/1_2.py" />
+        <option value="$PROJECT_DIR$/python_cook/第一章_数据结构和算法/3_3.py" />
+        <option value="$PROJECT_DIR$/python_cook/第一章_数据结构和算法/1_3.py" />
+        <option value="$PROJECT_DIR$/python_cook/第一章_数据结构和算法/3_4.py" />
+        <option value="$PROJECT_DIR$/python_cook/第一章_数据结构和算法/1_4.py" />
+        <option value="$PROJECT_DIR$/python_cook/第一章_数据结构和算法/1_5.py" />
       </list>
     </option>
   </component>
@@ -191,10 +302,9 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="556" />
-    <option name="y" value="174" />
-    <option name="width" value="1245" />
-    <option name="height" value="815" />
+    <option name="x" value="43" />
+    <option name="width" value="1840" />
+    <option name="height" value="684" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -237,6 +347,24 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="python" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="python" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="python_cook" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="第一章_数据结构和算法" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scratches" />
@@ -246,6 +374,12 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Python" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\SHELL\python\第三周\第一模块作业\three_memnu" />
+      <recent name="D:\SHELL\python\第三周\函数" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -259,97 +393,97 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.file_com">
-    <configuration default="false" name="three_menu_update" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager" selected="Python.3_4">
+    <configuration default="false" name="3.1.3_讨论" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/第二周" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/python_cook/第一章_数据结构和算法" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="python" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/第二周/three_menu_update.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/python_cook/第一章_数据结构和算法/3.1.3_讨论.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <method />
     </configuration>
-    <configuration default="false" name="sets" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration default="false" name="1_1" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/第三周" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/python_cook/第一章_数据结构和算法" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="python" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/第三周/sets.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/python_cook/第一章_数据结构和算法/1_1.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <method />
     </configuration>
-    <configuration default="false" name="files_comannnd" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration default="false" name="1_2" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/第三周" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/python_cook/第一章_数据结构和算法" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="python" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/第三周/files_comannnd.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/python_cook/第一章_数据结构和算法/1_2.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <method />
     </configuration>
-    <configuration default="false" name="jindutiao" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration default="false" name="1_3" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/第三周" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/python_cook/第一章_数据结构和算法" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="python" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/第三周/jindutiao.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/python_cook/第一章_数据结构和算法/1_3.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <method />
     </configuration>
-    <configuration default="false" name="file_com" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration default="false" name="3_4" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/第三周" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/python_cook/第一章_数据结构和算法" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="python" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/第三周/file_com.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/python_cook/第一章_数据结构和算法/3_4.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -503,6 +637,25 @@
       <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method />
     </configuration>
+    <configuration default="false" name="create_lists" type="PythonConfigurationType" factoryName="Python">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/第三周/列表练习题" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="python" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/第三周/列表练习题/create_lists.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <method />
+    </configuration>
     <configuration default="false" name="for_dict" type="PythonConfigurationType" factoryName="Python">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -522,21 +675,42 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <method />
     </configuration>
-    <list size="6">
-      <item index="0" class="java.lang.String" itemvalue="Python.for_dict" />
-      <item index="1" class="java.lang.String" itemvalue="Python.three_menu_update" />
-      <item index="2" class="java.lang.String" itemvalue="Python.sets" />
-      <item index="3" class="java.lang.String" itemvalue="Python.files_comannnd" />
-      <item index="4" class="java.lang.String" itemvalue="Python.jindutiao" />
-      <item index="5" class="java.lang.String" itemvalue="Python.file_com" />
+    <configuration default="false" name="jindutiao" type="PythonConfigurationType" factoryName="Python">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/第三周" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="python" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/第三周/jindutiao.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <method />
+    </configuration>
+    <list size="8">
+      <item index="0" class="java.lang.String" itemvalue="Python.create_lists" />
+      <item index="1" class="java.lang.String" itemvalue="Python.for_dict" />
+      <item index="2" class="java.lang.String" itemvalue="Python.jindutiao" />
+      <item index="3" class="java.lang.String" itemvalue="Python.3.1.3_讨论" />
+      <item index="4" class="java.lang.String" itemvalue="Python.1_1" />
+      <item index="5" class="java.lang.String" itemvalue="Python.1_2" />
+      <item index="6" class="java.lang.String" itemvalue="Python.1_3" />
+      <item index="7" class="java.lang.String" itemvalue="Python.3_4" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.file_com" />
-        <item index="1" class="java.lang.String" itemvalue="Python.jindutiao" />
-        <item index="2" class="java.lang.String" itemvalue="Python.files_comannnd" />
-        <item index="3" class="java.lang.String" itemvalue="Python.sets" />
-        <item index="4" class="java.lang.String" itemvalue="Python.three_menu_update" />
+        <item index="0" class="java.lang.String" itemvalue="Python.3_4" />
+        <item index="1" class="java.lang.String" itemvalue="Python.1_3" />
+        <item index="2" class="java.lang.String" itemvalue="Python.1_2" />
+        <item index="3" class="java.lang.String" itemvalue="Python.1_1" />
+        <item index="4" class="java.lang.String" itemvalue="Python.3.1.3_讨论" />
       </list>
     </recent_temporary>
   </component>
@@ -553,6 +727,38 @@
     </task>
     <servers />
   </component>
+  <component name="TestHistory">
+    <history-entry file="Unittests_for_def_c_test2 - 2018.02.26 at 21h 41m 43s.xml">
+      <configuration name="Unittests for def_c.test2" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_for_def_c_test2 - 2018.02.26 at 21h 45m 27s.xml">
+      <configuration name="Unittests for def_c.test2" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_for_def_c_test2 - 2018.02.26 at 21h 45m 43s.xml">
+      <configuration name="Unittests for def_c.test2" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_for_def_c_test2 - 2018.02.26 at 21h 46m 07s.xml">
+      <configuration name="Unittests for def_c.test2" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_for_def_c_test2 - 2018.02.27 at 20h 31m 23s.xml">
+      <configuration name="Unittests for def_c.test2" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_docrate_py - 2018.03.09 at 21h 54m 57s.xml">
+      <configuration name="Unittests in docrate.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_装饰器_py - 2018.03.09 at 21h 46m 31s.xml">
+      <configuration name="Unittests in 装饰器.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_装饰器_py - 2018.03.09 at 21h 46m 52s.xml">
+      <configuration name="Unittests in 装饰器.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_装饰器_py - 2018.03.09 at 21h 47m 24s.xml">
+      <configuration name="Unittests in 装饰器.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_装饰器_py - 2018.03.09 at 21h 54m 34s.xml">
+      <configuration name="Unittests in 装饰器.py" configurationId="tests" />
+    </history-entry>
+  </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
       <is-autoscroll-to-source value="true" />
@@ -563,22 +769,22 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="556" y="174" width="1245" height="815" extended-state="0" />
+    <frame x="43" y="0" width="1840" height="684" extended-state="1" />
     <editor active="true" />
     <layout>
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.45954692" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.45886442" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3059096" sideWeight="0.50429183" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3419483" sideWeight="0.49570817" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32780847" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30914825" sideWeight="0.49570817" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22651933" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25910246" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.47085202" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="28" y="361" width="1864" height="313" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.8741259" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1570946" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32560834" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18079399" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.46465817" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39884394" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -596,336 +802,325 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="8" />
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/第三周/di_gui.py</url>
+          <line>15</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/第三周/di_gui.py</url>
+          <line>16</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/第三周/di_gui.py</url>
+          <line>17</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/第三周/di_gui.py</url>
+          <line>18</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/第三周/di_gui.py</url>
+          <line>19</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/第三周/di_gui.py</url>
+          <line>20</line>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/第三周/函数/func_test2.py</url>
+          <line>3</line>
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/第三周/函数/func_test2.py</url>
+          <line>4</line>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/第三周/函数/func_test2.py</url>
+          <line>5</line>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/第三周/函数/func_test2.py</url>
+          <line>6</line>
+          <option name="timeStamp" value="20" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/第三周/函数/func_test2.py</url>
+          <line>7</line>
+          <option name="timeStamp" value="21" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="22" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/第二周/goods.py">
+    <entry file="file://$PROJECT_DIR$/第三周/16进制/进制拾遗.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1404">
-          <caret line="39" column="50" lean-forward="true" selection-start-line="39" selection-start-column="50" selection-end-line="39" selection-end-column="50" />
+        <state relative-caret-position="219">
+          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/第二周/strings.py">
+    <entry file="file://$PROJECT_DIR$/第三周/文件操作/wr_files.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1512">
-          <caret line="42" column="22" lean-forward="false" selection-start-line="42" selection-start-column="22" selection-end-line="42" selection-end-column="22" />
+        <state relative-caret-position="195">
+          <caret line="5" column="15" lean-forward="true" selection-start-line="5" selection-start-column="15" selection-end-line="5" selection-end-column="15" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/第二周/dicts.py">
+    <entry file="file://$PROJECT_DIR$/第三周/文件操作/update_file.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="756">
-          <caret line="21" column="11" lean-forward="true" selection-start-line="21" selection-start-column="11" selection-end-line="21" selection-end-column="11" />
+        <state relative-caret-position="39">
+          <caret line="2" column="15" lean-forward="false" selection-start-line="2" selection-start-column="15" selection-end-line="2" selection-end-column="15" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/第二周/multi_dict.py">
+    <entry file="file://$PROJECT_DIR$/第三周/文件操作/with_file.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="756">
-          <caret line="21" column="16" lean-forward="false" selection-start-line="21" selection-start-column="16" selection-end-line="21" selection-end-column="16" />
+        <state relative-caret-position="109">
+          <caret line="4" column="21" lean-forward="false" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/第二周/three_menu_update.py">
+    <entry file="file://$PROJECT_DIR$/第三周/文件操作/bian_ma.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2160">
-          <caret line="60" column="47" lean-forward="true" selection-start-line="60" selection-start-column="47" selection-end-line="60" selection-end-column="47" />
+        <state relative-caret-position="351">
+          <caret line="9" column="51" lean-forward="false" selection-start-line="9" selection-start-column="51" selection-end-line="9" selection-end-column="51" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/第一周/hello_wrold.py" />
-    <entry file="file://$PROJECT_DIR$/第一周/hello_world.py" />
+    <entry file="file://$PROJECT_DIR$/第三周/函数/func_test1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="265">
+          <caret line="23" column="26" lean-forward="true" selection-start-line="23" selection-start-column="26" selection-end-line="23" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/第三周/文件操作/yesterday2">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="101">
+          <caret line="10" column="9" lean-forward="true" selection-start-line="10" selection-start-column="3" selection-end-line="10" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/第三周/di_gui.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="158">
+          <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_imps/_pydev_execfile.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="484">
-          <caret line="17" column="53" lean-forward="true" selection-start-line="17" selection-start-column="53" selection-end-line="17" selection-end-column="53" />
+        <state relative-caret-position="130">
+          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/第一周/var.py">
+    <entry file="file://$PROJECT_DIR$/第三周/函数/a.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="1" column="3" lean-forward="true" selection-start-line="1" selection-start-column="3" selection-end-line="1" selection-end-column="3" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/第一周/input_user.py">
+    <entry file="file://$PROJECT_DIR$/第三周/函数/func_test2.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="142">
-          <caret line="59" column="10" lean-forward="false" selection-start-line="59" selection-start-column="10" selection-end-line="59" selection-end-column="10" />
+        <state relative-caret-position="113">
+          <caret line="7" column="26" lean-forward="false" selection-start-line="7" selection-start-column="26" selection-end-line="7" selection-end-column="26" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/第一周/input_password.py">
+    <entry file="file://$PROJECT_DIR$/第三周/函数/func_test3.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="367">
-          <caret line="15" column="40" lean-forward="false" selection-start-line="15" selection-start-column="40" selection-end-line="15" selection-end-column="40" />
+        <state relative-caret-position="74">
+          <caret line="20" column="9" lean-forward="false" selection-start-line="20" selection-start-column="9" selection-end-line="20" selection-end-column="9" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/第一周/while_age.py">
+    <entry file="file://$PROJECT_DIR$/第三周/函数/func_test4.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="566">
-          <caret line="18" column="19" lean-forward="false" selection-start-line="18" selection-start-column="19" selection-end-line="18" selection-end-column="19" />
+        <state relative-caret-position="152">
+          <caret line="9" column="34" lean-forward="false" selection-start-line="9" selection-start-column="34" selection-end-line="9" selection-end-column="34" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/第一周/for_for.py">
+    <entry file="file://$PROJECT_DIR$/第三周/函数/func_test5.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="8" column="17" lean-forward="true" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+        <state relative-caret-position="39">
+          <caret line="4" column="12" lean-forward="true" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="12" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/第一周/for_1_2.py">
+    <entry file="file://$PROJECT_DIR$/第三周/函数/funct_test6.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="9" column="12" lean-forward="true" selection-start-line="9" selection-start-column="12" selection-end-line="9" selection-end-column="12" />
+        <state relative-caret-position="302">
+          <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/第一周/login_welcome.py">
+    <entry file="file://$PROJECT_DIR$/第三周/第一模块作业/login.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="372">
-          <caret line="21" column="39" lean-forward="false" selection-start-line="21" selection-start-column="39" selection-end-line="21" selection-end-column="39" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/第一周/hello.py">
+    <entry file="file://$PROJECT_DIR$/第三周/函数/var_func.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="11" lean-forward="true" selection-start-line="3" selection-start-column="11" selection-end-line="3" selection-end-column="11" />
+        <state relative-caret-position="302">
+          <caret line="14" column="7" lean-forward="false" selection-start-line="14" selection-start-column="7" selection-end-line="14" selection-end-column="7" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/第一周/tab.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/第一周/for_loop.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="10" column="28" lean-forward="true" selection-start-line="10" selection-start-column="28" selection-end-line="10" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/第一周/for.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="6" column="33" lean-forward="true" selection-start-line="6" selection-start-column="33" selection-end-line="6" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/第一周/while.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="6" column="12" lean-forward="true" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/第一周/guess_age.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="11" column="26" lean-forward="true" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/第一周/menue_3.py" />
     <entry file="file://$PROJECT_DIR$/第一周/login_user_3.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="257">
-          <caret line="19" column="9" lean-forward="true" selection-start-line="19" selection-start-column="9" selection-end-line="19" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/第一周/age_3.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="293">
-          <caret line="16" column="25" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="16" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/第一周/age_guess.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="648">
-          <caret line="18" column="13" lean-forward="true" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/第一周/user_login.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="371">
-          <caret line="14" column="22" lean-forward="true" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/第一周/jisuan.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="6" column="15" lean-forward="true" selection-start-line="6" selection-start-column="15" selection-end-line="6" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/第一周/str.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="293">
-          <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/第二周/sys_module.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/第二周/three_yunsuan.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
-          <caret line="15" column="15" lean-forward="false" selection-start-line="15" selection-start-column="15" selection-end-line="15" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/第二周/copy.py" />
-    <entry file="file://$PROJECT_DIR$/第二周/copy_1.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="79">
-          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="79" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/第二周/for_dict.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="18" column="12" lean-forward="false" selection-start-line="18" selection-start-column="12" selection-end-line="18" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/第二周/refer_http.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+        <state relative-caret-position="429">
+          <caret line="20" column="19" lean-forward="false" selection-start-line="20" selection-start-column="19" selection-end-line="20" selection-end-column="19" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/第二周/goods.py">
+    <entry file="file://$PROJECT_DIR$/第三周/第一模块作业/passwords.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1404">
-          <caret line="39" column="50" lean-forward="false" selection-start-line="39" selection-start-column="50" selection-end-line="39" selection-end-column="50" />
+        <state relative-caret-position="78">
+          <caret line="2" column="15" lean-forward="true" selection-start-line="2" selection-start-column="15" selection-end-line="2" selection-end-column="15" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/第二周/qie_pian.py">
+    <entry file="file://$PROJECT_DIR$/第三周/第一模块作业/passwords_file.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2772">
-          <caret line="77" column="4" lean-forward="false" selection-start-line="77" selection-start-column="4" selection-end-line="77" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/第二周/dict.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="9" column="18" lean-forward="false" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
+        <state relative-caret-position="117">
+          <caret line="3" column="8" lean-forward="true" selection-start-line="3" selection-start-column="8" selection-end-line="3" selection-end-column="8" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/第二周/info.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="828">
-          <caret line="23" column="7" lean-forward="false" selection-start-line="23" selection-start-column="7" selection-end-line="23" selection-end-column="7" />
+        <state relative-caret-position="468">
+          <caret line="12" column="1" lean-forward="true" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/第二周/three_menu_update.py">
+    <entry file="file://$PROJECT_DIR$/第四周/装饰器.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="461">
-          <caret line="64" column="25" lean-forward="true" selection-start-line="64" selection-start-column="25" selection-end-line="64" selection-end-column="25" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/第二周/three_memu.py">
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pycharm/_jb_unittest_runner.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="327">
-          <caret line="50" column="21" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="53" selection-end-column="20" />
+        <state relative-caret-position="172">
+          <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/第二周/strings.py">
+    <entry file="file://$PROJECT_DIR$/第四周/decorater1.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="363">
-          <caret line="42" column="22" lean-forward="false" selection-start-line="42" selection-start-column="22" selection-end-line="42" selection-end-column="22" />
+        <state relative-caret-position="210">
+          <caret line="7" column="9" lean-forward="false" selection-start-line="7" selection-start-column="9" selection-end-line="7" selection-end-column="9" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/第二周/dicts.py">
+    <entry file="file://$PROJECT_DIR$/第四周/docrate.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="579">
-          <caret line="21" column="11" lean-forward="true" selection-start-line="21" selection-start-column="11" selection-end-line="21" selection-end-column="11" />
+        <state relative-caret-position="249">
+          <caret line="12" column="6" lean-forward="false" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="6" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/第二周/multi_dict.py">
+    <entry file="file://$PROJECT_DIR$/第三周/第一模块作业/three_memnu/three_memnu.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="21" column="16" lean-forward="false" selection-start-line="21" selection-start-column="16" selection-end-line="21" selection-end-column="16" />
+        <state relative-caret-position="663">
+          <caret line="128" column="28" lean-forward="false" selection-start-line="128" selection-start-column="14" selection-end-line="128" selection-end-column="28" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/第三周/sets.py">
+    <entry file="file://$PROJECT_DIR$/第三周/第一模块作业/shop_carts/info">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="471">
-          <caret line="58" column="0" lean-forward="true" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/第三周/files_comannnd.py">
+    <entry file="file://$PROJECT_DIR$/第三周/第一模块作业/shop_carts/info.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="293">
-          <caret line="57" column="0" lean-forward="true" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/第三周/yesterday.bak.py">
+    <entry file="file://$PROJECT_DIR$/第三周/第一模块作业/shop_carts/price.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/第三周/第一模块作业/login_auth.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="8" column="40" lean-forward="true" selection-start-line="8" selection-start-column="40" selection-end-line="8" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/第三周/第一模块作业/up_login_au.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-39">
+          <caret line="5" column="8" lean-forward="false" selection-start-line="5" selection-start-column="8" selection-end-line="5" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/第三周/第一模块作业/lock_users_file.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="39">
-          <caret line="1" column="40" lean-forward="false" selection-start-line="1" selection-start-column="40" selection-end-line="1" selection-end-column="40" />
+          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/第三周/yesterday.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="8" column="8" lean-forward="false" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/第三周/yesterday.py2">
+    <entry file="file://$PROJECT_DIR$/第三周/第一模块作业/three_memnu/购物车用户信息存档">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -933,26 +1128,146 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/第三周/jindutiao.py">
+    <entry file="file://$PROJECT_DIR$/第三周/第一模块作业/goods.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="492">
+          <caret line="151" column="44" lean-forward="false" selection-start-line="151" selection-start-column="44" selection-end-line="151" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/第三周/第一模块作业/name.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/第三周/第一模块作业/salary.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="5" lean-forward="false" selection-start-line="0" selection-start-column="5" selection-end-line="0" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/第三周/第一模块作业/shop_carts/user_shopping">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="42" lean-forward="false" selection-start-line="0" selection-start-column="42" selection-end-line="0" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/第三周/第一模块作业/shop_carts/product_list">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="8" column="1" lean-forward="true" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/第三周/第一模块作业/shop_carts/shop_carts3.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1131">
+          <caret line="29" column="43" lean-forward="false" selection-start-line="29" selection-start-column="43" selection-end-line="29" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/第三周/第一模块作业/shop_carts/shop_carts.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="351">
+          <caret line="9" column="15" lean-forward="true" selection-start-line="9" selection-start-column="15" selection-end-line="9" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/第三周/第一模块作业/three_memnu/three_menu2.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="117">
-          <caret line="12" column="28" lean-forward="false" selection-start-line="12" selection-start-column="28" selection-end-line="12" selection-end-column="28" />
+          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="29" selection-end-column="3" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/第三周/file_com.py">
+    <entry file="file://$PROJECT_DIR$/第三周/第一模块作业/shop_carts/shop_carts2.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="4" column="19" lean-forward="true" selection-start-line="4" selection-start-column="19" selection-end-line="4" selection-end-column="19" />
+        <state relative-caret-position="-2391">
+          <caret line="14" column="12" lean-forward="true" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/第三周/yesterday.bak">
+    <entry file="file://$PROJECT_DIR$/python_cook/第一章_数据结构和算法/jie_ya_fuzhi_gei.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="11" column="30" lean-forward="false" selection-start-line="11" selection-start-column="30" selection-end-line="11" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/python_cook/第一章_数据结构和算法/3.1.3_讨论.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="74">
+          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/python_cook/第一章_数据结构和算法/1_1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="52" column="26" lean-forward="false" selection-start-line="52" selection-start-column="26" selection-end-line="52" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/python_cook/第一章_数据结构和算法/3_3.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/python_cook/第一章_数据结构和算法/1_2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="96" column="22" lean-forward="false" selection-start-line="96" selection-start-column="22" selection-end-line="96" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/python_cook/第一章_数据结构和算法/1_3.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="172">
+          <caret line="60" column="0" lean-forward="true" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/python_cook/第一章_数据结构和算法/3_4.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="57" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/python_cook/第一章_数据结构和算法/1_4.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="267">
+          <caret line="56" column="3" lean-forward="false" selection-start-line="56" selection-start-column="3" selection-end-line="56" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/python_cook/第一章_数据结构和算法/1_5.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="16" column="8" lean-forward="false" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="8" />
           <folding />
         </state>
       </provider>
