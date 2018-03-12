@@ -55,5 +55,7 @@ while not t_flag:
                         print("密码输入错误，请重新输入!")
                         break
             else:
-                print("密码输入错误，请重新输入")  # 账号不存在，重新输入
+                print("账号不存在，请重新输入")  # 账号不存在，重新输入
+                t_flag = True
+                break
     lock_num += 1
