@@ -2244,13 +2244,365 @@ ${var%Pattern},${var%%Pattern}
 	${var%%Pattern} Remove from $var the longest of $Pattern that matches the back end of $var.
 
 Example 9-19. Pattern matching in parameter substitution
+#!/bin/bash
+#  patt-matching.sh
 
+#  Pattern macthing using the # ## % %% parameter substition operators.
 
+var1=abcd12345abc6789
+pattern1=a*c 					# * (wild card) matches everything between a - c.
 
+echo
+echo "var1 = $var1"				# abcd12345abc6789
+echo "var1 = ${var1}"			# abcd12345abc6789
+
+echo "Number of characters in ${var1} = ${#var1}"
+echo
+
+echo "pattern1 = $pattern1"		# a*c (everything between 'a' and 'c')
+echo "---------------------"
+echo '$(var1#$pattern1) =' "${var1#$pattern1}"		# d12345abc6789
+#  Shorttest possible match, stripts out first 12 characters abcd12345abc6789
+
+echo; echo; echo 
+pattern2=b*9					# everything between 'b' and '9'
+echo "var1 = $var1"				# Still abcd12345abc6789
+echo
+echo "pattern2 = $pattern2"
+echo "---------------------"
+echo '${var1%pattern2} =' "${var1%pattern2}"		# abcd12345a
+# Shortest possible match, strips out last 6 characters abcd12345abc6789
+#
+echo '${var1%%pattern2} =' "${var1%%$pattern2}"		# abcd12345a
+# Longest possible match, strips out last 12 characters abcd12345abc6789
+#
+
+# Remember, # and ## work from the left end (beginning) of string,
+#			% and %% work from the right end.
+
+echo 
+
+exit 0
+
+Example 9-20. Renaming file extensions:
+
+#!/bin/bash
+# rfe.sh: Rename file extensions.
+#
+# 			rfe old_extension new_extension
+#
+# Example:
+# To rename all *.gif files in working directory to *.jpg,
+#				rfe gif jpg
+
+E_BADARGS=65
+
+case $# in
+	0|1)				# The vertical bar means "or" in this context.
+	echo "Usage: `basename $0` old_file_suffix new_file_suffix"
+	exit $E_BADARGS		# If 0 or 1 arg, then bail out.
+	;;
+esac
+
+for filename in *.$1
+# Traverse list of files ending with 1st argument.
+do
+	mv $filename ${filename%$1}$2
+	#  Strip off part of filename matching 1st argument,
+	#+ then append 2nd argument.
+done
+
+exit 0
+
+Example 9-21. Using pattern matching to parse arbitrary strings
+
+#!bin/bash
+
+var1=abcd-1234-defg
+echo "var1 = $var1"
+
+t=${var1#*-*}
+echo "var1 (with everything, up to and including first - stripped out) = $t"
+#  t=${var1#*-} works just the same,
+#+ since # matches the shortest string,
+#+ and * matches everything preceding, including an empty string.
+#  （Thanks, Stephane Chazelas, for poingting this out.）
+
+t=${var1##*-*}
+echo "If var1 contains a \"-\", returns empty string... var1 = $t"
+
+t=${var1%*-*}
+echo "var1 (with everything from the last - on stripped out) = $t"
+
+echo
+
+# --------------------------------------------
+path_name=/home/bozo/ideas/thoughts.for.today
+# --------------------------------------------
+echo "path_name = $path_name"
+t=${path_name##/*/}
+echo "path_name, stripped of prefixes = $t"
+#  Same effect as t=`basename $path_name` in this particular case.
+#  t=${path_name%/}; t=${t##*/} is a more general solution,
+#+ but still fails sometimes.
+#  If $path_name ends with a newline, then `basename $path_name` will not work,
+#+ but the above expression will.
+#  (Thanks, S.C.)
+
+t=${path_name%/*.*}
+#  Same effect as t=`dirname $path_name`
+echo "path_name, stripped of suffixes = $t"
+#  These will fail in some cases, such as "../", "/foo////", # "foo/", "/".
+#  Removing suffixes, especially when the basename has no suffix,
+#+ but the dirname does, also complicates matters.
+#  (Thanks, S.C.)
+
+echo 
+
+t=${path_name:11}
+echo "$path_name, with first 11 chars stripped off = $t"
+t=${path_name:11:5}
+echo "$path_name, with first 11 chars stripped off, length 5 = $t"
+
+echo 
+
+t=${path_name/bozo/clown}
+echo "$path_name with \"bozo\" replaced by \"clown\" =$t"
+t=${path_name/today/}
+echo "${path_name with \"today\" deleted = $t}"
+t=${path_name//o/O}
+echo "path_name with all o's capitalized =$t"
+t=${path_name//o/}
+echo "$path_name will all o's deleted =$t"
+
+exit 0
+
+${var/#Pattern/Replacement}
+	If prefix of var matches Pattern, then substitute Replacement for Pattern.
+${var/%Pattern/Replacement}
+	If suffix of var matches Pattern, then substitute Replacement for Pattern.
+Example 9-22. Matching patterns at prefix or suffix of string
+
+#!/bin/bash
+# var-match.sh:
+# Demo of pattern replacement at prefix / suffix of string.
+
+v0=abc1234zip1234abc			# Original variable.
+echo "v0 = $v0"					# abc1234zip1234abc
+echo
+
+# Match at prefix (beginning ) of string.
+v1=${v0/#abc/ABCDEF}			# abc1234zip1234abc
+								# |-|
+echo "v1 =$v1"					# ABCDEF1234zip1234abc
+								# |----|
+
+# Match at suffix (end)	of string.
+v2=${v0/%abc/ABCDEF}			# abc1234zip1234abc
+								#				|-|
+echo "v2 = $v2"					# abc1234zip1234ABCDEF
+								#				|----|
+
+echo 
+
+#  ------------------------------------------
+#  Must match at beginning / end string,
+#+ otherwise no replacement results.
+#  ------------------------------------------
+v3=${v0/#123/000}				# Matches , but not at beginning.
+echo "v3 = $v3"					# abc1234zip1234abc
+								# NO REPLACEMENT.
+v4=${v0/%123/000}				# Mathches, but not at end.
+echo "v4 = $v4"					# abc1234zip1234abc
+								# NO REPLACEMENT.
+
+exit 0
+
+############################################################################
+${!varprefix*},${!varprefix@}
+Matches names of all previously declared variables beginning with varprefix.
+
+xyz23=whatever
+xyz24=
+
+a=${!xyz}		# Exands to *names* of declared variables beginning with "xyz".
+echo "a = $a"	# a =xyz23 xyz24
+a=${!xyz@}		# Same as above.
+echo "a = $a"	# a = xyz23 xyz24
+
+# Bash, version 2.04, adds this feature.
+
+Example 9-23. Using declare to type variables
+#!/bin/bash
+
+func1 ()
+{
+	echo This is a function.
+}
+
+declare -f 			# Lists the function above.
+
+echo 
+
+declare -i var1 	# var1 is an integer.
+var1=2367
+echo "var1 declared as $var1"
+var1=var1+1			# Integer declaration elimiates the need for 'let'.
+echo "var1 incremented by 1 is $var1."
+# Attempt to change variable declared as integer.
+echo "Attempting to change var1 to floating point value, 2367.1."
+var1=2367.1			# Results in error message, with no change to variable.
+echo "var1 is still $var1"
+echo
+
+declare -r var2=13.36			#  'declare' permits setting a variable property
+								#+ simultaneously assigning it a value.
+echo "var2 declared as $var2"	#  Attempt to change readonly variable.
+var2=13.37						#  Generates error message, and exit from script.
+
+echo "$var2 is still $var2"		#  This line will not execute.
+
+exit 0							#  Script will not exit here.
+
+9.5. Indirect References
+Example 9-24. Indirect Variable References
+#!/bin/bash
+# ind-ref.sh: Indirect variable referencing.
+# Accessing the contents of the contests of a variable.
+a=letter_of_alphabet			# Variable "a" holds the name of another variable.
+letter_of_alphabet=z
+
+echo 
+
+# Direct reference.
+echo "a = $a"			# a = letter_of_alphabet
+
+# Indirect reference.
+eval a=\$$a
+echo "Now a = $a"		# Now a = z
+
+echo 
+
+# Now, let's try changing the second-order reference.
+
+t=table_cell_3
+table_cell_3=24
+echo "\"table_cell_3\" = $table_cell_3"					# "table_cell_3" = 24
+echo -n "dereferenced \"t\" =" ="; eval echo \$$t 		# dereferenced "t" = 24
+
+#  In this simple case, the following also works (why?).
+#  			eval t=\$$; echo "\"t\" = $t"
+
+echo 
+
+t=table_cell_3
+NEW_VAL=387
+table_cell_3=$NEW_VAL
+echo "Changing value of \"table_cell_3\" to $NEW_VAL."
+echo "\"table_cell_3\" now $table_cell_3"
+echo -n "dereferenced "\t\" now "; eval echo \$$t
+# "eval" takes the two arguments "echo" and "\$$t" (set equal to $table_cell_3)
+
+echo 
+
+# (Thanks, Stephane Chazelas, for clearing up the above behavior.)
+
+# Another method is the ${!t} notation, discussed in "Bash, version 2" section.
+# See also ex78.sh.
+
+exit 0
+
+####################################################
+#!/bin/bash
+
+# ----------------------------------
+# This could be "sourced" from a separate file.
+isdnMyproviderRemoteNet=172.16.0.100
+isdnYourProviderRemoteNet=10.0.0.10
+isdnOnlineService="MyProvider"
+# ----------------------------------
+
+remoteNet=$(eval "echo \$$(echo iddn$(isdnOnlineService)remoteNet)")
+remoteNet=$(eval "echo \$$(echo isdnMyproviderRemoteNet)")
+remoteNet=$(eval "echo \$$(isdnMyproviderRemoteNet)")
+
+echo "$remoteNet"			# 172.16.0.100
+
+# ============================================
+
+#  And, it gets even better.
+
+#  Consider the following snipper given a variable named getSparc,
+#+ but no such variable getIa64:
+chkMirrorArchs () {
+	arch="$1";
+	if [ "$(eval "echo \${$echo get$(echo -ne $arch |
+		sed 's/^\(.\).*/\1/g' | tr 'a-z' 'A-Z'; echo $arch |
+		sed 's/^.\(.\)\/1/g')):-false}")" = true ]; then
+		return 0;
+	else
+		return 1;
+	fi
+}
+
+getSparc="true"
+unset getIa64
+chkMirrorArchs sparc
+echo $?			# 0
+				# True
+chkMirrorArchs Ia64 
+echo $?			# 1
+				# False
+
+# Notes:
+# -------
+# Even the to-be-substituted variable name part is built explicitly.
+# The parameters to the chkMirrorArchs calls are all lower case.
+# The variable name is composed of two parts: "get" and "Sparc" ...
+
+Example 9-25. Passing an Indirect reference to awk
+#!/bin/bash
+
+#  Another version of the "column totaler" script
+#+ that adds up a specified column (of numbers) in the target file.
+#  This one uses indirect refereces.
+
+ARGS=2
+E_WRONGARGS=65
+if [[ $# -ne "$ARGS" ]]; then	# Check for proper no. of command line args.
+	echo "Usage: `basename $0` filename column-number"
+	exit $E_WRONGARGS
+fi
+
+filename=$1
+column_number=$2
+
+# ====== Same as original script, up to this point ======#
+
+# A multi-line awk script is invoked by awk '......'
+
+# Begin awk script.
+# -----------------------------
+awk "
+{ total += \$${column_number}	# indirect reference
+}
+END {
+	print total
+}
+	" "$filename"
+# ----------------------------
+# End awk script.
+
+#  Indirect variable reference avoids the hassles
+#+ of referencing a shell variable within the embedded awk script.
+#  Thanks, Stephane Chazelas.
+
+exit 0
 
 
 
 # 看到这里
+http://www.engr.iupui.edu/~dskim/tutorials/bash-advanced/html/randomvar.html
 
 
 http://www.engr.iupui.edu/~dskim/tutorials/bash-advanced/html/index.html
