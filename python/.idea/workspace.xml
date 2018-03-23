@@ -160,7 +160,7 @@
         <entry file="file://$PROJECT_DIR$/第一模块/unicodes.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="251">
-              <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+              <caret line="24" column="0" lean-forward="true" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -255,9 +255,9 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
+  <component name="ProjectFrameBounds">
     <option name="x" value="108" />
-    <option name="y" value="219" />
+    <option name="y" value="194" />
     <option name="width" value="1812" />
     <option name="height" value="764" />
   </component>
@@ -695,7 +695,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="108" y="219" width="1812" height="764" extended-state="1" />
+    <frame x="108" y="194" width="1812" height="764" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.45886442" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -1110,7 +1110,7 @@
     <entry file="file://$PROJECT_DIR$/第一模块/unicodes.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="251">
-          <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <caret line="24" column="0" lean-forward="true" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
           <folding />
         </state>
       </provider>
