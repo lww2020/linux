@@ -1,0 +1,940 @@
+
+
+php7.2   #
+mysql    #
+memcached
+redis
+php72-memcached
+php72-redis
+nginx    #
+git2.8+  #
+gitlab community 8.0+ #
+
+
+############
+php7.2
+mysql
+redis
+php72-redis
+nginx
+git
+gitlab community 8.0+
+composer
+oracle服务端11g
+oracle客户端
+php-oci8
+php-pdo_oci
+
+############
+
+
+IP: 172.16.110.126
+端口：3306
+用户名：edwin
+密码： edwin@123
+
+备注： 权限为管理员，操作时需要注意
+
+1、安装
+rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm   
+rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm  
+
+wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+wget http://rpms.remirepo.net/enterprise/remi-release-7.rpm
+rpm -Uvh remi-release-7.rpm epel-release-latest-7.noarch.rpm
+yum --enablerepo=remi update remi-release
+service php-fpm stop
+
+
+
+yum 安装php7.2  
+yum -y install php72w php72w-cli php72w-common php72w-devel php72w-embedded php72w-fpm php72w-gd php72w-mbstring php72w-mysqlnd php72w-opcache php72w-pdo php72w-xml
+yum -y --enablerepo=remi install php72-php php72-php-pear php72-php-bcmath php72-php-pecl-jsond-devel php72-php-mysqlnd php72-php-gd php72-php-common php72-php-fpm php72-php-intl php72-php-cli php72-php php72-php-xml php72-php-opcache php72-php-pecl-apcu php72-php-pecl-jsond php72-php-pdo php72-php-gmp php72-php-process php72-php-pecl-imagick php72-php-devel php72-php-mbstring
+
+
+yum -y install composer
+composer -V
+
+/usr/local/nginx/www/bsbase
+php requirements.php
+
+
+# https://packages.gitlab.com/gitlab/gitlab-ce
+# https://docs.gitlab.com/omnibus/settings/configuration.html#configuring-the-external-url-for-gitlab
+
+
+
+# 开始
+# 一、准备工作
+#参考资料：https://www.w3cschool.cn/linux_nmp/linux_nmp-z6ys279c.html
+yum update -y
+yum remove php* mariadb* nginx* http* -y
+
+# 二、服务器LNMP编译安装
+# 1、安装编译工具
+yum -y install gcc cmake gcc-c++ 
+
+
+# 2、安装Nginx
+
+yum -y install pcre-devel zlib-devel 
+mkdir -p /data/source
+mkdir -p /data/lnmp
+cd /data/source
+wget https://www.openssl.org/source/openssl-1.0.2l.tar.gz
+tar xvf openssl-1.0.2l.tar.gz -C /data/lnmp/
+cd /data/lnmp/openssl-1.0.2l
+./config  --prefix=/data/lnmp/lib --openssldir=/data/lnmp/lib/openssl
+make -j `grep processor /proc/cpuinfo | wc -l`  
+make -j `grep processor /proc/cpuinfo | wc -l`  install
+
+# 3、建立组和用户并设置不能ssh登录
+groupadd -r www
+useradd -r -M -s /sbin/nologin -g www www
+sed -i "s/\/home\/www://" /etc/passwd
+
+cd /data/source
+wget http://nginx.org/download/nginx-1.13.2.tar.gz
+tar xvf nginx-1.13.2.tar.gz
+cd nginx-1.13.2
+./configure --prefix=/data/lnmp/nginx --user=www --group=www --pid-path=/run/nginx.pid --lock-path=/run/nginx.lock --http-client-body-temp-path=/tmp/client --http-proxy-temp-path=/tmp/proxy --http-fastcgi-temp-path=/tmp/fastcgi --http-uwsgi-temp-path=/tmp/uwsgi --http-scgi-temp-path=/tmp/scgi --http-log-path=/data/lnmp/log/nginx/access.log --error-log-path=/data/lnmp/log/nginx/error.log  --with-http_ssl_module --with-http_v2_module --with-stream_realip_module --with-openssl=/data/lnmp/openssl-1.0.2l
+make -j `grep processor /proc/cpuinfo | wc -l`  
+make -j `grep processor /proc/cpuinfo | wc -l`  install
+
+# 4、配置启动
+mkdir -p /usr/lib/systemd/system
+cat > /usr/lib/systemd/system/nginx.service << "EOF"
+[Unit]
+Description=The nginx HTTP and reverse proxy server
+After=network.target remote-fs.target nss-lookup.target
+[Service]
+Type=forking
+PIDFile=/run/nginx.pid
+ExecStartPre=/data/lnmp/nginx/sbin/nginx -t -c /data/lnmp/nginx/conf/nginx.conf
+ExecStart=/data/lnmp/nginx/sbin/nginx -c /data/lnmp/nginx/conf/nginx.conf
+ExecReload=/bin/kill -HUP $MAINPID
+ExecStop=/bin/kill -QUIT $MAINPID
+[Install]
+WantedBy=multi-user.target
+EOF
+
+sed -i "s/\/\$nginx_version//" /data/lnmp/nginx/conf/fastcgi*
+sed -i "s/}/    application\/vnd.android.package-archive apk;\n}/g" /data/lnmp/nginx/conf/mime.types
+
+mv /data/lnmp/nginx/conf/nginx.conf /data/lnmp/nginx/conf/nginx.conf.bak
+mkdir -p /data/lnmp/nginx/conf/conf.d
+
+cat > /data/lnmp/nginx/conf/nginx.conf << "EOF"
+user  www;
+worker_processes  4;
+events {
+    worker_connections  1024;
+}
+http {
+    include       mime.types;
+    default_type  application/octet-stream;
+    charset  utf-8;
+    sendfile        on;
+    client_max_body_size 40m;
+    server_tokens off;
+    keepalive_timeout  65;
+    gzip  on;
+    include  conf.d/*.conf;
+}
+EOF
+
+cat > /data/lnmp/nginx/conf/conf.d/www.conf << "EOF"
+server {
+    listen       80;
+    server_name  localhost;
+    root   /data/www;
+    index  index.html index.htm index.php;
+    error_page  404              /404.html;
+    error_page   500 502 503 504  /50x.html;
+    location / {
+        try_files $uri $uri/ /index.php$is_args$args;
+    }
+    location ~ \.php$ {
+        try_files $uri = 404;
+        fastcgi_pass   127.0.0.1:9000;
+        include        fastcgi.conf;
+    }
+}
+EOF
+mkdir /data/www
+ln -s /data/lnmp/nginx/sbin/nginx /usr/sbin/
+
+# 5、安装PHP
+
+# https://www.w3cschool.cn/linux_nmp/linux_nmp-z6ys279c.html
+yum -y install libxml2-devel systemd-devel gd-devel libcurl-devel
+
+cd /data/source
+wget http://hk1.php.net/distributions/php-7.2.3.tar.xz
+tar xvf php-7.2.3.tar.xz
+cd php-7.2.3
+#mkdir -p /data/lnmp/php
+./configure --prefix=/data/lnmp/php \
+--enable-fpm \
+--with-fpm-systemd \
+--with-fpm-user=www \
+--with-fpm-group=www \
+--with-config-file-path=/data/lnmp/php \
+--with-config-file-scan-dir=/data/lnmp/php/lib/php/extensions \
+--without-sqlite3 \
+--enable-opcache \
+--disable-ipv6 \
+--enable-mbstring \
+--with-gettext \
+--with-curl \
+--enable-mysqlnd \
+--with-mysqli=mysqlnd \
+--with-pdo-mysql=mysqlnd \
+--with-pdo-sqlite \
+--enable-phpdbg \
+--with-sqlite=shared \
+--enable-mbregex \
+--with-mysqli \
+--with-gd \
+--with-freetype-dir \
+--with-png-dir \
+--with-xpm-dir \
+--with-jpeg-dir \
+--with-zlib \
+--enable-exif \
+--enable-intl \
+--enable-zip \
+--enable-soap \
+--enable-ftp \
+--with-mhash \
+--enable-pdo \
+--with-pdo-pgsql \
+--enable-shmop \
+--enable-sockets \
+--enable-wddx \
+--enable-xml \
+--with-gnu-ld \
+--with-openssl=/data/lnmp/lib 
+
+make -j `grep processor /proc/cpuinfo | wc -l`  
+make -j `grep processor /proc/cpuinfo | wc -l`  install
+
+
+/data/lnmp/php/bin/pear install channel://pear.php.net/PHP_Archive-0.12.0
+ln -s /data/lnmp/php/bin/* /usr/bin
+ln -s /data/lnmp/php/sbin/* /usr/sbin
+cp sapi/fpm/php-fpm.service /usr/lib/systemd/system/
+sed -i "s/\${prefix}/\/data\/lnmp\/php/" /usr/lib/systemd/system/php-fpm.service
+sed -i "s/\${exec_prefix}/\/data\/lnmp\/php/" /usr/lib/systemd/system/php-fpm.service
+sed -i "s/\/data\/php\/var\/run/\/run/" /usr/lib/systemd/system/php-fpm.service
+cp sapi/fpm/www.conf /data/lnmp/php/etc/php-fpm.d/
+cp sapi/fpm/php-fpm.conf /data/lnmp/php/etc/
+echo "zend_extension=/data/lnmp/php/lib/php/extensions/no-debug-non-zts-20160303/opcache.so" > /data/lnmp/php/lib/php/extensions/opcache.ini
+cp php.ini-production /data/lnmp/php/php.ini
+sed -i "s/;opcache.enable=0/opcache.enable=1/" /data/lnmp/php/php.ini
+sed -i "s/;opcache.enable_cli=0/opcache.enable_cli=1/" /data/lnmp/php/php.ini
+sed -i "s/max_execution_time = 30/max_execution_time = 60/" /data/lnmp/php/php.ini
+sed -i "s/upload_max_filesize = 2M/upload_max_filesize = 20M/" /data/lnmp/php/php.ini
+sed -i "s/post_max_size = 8M/post_max_size = 20M/" /data/lnmp/php/php.ini
+sed -i "s/display_errors = Off/display_errors = On/" /data/lnmp/php/php.ini
+sed -i "s/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/" /data/lnmp/php/php.ini
+sed -i "s/;date.timezone =/date.timezone = Asia\/Shanghai/" /data/lnmp/php/php.ini
+sed -i "s/expose_php = On/expose_php = Off/" /data/lnmp/php/php.ini
+sed -i "s/;error_log = log\/php-fpm.log/error_log = \/data\/lnmp\/log\/php\/php-fpm.log/" /data/lnmp/php/etc/php-fpm.conf
+sed -i "s/;slowlog = log\/\$pool.log.slow/slowlog = \/data\/lnmp\/log\/php\/slow.log/g" /data/lnmp/php/etc/php-fpm.conf
+sed -i "s/;request_slowlog_timeout = 0/request_slowlog_timeout = 300/g" /data/lnmp/php/etc/php-fpm.conf
+mkdir /data/lnmp/log/php
+
+# 安装MariaDB/Mysql数据库
+groupadd -r mysql
+useradd -r -M -s /sbin/nologin -g mysql mysql
+sed -i "s/\/home\/mysql://" /etc/passwd
+yum install ncurses-devel bison gnutls-devel -y
+
+cd /data/source/
+wget https://downloads.mariadb.org/interstitial/mariadb-10.2.13/source/mariadb-10.2.13.tar.gz
+tar xvf mariadb-10.2.13.tar.gz
+
+cd mariadb-10.2.13
+cmake . \
+-DCMAKE_INSTALL_PREFIX=/data/lnmp/mariadb \
+-DMYSQL_DATADIR=/data/lnmp/mariadb/data \
+-DDEFAULT_CHARSET=utf8 \
+-DDEFAULT_COLLATION=utf8_general_ci \
+-DWITH_SYSTEMD=auto \
+-DINSTALL_SYSTEMD_UNITDIR=/usr/lib/systemd/system \
+-DDISABLE_SHARED=OFF \
+-DPLUGIN_MROONGA=NO \
+-DPLUGIN_FEDERATED=NO \
+-DPLUGIN_FEDERATEDX=NO \
+-DPLUGIN_OQGRAPH=NO \
+-DPLUGIN_AUTH_PAM=NO \
+-DPLUGIN_SEQUENCE=NO \
+-DPLUGIN_SPIDER=NO \
+-DWITH_WSREP=NO \
+-DPLUGIN_FTEXAMPLE=NO \
+-DPLUGIN_DAEMON_EXAMPLE=NO \
+-DPLUGIN_EXAMPLE=NO \
+-DPLUGIN_EXAMPLE_KEY_MANAGEMENT=NO \
+-DPLUGIN_CONNECT=NO \
+-DCONNECT_WITH_ODBC=OFF \
+-DCONNECT_WITH_MYSQL=1 \
+-DCONNECT_WITH_LIBXML2=NO \
+-DWITH_DEBUG=NO \
+-DWITH_EMBEDDED_SERVER=OFF \
+-DWITH_PROFILING=OFF \
+-DWITH_UNIT_TESTS=OFF \
+-DPLUGIN_TOKUDB=NO
+
+make -j `grep processor /proc/cpuinfo | wc -l`  
+make -j `grep processor /proc/cpuinfo | wc -l`  install
+
+ln -s /data/lnmp/mariadb/bin/* /usr/bin
+chown mysql:mysql /data/lnmp/mariadb/data -R
+cp support-files/my-huge.cnf /data/lnmp/mariadb/my.cnf
+sed -i "s/ExecStart=\/usr\/sbin\/mysqld/ExecStart=\/data\/lnmp\/mariadb\/bin\/mysqld/" usr/lib/systemd/system/mariadb.service
+sed -i "s/\$MYSQLD_OPTS \$_WSREP_NEW_CLUSTER \$_WSREP_START_POSITION/--defaults-file=\/data\/lnmp\/mariadb\/my.cnf/" /usr/lib/systemd/system/mariadb.service
+
+rm -rf /etc/my.cnf
+/data/lnmp/mariadb/scripts/mysql_install_db --user=mysql --defaults-file=/data/lnmp/mariadb/my.cnf --datadir=/data/lnmp/mariadb/data --basedir=/data/lnmp/mariadb
+
+systemctl start mariadb
+/data/lnmp/mariadb/bin/mysqladmin -u root password 'password'
+rm -rf /data/lnmp/mariadb/bin/mysql_client_test*
+rm -rf /data/lnmp/mariadb/mysql-test
+rm -rf /data/lnmp/mariadb/data/test
+rm -rf /data/lnmp/mariadb/sql-bench
+
+
+sed -i "s/ExecStart=\/usr\/sbin\/mysqld/ExecStart=\/data\/lnmp\/mariadb\/bin\/mysqld/" /usr/lib/systemd/system/mariadb.service
+sed -i "s/\$MYSQLD_OPTS \$_WSREP_NEW_CLUSTER \$_WSREP_START_POSITION/--defaults-file=\/data\/lnmp\/mariadb\/my.cnf/" /usr/lib/systemd/system/mariadb.service
+rm -rf /data/lnmp/mariadb/bin/mysql_client_test*
+rm -rf /data/lnmp/mariadb/mysql-test
+rm -rf /data/lnmp/mariadb/data/test
+rm -rf /data/lnmp/mariadb/sql-bench
+systemctl daemon-reload
+systemctl restart mariadb
+
+
+# nginx的快捷方式
+alias nginx.start="/usr/sbin/nginx"
+alias nginx.stop="/usr/sbin/nginx -s stop"
+alias nginx.reload="/usr/sbin/nginx -s reload"
+alias nginx.conf_text="/usr/sbin/nginx -t"
+
+# php的快捷方式
+/usr/sbin/php-fpm
+
+
+alias php-fpm.status="/etc/init.d/php-fpm status"
+alias php-fpm.stop="/etc/init.d/php-fpm stop"
+alias php-fpm.start="/etc/init.d/php-fpm start"
+alias php-fpm.restart="/etc/init.d/php-fpm restart"
+alias php-fpm.reload="/etc/init.d/php-fpm reload"
+alias php-fpm.configtest="/etc/init.d/php-fpm configtest"
+
+
+source  /root/.bash_profile 
+
+
+rm -rf /var/lib/php
+rm -rf /usr/bin/php
+rm -rf /usr/lib64/php
+rm -rf /usr/share/swig/2.0.10/php
+rm -rf /usr/share/php
+
+################################################################################################
+################################################################################################
+################################################################################################
+################################################################################################
+################################################################################################
+#  新版
+# 参考资料：https://blog.csdn.net/qq_32080545/article/details/78894792
+
+cd /usr/local/src/
+wget http://hk2.php.net/distributions/php-7.2.0.tar.gz
+yum -y install gcc
+yum -y install libxml2
+yum -y install libxml2-devel
+yum -y install openssl openssl-devel
+yum -y install curl-devel
+yum -y install libjpeg.x86_64 libpng.x86_64 freetype.x86_64 libjpeg-devel.x86_64 libpng-devel.x86_64 freetype-devel.x86_64
+yum -y install bzip2-devel.x86_64 -y
+yum -y install libXpm-devel
+yum -y install gmp-devel
+yum -y install icu libicu libicu-devel
+yum -y install php-mcrypt  libmcrypt  libmcrypt-devel
+yum -y install postgresql-devel
+yum -y install libxslt-devel
+
+tar -zxvf php-7.2.0.tar.gz 
+cd php-7.2.0 
+
+./configure --prefix=/usr/local/php --with-pdo-pgsql --with-zlib-dir --with-freetype-dir --enable-mbstring --with-libxml-dir=/usr --enable-soap --enable-calendar --with-curl  --with-gd --with-pgsql --disable-rpath --enable-inline-optimization --with-bz2 --with-zlib --enable-sockets --enable-sysvsem --enable-sysvshm --enable-pcntl --enable-mbregex --enable-exif --enable-bcmath --with-mhash --enable-zip --with-pcre-regex --with-pdo-mysql --with-mysqli --with-jpeg-dir=/usr --with-png-dir=/usr --with-openssl --with-fpm-user=www-data --with-fpm-group=www-data --with-libdir=/lib/x86_64-linux-gnu/--enable-ftp --with-gettext --with-xmlrpc --with-xsl --enable-opcache --enable-fpm --with-iconv --with-xpm-dir=/usr
+
+make -j `grep processor /proc/cpuinfo | wc -l`  
+make -j `grep processor /proc/cpuinfo | wc -l`  install
+
+cp php.ini-development /usr/local/php/lib/php.ini 
+
+vim /etc/profile
+
+PATH=$PATH:/usr/local/php/bin
+export PATH
+
+php -v
+
+cp /usr/local/php/etc/php-fpm.conf.default /usr/local/php/etc/php-fpm.conf
+cp /usr/local/php/etc/php-fpm.d/www.conf.default /usr/local/php/etc/php-fpm.d/www.conf
+cp /usr/local/src/php-7.2.0/sapi/fpm/init.d.php-fpm  /etc/init.d/php-fpm
+chmod +x /etc/init.d/php-fpm
+
+groupadd www-data
+useradd -g www-data www-data
+
+/etc/init.d/php-fpm start 
+
+vim /etc/init.d/php-fpm
+
+#!/bin/sh  
+# chkconfig:   2345 15 95
+
+# description:  PHP-FPM (FastCGI Process Manager) is an alternative PHP FastCGI implementation \
+
+# with some additional features useful for sites of any size, especially busier sites.
+# DateTime: 2016-09-20
+
+# Source function library.  
+. /etc/rc.d/init.d/functions  
+
+# Source networking configuration.  
+. /etc/sysconfig/network  
+
+# Check that networking is up.  
+[ "$NETWORKING" = "no" ] && exit 0  
+
+phpfpm="/usr/local/php/sbin/php-fpm"  
+prog=$(basename ${phpfpm})  
+
+lockfile=/var/lock/subsys/phpfpm
+
+start() {  
+    [ -x ${phpfpm} ] || exit 5  
+    echo -n $"Starting $prog: "  
+    daemon ${phpfpm}
+    retval=$?  
+    echo  
+    [ $retval -eq 0 ] && touch $lockfile  
+    return $retval  
+}  
+
+stop() {  
+    echo -n $"Stopping $prog: "  
+    killproc $prog -QUIT  
+    retval=$?  
+    echo  
+    [ $retval -eq 0 ] && rm -f $lockfile  
+    return $retval  
+}  
+
+restart() {  
+    configtest || return $?  
+    stop  
+    start  
+}  
+
+reload() {  
+    configtest || return $?  
+    echo -n $"Reloading $prog: "  
+    killproc ${phpfpm} -HUP  
+    RETVAL=$?  
+    echo  
+}  
+
+force_reload() {  
+    restart  
+}  
+
+configtest() {  
+  ${phpfpm} -t
+}  
+
+rh_status() {  
+    status $prog  
+}  
+
+rh_status_q() {  
+    rh_status >/dev/null 2>&1  
+}  
+
+case "$1" in  
+    start)  
+        rh_status_q && exit 0  
+        $1  
+        ;;  
+    stop)  
+        rh_status_q || exit 0  
+        $1  
+        ;;  
+    restart|configtest)  
+        $1  
+        ;;  
+    reload)  
+        rh_status_q || exit 7  
+        $1  
+        ;;  
+    status)  
+        rh_status  
+        ;;  
+    *)  
+        echo $"Usage: $0 {start|stop|status|restart|reload|configtest}"  
+        exit 2  
+esac    
+
+
+# 安装Nginx
+yum -y install nginx 
+
+#关于yum安装nginx的一些位置说明： 
+https://www.cnblogs.com/odbo/p/5295690.html 
+cd /etc/nginx/
+
+#删掉原本的nginx.conf，复制一份nginx.conf.default的默认配置
+rm -rf nginx.conf
+cp nginx.conf.default nginx.conf
+
+#vim nginx.conf
+
+cat >/etc/nginx/nginx.conf <<"EOF"
+user  nginx;
+worker_processes  8;
+
+#error_log  logs/error.log;
+#error_log  logs/error.log  notice;
+#error_log  logs/error.log  info;
+
+#pid        logs/nginx.pid;
+
+
+events {
+    worker_connections  1024;
+}
+
+
+http {
+    include       mime.types;
+    default_type  application/octet-stream;
+
+    #log_format  main  '$remote_addr - $remote_user [] "$request" '
+    #                  '$status $body_bytes_sent "$http_referer" '
+    #                  '"$http_user_agent" "$http_x_forwarded_for"';
+
+    #access_log  logs/access.log  main;
+
+    sendfile        on;
+    #tcp_nopush     on;
+
+    #keepalive_timeout  0;
+    keepalive_timeout  65;
+
+    gzip  on;
+
+    server {
+        listen       8081;
+        server_name  localhost;
+
+        #charset koi8-r;
+
+        #access_log  logs/host.access.log  main;
+
+        location / {
+            root   /usr/share/nginx/html/;
+            index index.php index.html index.htm;
+        }
+
+        #error_page  404              /404.html;
+
+        # redirect server error pages to the static page /50x.html
+        #
+        error_page   500 502 503 504  /50x.html;
+        location = /50x.html {
+            root   html;
+        }
+
+        # proxy the PHP scripts to Apache listening on 127.0.0.1:80
+        #
+        #location ~ \.php$ {
+        #    proxy_pass   http://127.0.0.1;
+        #}
+
+        # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
+        #
+        location ~ \.php$ {
+            root           /usr/share/nginx/html/;
+            try_files      $uri =404;
+        fastcgi_pass   127.0.0.1:9000;
+            fastcgi_index  index.php;
+            fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
+            include        fastcgi_params;
+        include        fastcgi.conf;
+        }
+
+        # deny access to .htaccess files, if Apache's document root
+        # concurs with nginx's one
+        #
+        #location ~ /\.ht {
+        #    deny  all;
+        #}
+    }
+
+
+    # another virtual host using mix of IP-, name-, and port-based configuration
+    #
+    #server {
+    #    listen       8000;
+    #    listen       somename:8080;
+    #    server_name  somename  alias  another.alias;
+
+    #    location / {
+    #        root   html;
+    #        index  index.html index.htm;
+    #    }
+    #}
+
+
+    # HTTPS server
+    #
+    #server {
+    #    listen       443 ssl;
+    #    server_name  localhost;
+
+    #    ssl_certificate      cert.pem;
+    #    ssl_certificate_key  cert.key;
+
+    #    ssl_session_cache    shared:SSL:1m;
+    #    ssl_session_timeout  5m;
+
+    #    ssl_ciphers  HIGH:!aNULL:!MD5;
+    #    ssl_prefer_server_ciphers  on;
+
+    #    location / {
+    #        root   html;
+    #        index  index.html index.htm;
+    #    }
+    #}
+
+    include vhosts/*;
+##################################
+}
+EOF
+mkdir -p vhosts
+
+
+# nginx 快捷方式
+alias nginx.start="/usr/sbin/nginx"
+alias nginx.stop="/usr/sbin/nginx -s stop"
+alias nginx.start="/usr/sbin/nginx -s start"
+alias nginx.config_test="/usr/sbin/nginx -t"
+alias nginx.reload="/usr/sbin/nginx -s reload"
+
+编写测试文件 
+cat >/usr/share/nginx/html/phpinfo.php<<EOF
+<?php
+phpinfo();
+?>
+EOF
+
+chown -R nginx:nginx /usr/share/nginx
+
+systemctl stop firewalld.service
+
+# 访问 http://172.16.110.126:8081/phpinfo.php
+# 测试
+mkdir -p /usr/share/nginx/www/
+cat >/usr/share/nginx/www/index.php<<EOF
+<?php
+echo "davie-2018-03-27";
+phpinfo();
+?>
+EOF
+
+cat >/etc/nginx/vhosts/web.conf <<"EOF"
+server{
+     charset utf-8;
+     listen 80;
+        server_name localhost;
+       # autoindex on;
+       # autoindex_exact_size off;
+       # autoindex_localtime on;
+        index index.html index.htm index.php;
+     location / {
+            root /usr/share/nginx/www/;
+    #   fastcgi_pass   127.0.0.1:9081;
+                fastcgi_index  index.php;
+                fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
+                include        fastcgi_params;
+                include        fastcgi.conf;
+
+                #allow x.x.x.x;
+                #deny all;
+     }
+    location ~ \.php$ {
+            root           /usr/share/nginx/www/;
+            try_files      $uri =404;
+            fastcgi_pass   127.0.0.1:9000;
+            fastcgi_split_path_info ^(.+\.php)(.*)$;
+            fastcgi_param   PATH_INFO $fastcgi_path_info;
+            fastcgi_index  index.php;
+            fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
+            include        fastcgi_params;
+            include        fastcgi.conf;
+        }
+    
+}
+EOF
+
+chown -R nginx.nginx /usr/share/nginx
+
+# 源码安装git
+yum -y remove git
+
+# 参考资资料
+https://git-scm.com/book/zh/v1/%E8%B5%B7%E6%AD%A5-%E5%AE%89%E8%A3%85-Git
+
+cd /usr/local/src/
+wget https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.9.5.tar.gz
+tar -zxf git-2.9.5.tar.gz
+cd git-2.9.5/
+make -j `grep processor /proc/cpuinfo | wc -l`  prefix=/usr/local all
+make -j `grep processor /proc/cpuinfo | wc -l`  install
+
+# /root/bin/git
+# [root@new-php git-2.9.5]# git --version
+# git version 2.9.5
+
+
+# 安装gitlab
+cd /usr/local/src/
+# https://packages.gitlab.com/gitlab/gitlab-ce
+
+curl -s https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.rpm.sh |  bash
+yum -y install gitlab-ce-10.6.0-ce.0.el7.x86_64
+
+# 配置gitlab
+# https://docs.gitlab.com/omnibus/settings/configuration.html#configuring-the-external-url-for-gitlab
+vi /etc/gitlab/gitlab.rb 
+#external_url 'http://gitlab.example.com'
+external_url 'http://172.16.110.126'
+
+gitlab-ctl stop unicorn
+gitlab-ctl stop sidekiq
+gitlab-ctl reconfigure
+gitlab-ctl restart
+
+
+# php7.2安装redis扩展
+https://segmentfault.com/a/1190000012505240
+cd /usr/local/src/
+wget https://github.com/edtechd/phpredis/archive/php7.zip
+unzip php7.zip
+cd phpredis-php7/
+/usr/local/php/bin/phpize 
+# find / -name php-config
+# /usr/local/php/bin/php-config
+./configure --with-php-config=/usr/local/php/bin/php-config
+
+make -j `grep processor /proc/cpuinfo | wc -l`  
+make -j `grep processor /proc/cpuinfo | wc -l`  install
+
+# 配置php.ini，/usr/local/php/lib/php.ini 添加后，重启php：
+extension=redis.so
+
+php-fpm.configtest 
+php-fpm.restart
+
+# php7.2安装memcache扩展 http://www.cnblogs.com/hejun695/p/5369610.html
+yum -y install libmemcached libmemcached-devel  zlib zlib-devel
+
+1. 首先安装Libevent事件触发管理器。
+
+cd /usr/local/src/
+wget https://github.com/downloads/libevent/libevent/libevent-2.0.21-stable.tar.gz
+tar vxf libevent-2.0.21-stable.tar.gz
+cd libevent-2.0.21-stable
+./configure -prefix=/usr/local/libevent    # ./configure
+make -j `grep processor /proc/cpuinfo | wc -l`  
+make -j `grep processor /proc/cpuinfo | wc -l`  install
+
+2. 编译安装memcached
+
+cd /usr/local/src/
+wget http://memcached.org/latest
+cp latest memcached.tar.gz
+tar -zxvf memcached.tar.gz
+cd memcached-1.5.6/
+./configure -with-libevent=/usr/local/libevent   # ./configure
+make -j `grep processor /proc/cpuinfo | wc -l`  
+make -j `grep processor /proc/cpuinfo | wc -l`  install
+
+3. 启动memcached
+yum -y install memcached
+/usr/local/bin/memcached -d -m 128 -l 127.0.0.1 -p 11211 -u root   # (128为内存, 11211为端口,root为用户组)
+ps -ef|grep memcached
+
+# 扩展
+cd /usr/local/src/
+wget https://github.com/websupport-sk/pecl-memcache/archive/php7.zip
+unzip php7.zip
+cd pecl-memcache-php7/
+/usr/local/php/bin/phpize
+./configure --with-php-config=/usr/local/php/bin/php-config
+make -j `grep processor /proc/cpuinfo | wc -l`  
+make -j `grep processor /proc/cpuinfo | wc -l`  install
+
+# /usr/local/php/lib/php/extensions/no-debug-non-zts-20170718/
+vim  /usr/local/php/lib/php.ini
+extension=memcache.so
+
+
+php-fpm.configtest 
+php-fpm.reload 
+
+
+# yum安装mysql5.7 
+cd /usr/local/src/
+wget https://dev.mysql.com/get/mysql57-community-release-el7-11.noarch.rpm
+yum -y localinstall mysql57-community-release-el7-11.noarch.rpm
+yum -y install mysql-community-server
+
+systemctl start  mysqld 
+############## 查看生成的密码
+# https://blog.csdn.net/qq_32080545/article/details/78894792
+#[root@new-php src]# grep localhost /var/log/mysqld.log
+#2018-03-28T03:05:25.168942Z 1 [Note] A temporary password is generated for root@localhost: 1Ay!=7>e,D/j
+mysql -u root -p
+
+# 修改密码
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'Root2018@123$';
+# 新建账号
+GRANT ALL PRIVILEGES ON *.* TO 'edwin'@'%' IDENTIFIED BY 'Edwin2018@123$' WITH GRANT OPTION;
+
+vi /etc/my.cnf
+
+[mysqld] 
+character_set_server=utf8 
+init_connect=’SET NAMES utf8’ 
+
+systemctl restart mysqld
+##############
+
+
+systemctl enable mysqld 
+systemctl daemon-reload
+
+# CentOS 7 安装composer
+# https://blog.csdn.net/winter_liang/article/details/72263061
+cd /usr/local/src/
+curl -sS https://getcomposer.org/installer | php
+mv composer.phar /usr/local/bin/composer
+composer -v
+
+
+# cd /usr/share/nginx/bsbase
+#  php requirements.php
+
+
+
+# http://php.net/manual/zh/install.pecl.static.php
+
+
+
+********************************
+#http://www.ningcool.com/php-intl-extensions-gallery-installation-summary.html
+cd /usr/local/src/
+wget http://download.icu-project.org/files/icu4c/52.1/icu4c-52_1-src.tgz
+tar xf icu4c-52_1-src.tgz
+cd icu/source
+mkdir /usr/local/icu
+./configure --prefix=/usr/local/icu
+make -j `grep processor /proc/cpuinfo | wc -l`  
+make -j `grep processor /proc/cpuinfo | wc -l`  install
+
+
+
+
+cd /usr/local/src/
+wget https://pecl.php.net/get/intl-3.0.0.tgz
+tar -zxf intl-3.0.0.tgz 
+cd intl-3.0.0/
+/usr/local/php/bin/phpize
+./configure --enable-intl --with-icu-dir=/usr/local/icu  --with-php-config=/usr/local/php/bin/php-config
+make -j `grep processor /proc/cpuinfo | wc -l`  
+make -j `grep processor /proc/cpuinfo | wc -l`  install
+
+********************************
+cd /usr/local/src/php-7.2.0/ext/intl/
+/usr/local/php/bin/phpize
+./configure --with-php-config=/usr/local/php/bin/php-config
+make -j `grep processor /proc/cpuinfo | wc -l`  
+make -j `grep processor /proc/cpuinfo | wc -l`  install
+
+# /usr/local/php/lib/php/extensions/no-debug-non-zts-20170718/
+
+cd /usr/local/src/php-7.2.0/ext/gd
+/usr/local/php/bin/phpize
+./configure --with-php-config=/usr/local/php/bin/php-config --with-jpeg-dir=/usr/local/jpeg --with-freetype-dir=/usr/local/freetype
+./configure --enable-shared --with-jpeg-dir==/usr/local/include/ --with-freetype-dir=/usr/local/ --with-png-dir=/usr/local/include/ --with-php-config=/usr/local/php/bin/php-config
+make -j `grep processor /proc/cpuinfo | wc -l`  
+make -j `grep processor /proc/cpuinfo | wc -l`  install
+
+
+cd /usr/local/src/
+wget https://jaist.dl.sourceforge.net/project/freetype/freetype2/2.3.9/freetype-2.3.9.tar.gz
+tar -zxf freetype-2.3.9.tar.gz
+cd freetype-2.3.9/
+./configure --enable-static --enable-shared
+make -j `grep processor /proc/cpuinfo | wc -l`  
+make -j `grep processor /proc/cpuinfo | wc -l`  install
+
+yum install ImageMagick
+yum install ImageMagick-devel
+pecl install imagick
+
+pecl install apcu_bc-beta
+
+zend_extension=opcache.so
+opcache.enable=1
+opcache.enable_cli=1"
+
+
+cd /usr/local/src/ 
+wget https://pecl.php.net/get/APC-3.1.13.tgz
+tar -zxf APC-3.1.13.tgz 
+cd APC-3.1.13/
+/usr/local/php/bin/phpize
+./configure --enable-apc --enable-apc-mmap --with-php-config=/usr/local/php/bin/php-config
+make -j `grep processor /proc/cpuinfo | wc -l`  
+make -j `grep processor /proc/cpuinfo | wc -l`  install
+
+#  /usr/local/php/lib/php.ini 
+# /usr/local/php/lib/php/extensions/no-debug-non-zts-20170718/
+extension = "apc.so"  
+apc.enabled = 1  
+apc.shm_size = 128M  
+apc.ttl = 3600  
+apc.user_ttl = 3600  
+apc.mmp_file_mask = /tmp/apc.XXXXXX  
+apc.num_files_hint = 0  
+
+##############################################
+oracle服务端11g
+oracle客户端
+php-oci8
+php-pdo_oci
+##############################################
+
+yum search php72w
+
+
+
+

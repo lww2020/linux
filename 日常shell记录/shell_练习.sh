@@ -3115,10 +3115,3229 @@ exit 0
 # Rewrite this script to flip a coin 1000 times.
 # Choices are "HEADS" and "TAILS".
 
+Example 9-31. Reseeding RANDOM
+#!/bin/bash
+# seeding-random.sh Seeding the RANDOM variable.
+
+MAXCOUNT=25 	# How many numbers to generate.
+
+random_numbers ()
+{
+	count=0
+	while [[ "$count" -lt "$MAXCOUNT" ]]; do
+		numbers=$RANDOM
+		echo -n "$number"
+		let "count += 1"
+	done
+}
+
+echo; echo
+
+RANDOM=1 	# Setting RANDOM seeds the random number generateor.
+random_numbers
+
+echo; echo
+
+RANDOM=1			# Same seed for RANDOM
+random_numbers		# ...reproduces the exact same number series.
+					#
+					# When is it useful to duplicate a "random" number series?
+echo; echo
+
+RANDOM=2			# Trying again, but with a different seed...
+random_numbers		# gives a different number series.
+
+echo; echo
+
+#  RANDOM=$$ seeds RANDOM from process id of script.
+#  It is also possible to seed RANDOM from 'time' or 'date' commands.
+
+#  Getting fancy...
+SEED=$(head -1 /dev/urandom| od -N 1| awk '{print $2}')
+#  Pseudo-random output fetched
+#+ from /dev/urandom (system pseudo-random device-file),
+#+ finally "awk" retrives just one number for SEED.
+RANDOM=$SEED
+random_numbers
+
+echo; echo
+
+exit 0
+
+Example 9-32. Pseudorandom numbers, using awk
+#!/bin/bash
+# random2.sh: Returns a pseudorandom number in the range 0 -1.
+#  Uses the awk rand() function.
+
+AWKSCRIPT="{srand(); print rand()}"
+#			Command(s) / parameters passed to awk
+#  Note that srand() reseeds awk's random number generator.
+
+echo -n "Random number between 0 and 1 = "
+
+echo | awk "$AWKSCRIPT"
+# What happens if you leave out the 'echo'?
+
+exit 0
+
+#  Exercises:
+#  ----------------
+
+#  1）Using a loop construct, print out 10 different random numbers.
+#		(Hint: you must reseed the "srand()" function with a different seed
+#+		in each pass through the loop. What happens if you fail to do this?)
+
+#  2) Using an integer multiplier as a scaling factor, generate random numbers
+#+	  in the range between 10 and 100.
+
+#  3) Same as exercise #2, above, but generate random integers this time.
+
+9.7. The Double Parentheses construct
+Example 9-33. C-style manipulation of variables
+#!/bin/bash
+# Manipulating a variable, C-styple, using the ((...)) construct.
+
+echo
+
+(( a = 23 ))	# Setting a value, C-style,
+				#+ with spaces on both sides of the "=".
+echo "a (initial value) $a"
+
+(( a++ ))		# Post-increment 'a', C-style.
+echo "a (after a++) = $a"
+
+(( a-- ))		# Pre-increment 'a', C-styple.
+echo "a (after ++a) = $a"
+
+(( -- a))		# Pre-decrement 'a', C-style.
+echo "a (after --a) = $a"
+
+echo 
+
+###########################################################
+#  Note that, as in C, pre- and post-decrement operators
+#+ have slightly different side-effects.
+
+n=1; let --n && echo "True" || echo "False"	# False
+n=1; let n-- && echo "True" || echo "False" # True
+
+#  Thanks, Jeroen Domdurg.						
+###########################################################
+
+echo
+
+(( t = a<45?7:11))	# C-style trinary operator.
+#		^  ^ ^
+echo "If a < 45, then t = 7, else t = 11."
+echo "t = $t"		# Yes!
+
+echo
+
+#  ----------------------------
+#  Easter Egg alert!
+#+ constructs into Bash (actually adapted from ksh, pretty much).
+#  In the Bash docs, Ramey calls ((...)) shell arithmetic,
+#+ but it goes far beyond that.
+#  Sorry, Chet, the secret is now out.
+
+#  See also "for" and "while" loops using the ((...)) construct.
+
+# These work only with Bash, version 2.04 or later.
+
+exit 0
+
+10.1. Loops
+A loop is a block of code that iterates a list of commands as long as the loopcontrol condition is true.
+for loops
+for arg in [list]
+	This is the basic looping construct. It differs significantly from its C counterpart.
+	for arg in [list]
+	do
+		command(s)...
+	done
+for arg in "$var1" "$var2" "$var3" ... "$varN"
+# In pass 1 of the loop, arg = $var1
+# In pass 2 of the loop, arg = $var2
+# In pass 3 of the loop, arg = $var3
+# ...
+# In pass N of the loop, arg = $varN
+
+# Arguments in [list] quoted to prevent possible word splitting.
+
+The argument list may contain wild cards.
+
+If do is in same line as for, there needs to be a semicolon after list.
+for arg in [list]; do
+
+Example 10-1. Simple for loops
+#!/bin/bash
+# Listing the planets.
+
+for planet in Mercury Venus Earth Mars Jupiter Saturn Uranus Neptune Pluto
+do
+	echo $planet # Each plant on a separate line.
+done
+
+echo
+
+for planet in "Mercury Venus Earth Mars Jupiter Saturn Uranus Neptune Pluto"
+	# All planets on same line.
+	# Entire 'list' enclosed in quotes creates a single variable.
+	# Why? Whitespace incorporated into the variable.
+do
+	echo $
+done
+
+exit 0
+
+Example 10-2. for loop with two parameters in each [list] element
+#!/bin/bash
+# Planets revisited.
+
+# Associate the name of each plant with its distance from the sun.
+
+for plant in "Mercury 36" "Venus 67" "Earth 93" "Mars 142" "Jupiter 483"
+do
+	set -- $planet 	#  Parses variable "planet"
+					#+ and sets positional parameters.
+	#  The "--" prevents nastr surprises if $planet is null or
+	#+ begins with a dash.
+
+	#  May need to save original positional parameters,
+	#+ since they get overwritten.
+	#  One way of doing this is to use an array,
+	#			original_params=("$@")
+
+	echo "$1 		$2,000,000 miles from the sun"
+	#------two tabs-----concatenate zeroes onto parameter $2
+done
+
+# (Thanks, S.C., for additional clarification.)
+
+exit 0
+
+Example 10-3. Fileinfo:operating on a file list contained in a variable
+#!/bin/bash
+# fileinfo.sh
+
+FILES="/usr/sbin/accept
+/usr/sbin/pwck
+/usr/sbin/chroot
+/usr/bin/fakefile
+/sbin/badblocks
+/sbin/ypbind
+"
+# List of files you are curious about.
+# Threw in a dummy file, /usr/bin/fakefile.
+
+echo
+
+for file in $FILES
+do
+	if [[ ! -e "$file" ]]; then
+		echo "$file does not exists."; echo 
+		continue 						# On to next.
+	fi
+	ls -l $file |awk '{print $9 "  file size: " $5}'	# Print 2 fields.
+	whatis `basename $file` # File info.
+	# Note that the whatis database needs to have been set up for this to work.
+	# To do this, as root run /usr/bin/makewhatis.
+	echo 
+done
+
+exit 0
+
+Example 10-4. Operating on files with a for loop
+#!/bin/bash
+# list-glob.sh: Generating [list] in a for-loop, using "globbing"
+
+echo
+
+for file in *
+#			^	Bash performs filename expansion
+#+				on expressions that globbing recongizes.
+do
+	ls -l "$file"	# Lists all files in $PWD (current directory).
+	# Recal that the wild card character "*" matches every filename,
+	#+	(shop -s nullglob).
+	#  Thanks, S.C.
+done
+
+echo; echo
+
+for file in [jx]*
+do
+	rm -f $file 	# Removes only files begining with "j" or "x" in $PWD.
+	echo "Removed file \"$file\"".
+done
+
+echo
+
+exit 0
+Example 10-5. missing in [list] in a for loop
+#!/bin/bash
+#  Invoke this script both with and without arguments,
+#+ and see what happens.
+
+for a
+do
+	echo -n "$a "
+done
+
+#  The 'in list' missing, therefore the loop operates on '$@'
+#+ (command-line argument list, including whitespace).
+
+echo
+
+exit 0
+
+Example 10-6. Generating the [list] in a for loop with command substitution
+#!/bin/bash
+#  for-loopcmd.sh: for-loop with [list]
+#+ generated by command substitution.
+
+NUMBERS="9 7 3 8 37.53"
+for number in `echo $NUMBERS`	# for number in 9 7 3 8 37.53
+do
+	echo -n "$number "
+done
+
+echo
+exit 0
+
+Example 10-7. A grep replacement for binary files
+#!/bin/bash
+# bin-grep.sh: Lpcates matching strings in a binary file.
+# A "grep" replacement for binary files.
+# Similar effect to "grep -a"
+
+E_BADARGS=65
+E_NOFILE=66
+
+if [[ $# -ne 2 ]]; then
+	echo "Usage: `baesename $0` search_string filename"
+	exit $E_BADARGS
+fi
+
+if [[ ! -f "$2" ]]; then
+	echo "File \"$2\" does not exists."
+	exit $E_NOFILE
+fi
+
+IFS=$'\012'		# Per suggestion of Anton Filippov.
+				# was: IFS="\n"
+for word in $(string "$2" | grep "$1")
+# The "strings" command lists strings in binary files.
+# Output then piped to "grep", which tests for desired string.
+do
+	echo $word 
+done
+
+# As S.C points out, lines 23-30 could be replaced with the simpler
+#    strings "$2" | grep "$1" | tr -s "$IFS" '[\n*]'
+
+#  Try something like "./bin-grep.sh mem /bin/ls"
+#+ to exercise this script.
+
+exit 0
+
+Example 10-8. Listing all users on the system
+#!/bin/bash
+# userlist.sh
+
+PASSWORD_FILE=/etc/passwd
+n=1		# User number
+
+for name in $(awk 'BEGIN{FS=":"}{print $1}' <"$PASSWORD_FILE")
+# Field separator = :	 ^^^^^^
+# Print first field              ^^^^^^^^^
+# Get input from password file                ^^^^^^^^^^^^^^^^
+do
+	echo "USER #$n = $name"
+	let "n +=1"
+done
+
+# USER #1 = root
+# USER #2 = bint
+# USER #3 = daemon
+# ...
+# USER #30 = bozo
+
+exit 0
+
+#  Exercise:
+#  ---------
+#  How is it that an ordinary user (or a script run by same)
+#+ can read /etc/passwd?
+#  Isn't this a security hole? Why or why not?
+
+Example 10-9. Checking all the binaries in a directory for authorship
+
+#!/bin/bash
+# findstring.sh:
+# Find a particular string in the binaries in a specified directory.
+
+directory=/usr/bin/
+fstring="Free Software Foundation" # See which files come from the FSF.
+
+for file in $( find $directory -type f -name '*' | sort )
+do
+	string -f $file | grep "$string" | sed -e "s%$directory%%"
+	#  In the "sed" expression,
+	#+ it is necessary to substitute for the normal "/" delimiter
+	#+ because "/" happens to be one of the characters filtered out.
+	#  Failure to do so gives an error message (try it).
+done
+
+exit 0
+
+#  Exercise (easy):
+#  -----------------
+#  Convert this script to tabke command-line paramters
+#+ For $directory and $fstring.
+
+Example 10-10. Listing the symboloc links in a directory 
+#!/bin/bash
+#  symlinks.sh: Lists symboloc links in a directory.
+
+directory=${1-`pwd`}
+#  Defaults to current working directory,
+#+ if not otherwise specified.
+#  Equivalent to code block below.
+# -------------------------------------------
+# ARGS=1				# Expect one command-line argument.
+#
+# if [ $# -ne "$ARGS" ]	# If not 1 arg ...
+# then
+#     directory=`pwd`	# current working directory
+# else
+#     directory=$1
+# fi
+# --------------------------------------------
+
+echo "symbolic links in directory \"$directory\""
+for file in "$(find $directory -type l)"	# -type l = symboloc links
+do
+	echo "$file"
+
+done | sort 								# Otherwise file list is unsorted.
+#  Strictly speaking, a loop isn't really necessary here,
+#+ since the output of the "find" command is expanded into a single word.
+#  However, it's easy to understand and illustrative way.
+
+#  As Dominik 'Aeneas' Schnitzer points out,
+#+ failing to quote $(find $directory -type l)
+#+ will choke on filenames with embedded whitespace.
+#  Even this will only pick up the first field of each argument.
+
+exit 0
+
+# -------------------------------------------------------
+# Jean Helou proposes the following alternative:
+
+echo "symboloc links in directory \"$directory\""
+# Backup of the current IFS. One can never be too cautious.
+OLDIFS=$IFS
+IFS=:
+
+for file in $(find $directory -type l -printf "%p$IFS")
+do 			#						  ^^^^^^^^^^^^^^^^^		
+	echo "$file"
+	done | sort 
+done  
+
+# And, James "Mike" Conley suggests modifying Helou's code thusly:
+
+OLDIFS=$IFS
+IFS='' # Null IFS means no word breaks
+for file is $(find $ directory -type l)
+do
+	echo $file
+done  | sort
+
+#  This works in the "pathological" case of a directory name having
+#+ an embedded colon.
+#  "This also fixes the pathological case of the directory name having
+#+ a colon (or space in earlier example) as well."
+
+Example 10-11. Symbolic links in a directory, saved to a file
+#!/bin/bash
+#  symlinks.sh: Lists symboloc links in a directory.
+
+OUTFILE=symlinks.list 						# save file
+
+directory=${1-`pwd`}
+#  Defaults to current workding directory,
+#+ if not otherwise specified.
+
+echo "symbolic links in directory \"$directory\"" > "$OUTFILE"
+echo "-----------------------------------------" >> "$OUTFILE"
+
+for file in "$(find $directory -type l)" 		# -type l = symbolic links
+do
+	echo "$file"
+done | sort >> "$OUTFILE"						# stdout of loop
+#				^^^^^^^^^						redirected to save file.
+
+exit 0
+
+Example 10-12. A C-style for loop
+#!/bin/bash
+# Two ways to count up to 10.
+
+echo 
+# Stand syntax.
+for a in 1 2 3 4 5 6 7 8 9 10
+do
+	echo -n "$a "
+done
+
+echo; echo 
+
+# +=============================================+
+
+#  Now, let's do the same, using C-like syntax.
+
+LIMIT=10
+for ((a=1; a <= LIMIT ; a++))	# Double parentheses, and "LIMIT" with no "$".
+do
+	echo -n "$a "
+done 							# A construct borrowed from "ksh93".
+
+echo; echo 
+
+# +=============================================+
+
+# Let's use the C "comma operator" to increment two variables simultaneously.
+for ((a=1, b=1; a<= LIMIT; a++, b++))	# The comma chains together operations.
+do
+	echo -n "$a-$b"
+done
+
+echo; echo
+
+exit 0
+
+Example 10-13. Using efax in batch mode
+#!/bin/bash
+#  Faxing (must have 'efax' package installed).
+
+EXPECTED_ARGS=2
+E_BADARGS=65
+MODEM_PORT="/dev/ttyS2"			# May be different on your machine.
+#				^^^^^^^			 PCMCIA modem card default port.
+if [[ $# -ne $EXPECTED_ARGS ]]; then
+	# Check for proper number of command line args.
+	 echo "Usage: `basename $0` phone# test-file"
+	 exit $E_BADARGS
+fi
+
+if [[ ! -f "$2" ]]; then
+	echo "File $2 is not a text file."
+	#	File is not a regular file, or does not exists.
+	exit $E_BADARGS
+fi
+
+fax make $2					#  Create fax-formatted files from text files.
+
+for file in ${ls $2.0*}		#  Concatenate the converted files.
+							#  Uese wild card (filename "globing")
+							#+ in Variable list.
+do
+	fi1="$fil $file"
+done
+
+efax -d "$MODEM_PORT" -t "$T$1 $fil"	# Finally, do the work.
+# Tring adding -o1 if above line fails.
+
+#  As S.C. points out, the for-loop can be eliminated with
+#     efax -d /dev/ttyS2 -ol -t "T$1" $2.0*
+#+ but it's not quite as instructive [grin].
+
+exit $?			# Also, efax sends diagnostic messages to stdout.
+
+###############################################################
+###############################################################
+Example 10-14. Simple while loop
+#!/bin/bash
+
+var0=0
+LIMIT=10
+
+while [ "$var0" -lt "$LIMIT" ]
+#	   ^                  	^
+# Spaces, because these are "test-brackets" ...
+do
+	echo -n "$var0 "		# -n suppresses newline.
+	#			  ^			  Space, to separate printed out numbers.
+
+	var0=`expr $var0 + 1`	# var0=$(($var0+1)) also works.
+							# var0=$((var0 + 1)) also works.
+							# let "var0 += 1" also works.
+done						# Various other methods also work.
+
+echo 
+
+exit 0
+
+Example 10-15. Another while loop
+#!/bin/bash
+
+echo
+									# Equivalent to:
+while [ "$var1" != "end" ]			# while test "$var1" != "end"
+do
+	echo "Input variable #1 (end to exit) "
+	read var1 						# Not 'read $var1' (why?).
+	echo "variable #1 = $var1"		# Need quotes because of "#"...
+	# If input is 'end', echoes it here.
+	# Does not test for termination condition until top of loop.
+	echo 
+done
+
+exit 0
+
+Example 10-17. C-style syntax in a while loop
+#!/bin/bash
+# wh-loopc.sh: Count to 10 in a "while loop".
+
+LIMIT=10
+a=1
+
+while [ "$a" -le  $LIMIT ]
+do
+	echo -n "$a "
+	let "a+=1"
+done 			# No surprises, so far.
+
+echo; echo
+
+# +===========================================+
+
+# Now, repeat with C-like syntax.
+
+((a = 1))	# a=1
+# Double parentheses permit space when setting a variable as in C.
+
+while ((a<=LIMIT))			# Double parentheses, and no "$" preceding variables.
+do
+	echo -n "$a "
+	((a +=1 )) # let "a+=1"
+	# yes, indeed.
+	# Double parentheses permit incrementing a variable with C-like synta.
+done
+
+echo 
+
+# C programmers can feel right at home in Bash
+
+exit 0
+
+Example 10-18. until loop
+#!/bin/bash
+END_CONDITION=end
+# Tests condiftion here, at top of loop.
+do
+	echo "Input variable #1 "
+	echo "($END_CONDITION to exit)"
+	read var1
+	echo "Various #1 = $var1"
+	echo 
+done
+
+exit 0
+
+10.2. Nested Loops
+Example 10-19. Nested Loops
+#!/bin/bash
+# nested-loop.sh: Nested "for" loops.
+outer=1					# Set outer loop counter.
+
+# Beginning of outer loop.
+for a in 1 2 3 4 5
+do
+	echo "Pass $outer in outer loop."
+	echo "-------------------------"
+	inner=1					# Reset inner loop counter.
+
+	# =======================================
+	# Beginning of inner loop.
+	for b in 1 2 3 4 5 
+	do
+		echo "Pass $inner in inner loop."
+		let "inner+=1"		# Increment inner loop counter.
+	done
+	# End of inner loop.
+	# ============================================
+	let "outer+=1"	# Space between output blocks in pass of outer loop.
+done
+# End of outer loop.
+
+exit 0
+
+10.3. Loop Control
+Example 10-20. Effects of break and continue in a loop
+#!/bin/bash
+LIMIT=19 	# Upper limit
+
+echo
+echo "Printing Number 1 through 20 (but not 3 and 11)."
+
+a=0
+
+while [ $a -le "$LIMIT" ]
+do
+	a=$(($a+1))
+
+	if [[ "$a" -eq 3 ]] || [ "$a" -eq 11 ]; then
+        # Exclides 3 and 11.
+        continue 		# Skip rest of this particular loop iteration.
+	fi
+
+	echo -n "$a "		# This will not execute for 3 and 11.
+done
+
+# Exercise:
+# Why does loop print up to 20?
+
+echo; echo
+
+echo Print Number 1 through 20, but something happens after 2.
+
+################################################################
+
+# Same loop, but substituting 'break' for 'continue'.
+
+a=0
+
+while [ "$a" -le "$LIMIT" ]
+do
+	a=$(($a+1))
+
+	if [[ "$a" -gt 2 ]]; then
+		break 	# Skip entire rest of loop. 
+	fi
+	echo -n "$a "
+done
+echo; echo; echo
+exit 0
+
+Example 10-21. Breaking out of multiple loop levels
+#!/bin/bash
+# break-levels.sh: Breaking out of loops.
+
+# "break N" breaks out of N level loops.
+
+for outerloop in 1 2 3 4 5
+do
+	echo -n "Group $outerloop: "
+	# -----------------------------------
+	for innerloop in 1 2 3 4 5
+	do
+		echo -n "$innerloop "
+		if [[ "$innerloop" -eq 3 ]]; then
+			break 		# Try break 2 to see what happens.
+						# ("Breaks" out of both inner and outer loops.)
+		fi
+	done
+	# -------------------------------------------------------
+
+	echo
+done
+
+echo
+
+exit 0
+
+Example 10-22. Continuing at a higher loop level
+#!/bin/bash
+# The "continue N" command, continuing at the Nth level loop.
+
+for outer in I II III IV V 		# outer loop
+do
+	echo; echo -n "Group $outer: "
+
+	# --------------------------------------------------
+	for inner in 1 2 3 4 5 6 7 8 9 10 # inner loop
+	do
+		if [[ "$inner" -eq 7 ]]; then
+			continue 2 		# Continue at loop on 2dn level, that is "outer loop".
+							# Replace above line with a simple "continue"
+							# to see normal loop behavior.
+		fi
+
+		echo -n "$inner " 	# 7 8 9 10 will never echo.
+	done
+	# --------------------------------------------------
+done
+
+echo; echo
+
+# Exercise:
+# Come up with a meaningful use for "continue N" in a script.
+
+exit 0
+
+Example 10-23. Using continue N in an actual task
+#!/bin/bash
+#  Albert Reiner gives an example of how to use "continue N":
+#  -----------------------------------------------------------
+
+#  Suppose I have a large number of jobs that need to be run, with
+#+ any data that is to be treated in files of a given name pattern in a
+#+ directory. There are several machines that access this directory, and
+#+ I wang to distribute the work over these different boxen. Then I 
+#+ usually nohup someting like the following on every box:
+
+while true
+do
+	for n in .iso.*
+	do
+		[ "$n" = ".iso.opts" ] && continue
+		beta=${n#.iso.}
+		[ -r .Iso.$beta ] && continue
+		[ -r .lock.$beta ] && sleep 10 && continue
+		lockfile -r0 .lock.$beta || continue
+		echo -n "$beta: " `date`
+		run-isotherm $beta
+		date
+		ls -alF .Iso.$beta
+		[ -r .Iso.$beta ] && rm -rf .lock.$beta
+		continue 2
+	done
+	break
+done
+
+#  The details, in particular the sleep N, are particular to my
+#+ application, but the general pattern is:
+
+while true
+do
+	for job in {pattern}
+	do
+		{job already done or running} && continue
+		{mark job as running, do job, mark job as done}
+		continue 2
+	done
+	break 		# Or something like 'sleep 600' to avoid termination.
+done
+
+#  This way the script will stop only when there are no more jobs to do
+#+ (including jobs that were added during runtime). Through the use
+#+ of appropriate lockfiles it can be run on serveral machines
+#+ concurrently without duplication of calculations [which run a couple
+#+ of hours in my case, so I really want to avoid this]. Also, as search
+#+ always starts again from the beginning, one can encode priorities in
+#+ the file names. of course, one could also do this without 'continue 2',
+#+ but then on would have to actually check whether or not some job
+#+ was done (so that we should immediately look for the next job) or not 
+#+ (in which case we terminate or sleep for a long time before check
+#+ for a new job).
+
+10.4. Testing and Branching
+Example 10-24. Using case
+#!/bin/bash
+# Testing ranges of characters.
+
+echo; echo "Hit a key, then hit return."
+read Keypress
+
+case "$Keypress" in
+	[[:lower:]] )	echo "Lowercase letter"
+					;;
+	[[:upper:]] )	echo "Uppercase letter"
+					;;
+	[0-9]		)	echo "Digit"
+					;;
+	*			)	echo "Punctuation, whitespace, or other"
+					;;
+esac 	#  Allows ranges of characters in [sguare brackets],
+		#+ or POSIX ranges in [[double sqare brackets.
+
+#  In the first version of this example,
+#+ the tests for lowercase and uppercase characters were
+#+ [a-z] and [A-Z].
+#  This no longer works in certain locales and/or Linux distros.
+#  POSIX is more portable.
+#  Thanks ot Frank Wang for pointing this out.
+
+#  Exercise:
+#  ----------
+#  As the script stands, it accepts a single keystroke, then terminates.
+#  Change the script so it accepts repeated input,
+#+ reports on each keystroke, and terminates only when "X" is hit.
+#  Hint: enclose everything in a "while" loop.
+
+exit 0
+##################################################################
+Example 10-25. Creating menus using "case" 
+#!/bin/bash
+
+# Crude address database
+
+clear 	# Clear the screen.
+
+echo "			Contact List"
+echo "			-------------"
+echo :"Choose one of the following persons:"
+echo
+echo "[E]vans, Roland"
+echo "[J]ones, Mildred"
+echo "[S]mith, Julie"
+echo "[Z]ane, Morris"
+echo
+
+read person
+
+case "$person" in
+# Note variable is quoted.
+	"E" | "e" )
+	# Accept upper or lowercase input.
+	echo 
+	echo "Roland Evans"
+	echo "4321 Floppy Dr."
+	echo "Hardscrabble, CO 80753"
+	echo "(303) 734-9874"
+	echo "(303) 734-9892 fax"
+	echo "revans@zzy.net"
+	echo "Business partner & old friend"	
+	;;
+
+# Note double semicolon to terminate each option.
+	"J" | "j" )
+	echo
+	echo "Mildred Jones"
+	echo "249 E. 7th St., Apt. 19"
+	echo "New York, NY 10009"
+	echo "(212) 533-2814"
+	echo "(212) 533-9972 fax"
+	echo "Milliej@loisaida.com"
+	echo "Ex-girlfriend"
+	echo "Birthday: Feb. 11"
+	;;
+
+# Add info for Smith & Zane later.
+	* )
+	# Default option.
+	# Empty input (hitting RETURN) fits here, too.
+	echo 
+	echo "Not yet in database."
+	;;
+esac
+
+echo 
+
+#  Exercise:
+#  -----------
+#  Change the script so it accepts multiple inputs,
+#+ instead of terminating after displaying just one address.
+
+exit 0
+###################################################################
+
+
+
+#!/bin/bash
+E_PARAM=66
+case "$1" in
+	"" ) echo "Usage: ${0##*/} <filename>"; exit $E_PARAM;;
+	# No command-line parameters,
+	# or first parameter empty.
+	# Note that ${0##*/} is ${var##pattern} param substitution.
+	# Net result is $0.
+	-*) FILENAME=./$1;;	
+	#  If filename passed as argument （$1）
+	#+ STARTS WITH A DASH,
+	#+ replace it with ./$1
+	#+ so further commands don't interpret it
+	#+ as an option.
+	
+	* ）	FILENAME=$1;;	# Otherwise,$1.
+esac
+
+
+
+
+Here is an more straightforward example of command-line parameter handing:
+
+#!/bin/bash
+
+while [$# -gt 0]; do 		# Until you run nout parameters...
+case "$1" in
+	-d | --debug )
+		# "-d" or "--debug" parameter?
+		DEBUG=1
+		;;
+	-c|--conf)
+		CONFFILE="$2"
+		shift
+		if [[ ! -f $CONFFILE ]]; then
+			 echo "Error: Supplied file does't exists!"
+			 exit $E_CONFFILE	# File not found error.
+		fi
+		;;
+esac
+shift 	# Check next set of parameters.
+done
+
+
+#  From Stefan Falsetto's "Log2Rot" script,
+#+ part of his "rottlog" package.
+#  Used with permission.
+
+Example 10-26. Using command substitution to generate the case variable
+#!/bin/bash
+# case-cmd.sh: Using command substitution to generate a "case" variable.
+
+case $( arch ) in 	# "arch" return machine architecture.
+					# "Equivalent to 'uname -m"...
+	i386 )	echo "80386-based machine"
+		;;
+	i486 )	echo "80486-based matches"
+		;;
+	i586 )	echo "Pentium-based machines"
+		;;
+	i686 )	echo "Pentium2+-based machines"
+		;;
+	* )		echo "Other type of machines"
+		;;
+esac
+
+exit 0
+
+##############################################################
+Example 10-27. Simple string machines
+#!/bin/bash
+# match-string.sh: simple string matching
+
+match_string ()
+{
+	MATCH=0
+	NOMATCH=90
+	PARAMS=2	# Function requires 2 arguments.
+	BAD_PARAMS=91
+
+	[ $# -eq $PARAMS ] || return $BAD_PARAMS
+
+	case "$1" in
+		"$2" )	return $MATCH 
+			;;
+		*  ) return $NOMATCH
+			;;
+	esac
+}
+
+a=one
+b=two
+c=three
+d=two
+
+match_string $a 		# wrong number of parameters
+echo $?					# 91
+
+match_string $a $b 		# no match
+echo $?					# 90
+
+match_string $b $a 		# match
+echo $?					# 0
+
+exit 0
+
+Example 10-28. Checking for alphabetic input
+#!/bin/bash
+#  isalpha.sh: Using a "case" structure to filter a string.
+
+SUCCESS=0
+FAILURE=-1
+
+isalpha () 	# Tests whther *first character* of input string is alphabetic.
+{
+	if [[ -z "$1" ]]; then # No argument passed?
+		return $FAILURE
+	fi
+
+case "$1" in
+	[a-zA-Z] ) return $SUCCESS;;	# Begins with a letter?
+		;;
+	* )	return $FAILURE
+		;;
+esac
+}									# Compare this with "isalpha ()" function in C.
+
+isalpha2 ()	# Tests whether *entire string* is alphabetic.
+{
+	[ $# -eq 1 ] || return $FAILURE
+
+	case $1 in
+		*[!a-zA-Z]*|"" )	return $FAILURE
+			;;
+		*              )	return $SUCCESS
+			;;
+	esac
+}
+
+isdigit ()	# Tests whether *entire string* is numberical.*
+{			# In other words, tests for integer variable.
+	[ $# -eq 1 ] || return $FAILURE;;
+	case $1 in
+		*[!0-9]*|"") return $FAILURE;;
+		*          ) return $SUCCESS;;
+	esac	
+}
+
+check_var ()	# Front-end to isalpha ().
+{
+	if isslpha "$@"; then
+		echo "\"$*\" begins with an alpha character."
+		if isalpha2 "$@"; then # No point in testing if first char is non-alpha.
+			echo "\"$*\" contains only alpha characters."
+		else
+			echo "\"$*\" contains at least one non-alpha characher."
+		fi
+	else
+		echo "\"$*\" begin with a non-alpha character."
+								# Also "non-alpha" if no argument passed.
+	fi
+	echo 
+}
+
+digit_chech ()	# Front-end to isdigit ().
+{
+	if isdigit "$@"; then
+		echo "\"$*\" contains only digits [0-9]."
+	else
+		echo "\"$*\" has at least one non-digit character."
+	fi
+
+	echo 
+}
+
+a=23skidool
+b=H3llo
+c=-What?
+d=What?
+e=`echo $b`		# Command substitution.
+f=AbcDef 
+g=27234
+h=27a34
+i=27.34
+
+check_var $a 
+check_var $b
+check_var $c  
+check_var $d 
+check_var $e  
+check_var $f  
+check_var 		# No argument passed, so what happens?
+#
+digit_chech $g 
+digit_chech $h 
+digit_chech $i
+
+exit 0 			# Script impreoved by S.C.
+
+#  Exercise:
+# ------------
+#  Write an 'isfloat ()' function that tests for floating point numbers.
+#  Hint: The function duplicates 'isdigit ()',
+#+ but adds a test for a mandatory decimal point.
+
+Example 10-29. Creating menus using select
+#!/bin/bash
+
+PS3='Choose your favorite vegatable:'	# Sets the prompt string.
+
+echo
+
+select vegetable in "beans" "carots" "potatoes" "onions" "rutabgas"
+do
+	echo
+	echo "Your favorite veggie is v$vegetable."
+	echo "Yuck!"
+	echo
+	break 	# What happens if there is no 'break here?'
+done
+
+exit 0
+
+Example 10-30. Creating menus using select in function
+#!/bin/bash
+PS3='Choose your favorite vegetable: '
+
+echo 
+
+choice_of()
+{
+	select vegetable
+	# [in list] omitted, so 'select' uses arguments passed to function.
+	do
+		echo "Your favorite vegetable is $vegetable."
+		echo "Yuck!"
+		echo
+		break
+	done
+}
+
+choice_of beans rice carrots radishes tomatoes spinach
+#			$1	$2		$3		$4		$5		$6
+#			passed to choice_of() function
+
+exit 0
+
+#!/bin/bash
+rm `cat filename`	# "filename" contains a list of files to delete.
+#
+# S.C. points out that "arg list too long" error might result.
+# Better is 		xargs rm -- < filename
+# ( -- convers those cases where "filename" begins with a "-")
+
+textfile_listing=`ls *.txt`
+# Variable contains names of all *.txt files in current working directory.
+echo $textfile_listing
+
+textfile_listing2=$(ls *.txt)	# The alterinative form of command substitution.
+echo $textfile_listing2
+# Same result.
+
+# A possible problem with putting a list of files into a single string
+# is that a newline may creep in.
+#
+# A safer way to assign a list of files to a parmeter is with an array.
+#		shopt -s nullglob 	# If no match, filename expands to nothing.
+#		textfile_listing=( *.txt )
+#
+# Thanks, S.C.
+
+dir_listing=`ls -l`
+echo $dir_listing	# unquoted
+
+# Expecting a nincely ordered directory lsiting.
+
+# However, what you get is:
+# total 3 -rw-rw-r-- 1 bozo bozo 30 May 13 17:15 1.txt -rw-rw-r-- 1 bozo
+# bozo 51 May 15 20:57 t2.sh -rwxr-xr-x 1 bozo bozo 217 Mar 5 21:13 wi.sh
+
+# The newlines disappeared.
+
+echo "$dir_listing"	#	quoted
+# -rw-rw-r--    1 bozo       30 May 13 17:15 1.txt
+# -rw-rw-r--    1 bozo       51 May 15 20:57 t2.sh
+# -rwxr-xr-x    1 bozo      217 Mar  5 21:13 wi.sh
+
+##############################################################
+#!/bin/bash
+variable1=`<file1`		#  Set "variable1" to contetns of "file1".
+variable2=`cat file2`	#  Set "variable2" to contents of "file2".
+						#  This, however, forks a new process,
+						#+ so the line of code executes slower than the above version
+#  Note:
+#  The variables may contain embedded whitespace,
+#+ or even (horrors), control characters.
+#  Excerpts from system file, /etc/rc.d/rc.sysinit
+#+ (on a Red Hat Linux installation
+if [[ -f /fsckoptions ]]; then
+	fsckoptions=`cat /fsckoptions`
+...
+fi
+#
+#
+if [[ -e "/proc/ide/${disk[$device]}/media" ]]; then
+	hdmedia=`cat /proc/ide/${disk[$disk[$device]]}`
+...
+fi
+#
+#
+if [[ ! -n "`uname -r | grep -- "-"`" ]]; then
+	ktag="`cat /proc/version`"
+...
+fi
+#
+#
+if [[ $usb = "1" ]]; then
+	sleep 5
+	mouseoutput=`cat /proc/bus/usb/devices 2>/dev/null | grep -E "^I.*Cls=03.*Prot=02"`
+	kbdoutput=`cat /proc/bus/usb/devices 2>/dev/null | grep -E "^I.*Cls=03.*Prot=01"`
+...
+fi
+
+Example 11-2. Generating a variable from a loop
+#!/bin/bash
+# csubloop.sh: Setting a variable to the output of a loop.
+variable1=`for i in 1 2 3 4 5
+do
+	echo -n "$i "	#  The 'echo' command is critical	
+done`				#+ to command substitution here.	
+
+i=0
+variable2=`while [ "$i" -lt 10 ]
+do
+	echo -n "$i "		# Again, the necessary 'echo'.
+	let "i +=1"			# Increment.
+done`
+
+echo "variable2 = $variable2"	# variable2 = 0123456789
+
+#  Demonstrates that it's possible to embed a loop
+#+ within a variable declaration.
+
+exit 0
+
+Example 11-3. Finding anagrams
+#!/bin/bash
+#  agram2.sh
+#  Example of nested command substutution.
+
+#  Uses "anagram" utility
+#+ that is part of the author's "yaw1" word list package.
+#  http://ibiblio.org/pub/Linux/libs/yawl-0.3.2.tar.gz
+#  http：//personal.riverusers.com/~thegrendel/yawl-0.3.2.tar.gz
+
+E_NOARGS=66
+E_BADARGS=67
+MINLEN=7
+
+if [[ -z "$1" ]]; then
+	echo "Usage: $0 LETTERSET"
+	exit $E_NOARGS 		# Script needs a command-line argument.
+elif [[ ${#1} -lt $MINLEN ]]; then
+	echo "Argument must have at least $MINLEN letters."
+	exit $E_BADARGS
+fi
+
+FILTER='......'		# Must have at least 7 letters.
+#	1234567
+Anagrams=($(echo $(anagram $1 | grep $FILTER)))
+#		  $(	 $(   nested command sub.   ))
+#		 (				array assignment      )
+echo
+echo "${#Anagrams[*]}	7+ letter anagrams found"
+echo
+echo ${Anagrams[*]}		# First anagram.
+echo ${Anagrams[1]}		# Second anagram.
+						# Etc.
+
+#  echo "${Anagrams[*]}"	# To list all the anagrams in a single line...
+
+#  Look ahead to the "Arrays" chapter for enlightenment on
+#+ what's going on here.
+#  See also the agram.sh script for an example of anagram finding.
+
+exit $?
+
+Example 14-1. A script that forks off multiple instances of itself
+#!/bin/bash
+# spawn.sh
+
+PIDS=$(pidof sh $0)		# Process IDs of the various instances of this script.
+P_array=( $PIDS )		# Put them in an array (why?).
+echo $PIDS 				# Show process IDs of parent and child processes.
+let "instances = ${#P_array[*]} - 1"	# Count elements, less 1.
+										# Why subtract 1?
+echo "$instances instance(s) of this script running."
+echo "[Hit Ctl-C to exit.]"; echo 
+
+sleep 1			# Wait.
+sh $0			# Play it again, Sam.
+
+exit 0 			# Not necessary; script will never get to here.
+				# Why not?
+
+#  After exiting with a Ctl-C,
+#+ do all the spawned instances of the script die?
+#  If so, why?
+
+#  Note:
+#  -----
+#  Be careful not to run this script too long.
+#  It will eventully eat up too many system resources.
+
+#  Is having a script spawn multiple instances of itself
+#+ an advisable scripting thecnique.
+#  Why or why not?
+
+Example 14-3. Variable assignment, using read
+#!/bin/bash
+#  "Reading" variables.
+
+echo -n "Enter the value of variable 'var1': "
+# The -n option to echo suppresses newline.
+
+read var1
+# Note no '$' in front of var1, since it is being set.
+
+echo "var1 = $var1"
+
+echo 
+
+#  A single 'read' statement can set multiple variables.
+echo -n "Enter the values of variables 'var2' and 'var3'"
+echo -n "(separated by a space or tab): "
+read var2 var3
+echo "var2 = $var2 var3 = $var3"
+#  If you input only one value,
+#+ the other variable(s) will remain unset (null).
+
+exit 0
+
+Example 14-4. What happens when read has no variable
+#!/bin/bash
+# read-novar.sh
+
+echo 
+
+# ----------------------- #
+echo -n "Enter a value: "
+read var 
+echo "\"var\" = "$var""
+# Everything as expected here.
+# ----------------------- #
+
+echo
+
+# ---------------------------------------------- #
+echo -n "Enter another value: "
+read 			#  No variable supplied for 'read', therefore...
+				#+ Input to 'read' assigned to default variable, $REPLY.
+var="$REPLY"
+echo "\"var\" = "$var""
+# This is equivalent to the first code block.
+# ---------------------------------------------- #
+
+echo
+echo "==================================================="
+echo 
+
+
+#  This example is similar to the "replay.sh" script.
+#  However, this one shows that $REPLAY is available
+#+ even after a 'read' to a variable in the conventional way.
+
+echo "==================================================="
+
+# In some instance, you might wish to discard the first value read.
+# In such cases, simple ignore the $REPLY variable.
+
+{ # Code block.
+read 		# Line 1, to be discarded.
+read line2 	# Line 2, saved in variable.
+} < $0
+echo "Line 2 of this script is:"
+echo "$Line2"	# 	# read-novar.sh
+echo 			#	#!/bin/bash line discarded.
+
+# See also the soundcard-on.sh script.
+
+exit 0
+
+Example 14-5. Multi-line input to read
+#!/bin/bash
+
+echo 
+
+echo "Enter a string terminated by a \\, then press <ENTER>."
+echo "Then, enter a second string (no \\ this time), and again press <ENTER>."
+
+read var1 		#  The "\" suppresses the newline, when reading $var1
+				#  		first line \
+				# 		second line
+
+echo "var1 = $var1"
+#	  var1 = first line second line
+
+#  For each line terminated by a "\"
+#+ you get a prompt on the next line to continue feeding characters into var1.
+
+echo; echo
+
+echo "Enter another string terminated by a \\, then press <ENTER>."
+read -r var2 	# The -r option causes the "\" to be read literally.
+				#	first line \
+echo "var2 = $var2"
+#	  var2 = first line \
+
+# Data entry terminates with the first <ENTER>.
+echo
+
+exit 0
+
+Example 14-6. Detecting the arrow keys
+#!/bin/bash
+# arrow-detech.sh: Detects the arrow keys, and a few more.
+# Thank you, Sandro Magi, for showing me how.
+
+# ---------------------------------------
+# Character codes generated by the keypresses.
+arrowup='\[A'
+arrowdown='\[B'
+arrowrt='\[C'
+arrowleft='\D'
+insert='\[2'
+delete='\[3'
+# ---------------------------------------
+
+SUCCESS=0
+OTHER=65
+
+echo -n "Press a key..."
+# May need to also press ENTER if a key not listed above pressed.
+read -n3 key 				# read 3 characters.
+
+echo -n "$key" | grep "$arrowup"	# Check if character code detected.
+if [[ "$?" -eq $SUCCESS ]]; then
+	echo "Up-arrow key pressed."
+	exit $SUCCESS
+fi
+
+echo -n "$key" | grep "$arrowdown"
+if [[ "$?" -eq $SUCCESS ]]; then
+	echo "Down-arrow key pressed."
+	exit $SUCCESS
+fi
+
+echo -n "$key" | grep "$arrowrt"
+if [[ "$?" -eq $SUCCESS ]]; then
+	echo "Right-arrow key pressed."
+	exit $SUCCESS
+fi
+
+echo -n "$key" | grep "$arrowleft"
+if [[ "$?" -eq $SUCCESS ]]; then
+	echo "Left-arrow key pressed."
+	exit $SUCCESS
+fi
+
+echo -n "$key" | grep "$insert"
+if [[ "$?" -eq $SUCCESS ]]; then
+	echo "\"Insert\" key pressed."
+	exit $SUCCESS
+fi
+
+echo "$key" | grep "delete"
+if [[ "$?" -eq $SUCCESS ]]; then
+	echo "\"Delete\" key pressed."
+	exit $SUCCESS
+fi
+
+echo " Some other key pressed."
+
+exit $OTHER
+
+# ========================================= #
+
+#  Mark Apexander came up with a simplified
+#+ version of the above script (Thank you!).
+#  It eliminates the need for grep.
+
+
+#!/bin/bash
+	uparrow=$'\x1b[A'
+	downarrow=$'\x1b[B'
+	leftarrow=$'\x1b[D'
+	rightarrow=$'\x1b[C'
+
+	read -s -n3 -p "Hit an arrow key: " x
+
+	case "$x" in
+		$uparrow )
+			echo "You pressed Up-arrow"
+			;;
+		$downarrow )
+			echo "You pressed Down-arrow"
+			;;
+		$leftarrow )
+			echo "You pressed Leftarrow"
+			;;
+		$rightarrow )
+			echo "You pressed Right-arrow"
+			;;
+	esac
+
+# ================================================== #
+
+# Exercise:
+# -------------------
+# 1）Add detection of the "Home," "End,", "Pgup," and "PgDn" keys.
+
+Example 14-7. Using read with file redirection
+
+#!/bin/bash
+
+read var1 <data-file
+echo "var1 = $var1"
+# var1 set to the entire first line of the input file "data-file"
+
+read var2 var3 <data-file
+echo "var2 = $var2  var3 = $var3"
+# Note non-intuitive behavior of "read" here.
+# 1) Rewinds back to the beginning of input file.
+# 2) Each variable is now set to a corresponding sting,
+#    separated by whitespace, rather than to an entire line of text.
+# 3) The final variable gets the reainder of the line.
+# 4) If there are more variables to be set than whitespace-terminated stings
+#    on the first line of the file, then the excess variables remain empty.
+
+echo "--------------------------------------------------"
+# How to resolve the above problem with a loop:
+while read line
+do
+	echo "$line"
+done < data-file
+# Thanks, Heiner Steven for poingting this out.
+
+echo "--------------------------------------------------"
+
+# Use $IFS (Internal Field Separator variable) to split a line of input to 
+# "read", if you do not want the default to be whitespace.
+
+echo "List of all users:"
+OIFS=$IFS; IFS=: 	# /etc/passwd uses: ":" for field separator.
+while read name passwd uid git fullname ignore
+do
+	echo "$name ($fullname)"
+done </etc/passwd 	# I/O redirection.
+IFS=$OIFS 				# Restore original $IFS.
+# This code snippet also by Heiner Steven.
+
+
+#  Setting the $IFS variable within the loop itsel
+#+ eliminates the need for storing the original $IFS
+#+ in a temporary variable.
+#  Thanks, Dim Segebart, for poingting this out.
+echo "-----------------------------------------------------"
+echo "List of all users:"
+
+while IFS: read name passwd uid gid fullname ignore
+do
+	echo "$name ($fullname)"
+done < /etc/passwd 	# I/O redirection.
+
+echo 
+echo "\$IFS still $IFS"
+
+exit 0
+
+Example 14-9. Changing the current workding directory
+#!/bin/bash
+
+dir1=/usr/local
+dir2=/var/spool
+
+pushd $dir1
+# Will do an automatic 'dirs' (list directory stack to stdout).
+echo "Now in directory `pwd`."	# Uses back-quoted 'pwd'.
+
+# Now, do some stuff in directory 'dir1'.
+pushd $dir2
+echo "Now in directory `pwd`."
+
+# Now, do some stuff in directory 'dir2'.
+echo "The top entry in the DIRSTACK array is $DIRSTACK."
+popd
+echo "Now back in directory `pwd`."
+
+# Now, do some more stuff in directory 'dir1'.
+popd
+echo "Now back in original workding directory `pwd`."
+
+exit 0
+
+# What happens if you don't 'popd' -- then exit the script?
+# Which directory do you end up in? Why?
+
+Example 14-10. Letting let do arithmetic.
+
+#!/bin/bash
+
+echo 
+
+let a=11				# Same as 'a=11'
+let a=a+5				# Equivalent to let "a = a + 5"
+						# (Double quotes and spaces make it more readable.)
+echo "11 + 5 = $a"		# 16
+
+let "a <<=3"			# Equivalent to let "a = a <<3"
+echo "\"\$a\" (=16)		left-shifted 3 places =$a"
+
+let "a /= 4"			# Equivalent to let "a = a / 4"
+echo "128 / 4 = $a"		# 32
+
+let "a -= 5"			# Equivalent to let "a = a -5"
+echo "32 - 5 =$a"		# 27
+
+let "a *= 10"			# Equivalent to let "a = a * 10"
+echo "27 8 10 =$a"		# 270
+
+let "a %= 8"			# Equivalent to let "a = a % 8"
+echo "270 modulo 8 $a (270 / 8 = 33, remainder $a)"
+						# 6
+echo
+
+exit 0
+
+Example 14-11. Showing the effect of eval
+#!/bin/bash
+y=`eval ls -l`		#  Similar to y=`ls -l`
+echo $y 			#+ but linefeeds removed because "echoed" variable is unquoted.
+echo
+echo "$y"			#  Linefeeds preserved when variable is quoted.
+
+echo; echo 
+
+y=`eval df`			#  Similar to y=`df`
+echo $y 			#+ but linefeeds removed.
+
+#  When LF's not preserved, it may make it easier to parse output.
+#+ using utilities such as "awk".
+
+echo 
+echo "======================================================="
+echo
+
+# Now, showing how to "expand" a variable using "eval" ...
+
+for i in 1 2 3 4 5
+do
+	eval value=$i
+	#  value=$i has same effect. The "eval" is not necessary here.
+	#  A variable lacking a meta-meaning evaluates to itseif --
+	#+ it can't expand to anything other than its literal self.
+	echo $value
+done
+
+echo 
+echo "---"
+echo 
+
+for i in ls df
+do
+	value=eval $i
+	#  value=$i has an entirely different effect here.
+	#  The "eval" evaluates the commands "ls" and "df"...
+	#  The terms "ls" and "df" have a meta-meaning,
+	#+ since they are interpreted as commands,
+	#+ rather than just character strings.
+	echo $value
+done
+
+exit 0
+
+Example 14-12. Echoing the Command-line parameters
+#!/bin/bash
+# echo-params.sh
+
+# Call this script with a few command line parameters.
+# For example:
+#		sh echo-parameters.sh first second third fourth fifth
+
+params=$#			# Number of command-line parameters.
+param=1 			# Start at first command-line param.
+
+while [ "$param" -le "$params" ]
+do
+	echo -n "Command line parameter "
+	echo -n \$$param 		#  Gives only the *name* of variable.
+#			^^^				#  #1, $2, $3, etc.
+							#  Why?
+							#  \$ escapes the first "$"
+							#+ so it echoes literally,
+							#+ and $param dereferences "$param" ...
+							#+ ... as expected.
+	echo -n " = "
+	eval echo \$$param 		#  Gives the *value* of variable.
+#   ^^^^       ^^^ 			#  The "eval" forces the *evaluation*
+							#+ of \$$
+							#+ as an indirect variable reference.
+
+(( param ++ ))				# on to the next.
+done
+
+exit $?
+
+# =========================================
+
+$ sh echo-params.sh first second third fourth fifth
+Command line parameter $1 = first
+Command line parameter $2 = second
+Command line parameter $3 = third
+Command line parameter $4 = fourth
+Command line parameter $5 = fifth
+
+Example 14-13. Forcing a log-off
+
+#!/bin/bash
+# Killing ppp to force a log-off.
+#  Scrit should be run as root user.
+killppp="eval kill -9 `ps ax | awk '/ppp/ { print $1 }'`"
+#						------- process ID of ppp --------
+$killppp 				#  This variable is now a command.
+
+# The following operations must be done as root user.
+
+chmod 666 /dev/ttyS3	# Restore read+write permissions, or else what?
+#  Since doing a SIGKILL on ppp changed the permissions on the serial port,
+#+ we restore permissions to previous state.
+
+rm /var/lock/LCK..ttyS3	# Remove the serial port lock file. Why?
+
+#  Note:
+#  Depending on the hardware and even the kernel version,
+#+ the modem port on your machine may be different --
+#+ /dev/ttyS1 or /dev/ttyS2.
+
+exit 0
+
+#  Exercises:
+#  ---------
+# 1）Have script check whether root user is invoking it.
+# 2) Do a check on whether the process to be killed
+#+   is actually running before attempting to kill it.
+# 3）Write an alternate version of this script based on 'fuser':
+#+         if [ fuser -s /dev/modem ]; then ...
+
+Exampel 14-14. A version of rot13
+#!/bin/bash
+# A version of "rot13" using 'eval'.
+# Compare to 'rot13.sh' example.
+
+setvar_rot_13()					# "rot13" scrambling
+{
+	local varname=$1 varvalue=$2
+	eval $varname='$(echo $varvalue) | tr a-z n-za-m'
+}
+
+setvar_rot_13 var "foobar"		# Run "foobar" through rot13.
+echo $var 						# sbbone
+
+setvar_rot_13 var "$var"		# Run "sbbone" through rot13.
+								# Back to original variable.
+								# foobar
+
+# This example by Setphane Chazelas.
+# Modified by document author.
+
+exit 0
+
+Example 14-16. Using set with positional parameters 
+#!/bin/bash
+
+# script "set-test"
+
+# Invoke this script with three command line parameters,
+# for example, "./set-test one two thres".
+
+echo 
+echo "Positional parameters before set \`uname -a\` :"
+echo "Command-line argument #1 = $1"
+echo "Command-line argument #2 = $2"
+echo "Command-line argument #3 = $3"
+
+set `uname -a`	# Sets the positional parameters to the output
+				# of the command `uname -a`
+
+echo $_ 		# unknown
+# Flags set in script.
+
+echo "Positional parameters after set \`uname -a\` :"
+# $1, $2, $3, ect. reinitialized to result of `uname -a`
+echo "Field #1 of 'uname -a' = $1"
+echo "Field #2 of 'uname -a' = $2"
+echo "Field #3 of 'uname -a' = $3"
+echo -----
+echo $_ 			#  -----
+echo 
+
+exit 0
+
+Example 14-17. Reversing the positional parameters
+#!/bin/bash
+# revposparams.sh: Reverse positional paramerers.
+# Script by Dan Jacobson, with stylistic revisions by document author.
+
+set a\ b c d\ e;
+#    ^      ^    Spaces escaped
+#      ^ ^ 		 Spaces not escaped
+OIFS=$IFS; IFS=:;
+#              ^ Saving old IFS and setting new one.
+
+echo 
+
+until [ $# -eq 0 ]
+do 						# Step through positional parameters.
+	echo "### k0 = "$k""	# Before
+	k=$1:$k; 				# Append each pos param to loop variable.
+#       ^
+	echo "### k = "$k""		# After
+	echo
+	shift;
+done
+
+set $k 		# Set new positional parameters.
+echo -
+echo $#		# Count of positional parameters.
+do
+	echo $i 	# Display new positional parameters.
+done
+
+IFS=$OIFS 		# Restore IFS.
+
+#  Question:
+#  Is it necessary to set an new IFS, internale field separator,
+#+ in order for this script to work properly?
+#  What happens if you don't? Try it.
+#  And, why use the new IFS -- a colon -- in line 17,
+#+ to append to the loop variables?
+#  What is the purpose of this?
+
+exit 0
+
+Example 14-18. Reassigning the positional parameters
+#!/bin/bash
+variable ="one two three four five"
+set -- $variable
+# Sets positional parameters to the contents of "$variable".
+
+first_param=$1
+second_param=$2
+shift; shift 		# Shift past first two positional params.
+# shift 2 			# also works.
+remaining_params="$*"
+
+echo 
+echo "first parameter = $first_param"				# one
+echo "second_parameter = $second_param"				# two
+echo "remainting paramerers = $remaining_params"	# three four five
+
+echo; echo
+
+# Again.
+set -- $variable
+first param=$1
+second_param=$2
+echo "first parameter = $first_param"		# one
+echo "second parameter = $second_param"		# two
+
+# ===============================================
+
+set --
+# Unsets positional parameters if no variable sepecified.
+
+first_param=$1
+second_param=$2
+echo "first parameter = $first_param"		# (null value)
+echo "second paramerer = $second_param"		# (null value)
+
+exit 0
+
+Example 14-19. "Unsetting" a variable
+#!/bin/bash
+# unset.sh: Unsetting a variable.
+
+variable=hello 							# Initialized.
+echo "variable = $variable"
+unset variable 							# Unset.
+										# Same effect as: variable=
+echo "(unset) variable = $variable"		# $variable is null.
+if [[ -z "$variable" ]]; then 			# Try a string-lenght test.
+	echo "\$variable has zero lenght."	
+fi
+
+exit 0
+
+Example 14-20. Using export to pass a variable to an embedded awk script
+#!/bin/bash
+
+#  Yet another version of the "column totaler" script (col-totaler.sh)
+#+ that adds up a specified column(of numbers) in the target file.
+#  This uses the environment to pass a script variable to 'awk'...
+#+ and places the awk script in a variable.
+
+ARGS=2
+E_WRONGARGS=65
+
+if [[ $# -ne "ARGS" ]]; then 		# Check for proper no. of command line args.
+	echo "Usage: `basename $0` filename column_number"
+	exit $E_WRONGARGS
+fi
+
+filename=$1
+column_number=$2
+
+# ================ Same as original script, up to this point ============== #
+
+export column_number
+# Export column number to environment, so it's available for retrieval.
+
+# -----------------------------------------
+awkscript='{ total += $ENVIRON["column-number"]}
+END {print total}'
+
+# Yes, a variable can hold an awk script.
+# -----------------------------------------
+
+# Now, run the awk script.
+awk "$awkscript" "$filename"
+
+# Thanks, Stephane Chazelas.
+
+exit 0
+
+######################################################################
+#!/bin/bash
+while getopts ":abcde:fg" Option 
+# Initial declaration.
+# a, b, c, d, e, f, and g are the options (flags) expected.
+# The : after option 'e' shows it will have an argument passed with it.
+do
+	case $Option in
+		a )	# Do something with variable 'a'.
+		b )	# Do something with variable 'b'.
+		...
+		e )	# Do something with 'e', and also with $OPTARG,
+			# which is the associated argument passed with option 'e'.
+		...
+		g )	# Do something with variable 'g'.
+	esac
+done
+shift $(($OPTIND - 1))
+# Move argument pointer to next.
+
+# All this is not nearly as complicated as it looks <grin>.
+
+Example 14-21. Using getopts to read the options/arguments passed to a script
+#!/bin/bash
+# Exercising getopts and OPTIND
+# Script modified 10/09/03 at the suggestion of Bill Gradwoh1.
+
+#  Here we observe how 'getopts' processes command line arguments to script.
+#  The arguments are parsed as "options" (flags) and assocoated arguments.
+
+#  Try invoking this script with
+#  'scriptname -mn'
+#  'scriptname -oq qOption'	(qOption can be some arbitrary string.)
+#  'scriptname -qxxx -r'
+#
+#  'Scriptname -qr'  		- Unexpected result, takes "r" as the argument to option "q"
+#  'Scriptname -q -r'       - Unexpected result, same as above
+#  'scriptname -mnop -mnop'	- Unexpected result
+#  (OPTIND is unreliable at stating where an option came from).
+#
+#  If an option expects an argument ("flag:"), then it will grab
+#+ whatever is next on the command line.
+
+E_NO_ARGS=0
+E_OPTERROR=65
+
+if [[ $# -eq "$NO_ARGS" ]]; then 		# Script invoked with no command-line args? 
+	echo "Usage: `basename $0` options (-mnopqrs)"
+	exit $E_OPTERROR					# Exit and explain usage, if no argument(s) given.
+fi
+
+# Usage: scriptname -options
+# Note: dash (-) necessary
+
+while getopts ":mnopq:rs" Option; do
+	case $Option in
+		m   ) echo "Scenario #1: option -m- [OPTIND=${OPTIND}]";;
+		n|o ) echo "Scebario #2: option -$Option- [OPTIND=${OPTIND}]" ;;
+		p   ) echo "Scebario #3: option -p- [OPTIND=${OPTIND}]";;
+		q   ) echo "Scebario #4: option -q-\
+		whit argument \"$OPTARG\" [OPTIND=${OPTIND}]";;
+		#  Note that option 'q' must have an associated argument,
+		#+ otherwise it falls through to the default.
+		r|s ) echo "Scenario #5: option -$Option-";;
+		*  ) echo "Unimplemented option chosen.";; 		# DEFAULT  
+	esac
+done
+
+shift $(($optind - 1))
+#  Decrements the argument pointer so it to next argument.
+#  $1 now referneces the first non option item supplied on the command line
+#+ if one exists.
+
+exit 0
+
+#  As Bill Gradwohl states,
+#  "The getopts mechanism allows one to specify: scriptname -mnop -mnop
+#+  but there is no reliable way to differentiate what came from where
+#+  by using OPTIND."
+
+Example 14-22. "Including" a data file 
+#!/bin/bash
+./ data-file 	# Load a data file.
+#  Same effect as "Source data-file", but more portable.
+
+#  The file "data-file" must be present in current workding directory,
+#+ since it is referred to by its 'basename'.
+
+#  Now, reference some data from that file.
+
+echo "variable1 (from data-file) = $variable1"
+echo "variable3 (from data-file) = $variable3"
+
+let "sum = $variable2 + $variable4"
+echo "Sum of variable2 + variable4 (from data-file = $sum)"
+echo "message1 (from data-file) is \"$message1\""
+#  Note:							escaped quotes
+
+print_message This is the message-print function in the data-file.
+
+exit 0
+
+File data-file for Example 14-22, above. Must be present in same directory.
+# This is a data file loaded by a script.
+# Files of this type may contain variables, functions, etc.
+# It may be loaded with a 'source' or '.' command by a shell script.
+
+# Let's iniyialize some variables.
+
+variable1=22
+variable2=473
+variable3=5
+variable4=97
+
+message1="Hello, how are you?"
+message2="Enough for now. Goodbye."
+
+print_message()
+{
+	# Echoes any message passed to it.
+	if [[ -z "$1" ]]; then
+		return 1
+		# Error, if argument missing.
+	fi
+
+	echo
+
+	until [[ -z "$1" ]]; do
+		# Step through argument passed to function.
+		echo -n "$1"
+		# Echo args one at a time, suppressing line feeds.
+		echo -n " "
+		# Insert space between words.
+		shift
+		# Next one.
+	done
+
+	echo 
+
+	return 0
+}
+
+Example 14-23. A (useless) scripts that source itself
+#!/bin/bash
+# self-source.sh: a script sourcing itself "recursively."
+# From "Stupid Script Tricks, " Volume II.
+
+MAXPASSCNT=100	# Maximum number of execution passes.
+
+echo -n "$pass_count "
+#  At first execution pass, this just echoes two blank spaces,
+#+ since $pass_count still uninitialized.
+
+let "pass_count +=1"
+#  Assumes the uninitialized variable $pass_count
+#+ can be incremented the first time around.
+#  This works with Bash and pdksh, but
+#+ it relies on non-portable (and possibly dangerous) behavior.
+#  Better would be to initialize $pass_count to 0 before incrementing.
+
+while [[ "$pass_count"  -le $MAXPASSCNT ]]; do
+	. $0 	# Script "sources" itself, rather than calling itself.
+			# ./$0 （which would be true recursion） doesn't work here. Why?
+done
+
+#  What occurs here is not actually recursion,
+#+ since the script effectively "expands" itself, i.e.,
+#+ generates a new section of code
+#+ with each pass through the 'while' 'loop',
+#  with each 'source' in line 20.
+#
+#  Of cource, the script interprets each newly 'sourced' "#!" line
+#+ as a comment, and not as the start of a new script.
+
+echo 
+
+exit 0	# The net effect is counting from 1 to 100.
+		# Very impressive.
+# Exercise:
+# -----------
+# Write a script that users this trick to actually do something useful.
+
+Example 14-24. Effects of exec
+#!/bin/bash
+
+exec echo "Exiting \"$0\"."		# Exit from script here.
+
+# ------------------------------
+# The following will never echo.
+
+echo "This echo will never echo."
+exit 99			#  This script will not exit here.
+				#  Check exit value after script terminates
+				#+ with an 'echo $?'
+				#  It will *not* be 99
+
+Example 14-25. A script that exec's itself
+
+#!/bin/bash
+# self-exec.sh 
+
+echo 
+
+echo "This line appears ONCE in the script, yet it keeps echoing."
+echo "The PID of this instance of the script is still $$."
+#    Demonstrates that a subshell is not forked off.
+
+echo "============== Hit Ctl-C to exit ===================="
+
+sleep 1
+
+exec $0		#  Spawns anothers instance of this name script 
+			#+ that replaces the previous one.
+
+echo "This line will never echo!"	# Why not?
+
+exit 99			# Will not exit here!
+				# Exit code will not be 99!
+
+Example 14-26. Waiting for a process to finish before processding
+#!/bin/bash
+ROOT_UID=0	# Only users with $UID 0 have root privileges.
+E_NOTROOT=56
+E_NOPARAMS=66
+
+if [[ "$UID" -ne "$ROOT_UID" ]]; then
+	echo "Usage: `basename $0` find-string"
+	exit $E_NOPARAMS
+fi
+
+echo "Updating 'locate' database..."
+echo "This may take a while."
+updatedb /usr &		# Must be run as root.
+
+wait
+# Don't run the rest of the script until 'updatedb' finished.
+# You want the database updated before up the file name.
+
+locate $1
+
+#  Without the 'wait' command, in the worse case scenario,
+#+ the script would exit while 'updatedb' was still running,
+#+ leaving it as an orphan process.
+
+exit 0
+
+Example 14-27. A script that kills itself
+#!/bin/bash
+#  self-destruct.sh
+
+kill $$	# Script kills its own process here.
+		# Recall that "$$" is the script's PID.
+
+echo "This line will not echo."
+# Instead, the shell sends a "Terminated" message to stdout.
+
+exit 0	# Normal exit? No!
+
+#  After this script terminates prematurely,
+#+ what exit status does it return?
+#
+#  sh self-destruct.sh
+#  echo $?
+#  143
+#
+#  143 = 128 + 15
+#  				TERM signal
+
+Example 15-1. Using ls to create a table of contents for burning a CDR disk
+#!/bin/bash
+# ex40.sh (burn-cd.sh)
+# Script to automate burning a CDR.
+
+SPEED=2						# May use higer speed if your hardware supports it.
+IMAGEFILE=cdimage.iso
+CONTENSFILE=contents
+DEVICE=cdrom
+# DEVICE="0.0"		For older versions of cdrecord
+DEFAULTDIR=/opt 			# This is the versions of cdrecord
+							# Make sure it exists.
+							# Exercise: Add a test for this.
+
+#  Uses Joerg Schilling's "cdrecord" package:
+#  http://www.fokus.fhg.de/usr/schilling/cdrecord.html
+
+#  If this script invoked as an ordinary user, may need suid cdrecord
+#+ chmod u+s /usr/bin/cdrecord, as root.
+#  Of course, this creates a security hole, though a relative minor one.
+if [[ -z "$1" ]]; then
+	IMAGE_DIRECTORY=$DEFAULTDIR
+	# default directory, if not specified on command line.
+else
+	IMAGE_DIRECTORY=$1
+fi
+
+# Create a "table of contents" file.
+ls -lRF $IMAGE_DIRECTORY >$IMAGE_DIRECTORY/$CONTENSFILE
+# The "l" option gives a "long" file listing.
+# The "R" option makes the listing recursive.
+# The "F" option marks the file types (directorys get a trailing /).
+echo "Creating table of contents."
+
+# Create an image file preparatory to burning it onto the CDR.
+mkisofs -r -o $IMAGEFILE $IMAGE_DIRECTORY
+echo "Creating ISO9660 file system image ($IMAGEFILE)."
+
+# Burn the CDR.
+echo "Burning the disk."
+echo "Please be patient, this will take a while."
+cdrecord -v -isosize speed=$SPEED dev=$DEVICE $IMAGEFILE
+
+exit $?
+
+Example 15-2. Hello or Good-bye
+#!/bin/bash
+#  hello.sh: Saying "hello" or "goodbye"
+#+ 					depending on how script is invoked.
+
+#  Make a link in current working directory ($PWD) to this script:
+#		ln -s hello.sh goodbye
+# Now, try invoking this script both ways:
+# ./hello.sh
+# ./goodbye
+
+HELLO_CALL=65
+Goodbye_CALL=66
+
+if [[ $0 = "./goodbye" ]]; then
+	echo "Good-bye"
+	# Some other goodbye-type commands, as appropriate.
+	exit $GOODBYE_CALL 
+fi
+
+echo "Hello!"
+# Some other hello-type commands, as appropriate.
+exit $HELLO_CALL
+
+find /home/bozo/projects -mtime 1
+#  Lists all files in /home/bozo/projects directory tree
+#+ that were modified within the last day.
+#
+# mtime = last modification time of the target file
+# ctime = last status change time (via 'chmod' or otherwise)
+# atime = last access time
+
+DIR=/home/bozo/junk_files
+find "$DIR" -type f -atime +5 -exec ls {} \;
+#
+#  Curly brackets are placeholder for the path name output by "find."
+#
+#  Deletes all files in "/home/bozo/junk_files"
+#+ that have not been accessed in at lease 5 days.
+#
+#  "-type filetype", where
+#  f = regular file
+#  d = directory
+#  l = symblic link, etc.
+#  (The 'find' manpage and info page hvae complete listings.)
+
+find /etc -exec grep '[0-9][0-9]*[.][0-9][0-9]*[.][0-9][0-9]*[.][0-9][0-9]*' {} \;
+
+# Finds all IP addresses (xxx.xxx.xxx.xxx) in /etc/ directory files.
+# There a few extraneous hits. Can they be filtered out?
+
+# Possible by:
+
+
+find /etc -type f -exec cat '{}' \; | tr -c '.[:digit:]' '\n' \
+| grep '^[^.][^.]*\.[^.][^.]*\.[^.][^.]*\.[^.][^.]*$'
+#
+#  [:digit:] is one of the character classes
+#+ introduced with the posix 1003.2 standard.
+
+#  Thanks, Stephane Chazelas.
+
+Example 15-3. Badname, eliminate file names in current directory containing bad characters and whitespace
+#!/bin/bash
+# badname.sh
+# Delete filenames in current directory containing bad characters.
+for filename in *
+do
+	  badname=`echo "$filename" | sed -n /[\+\{\;\"\\\=\?~\(\)\<\>\&\*\|\$]/p`
+# badname=`echo "$filename" | sed -n '/[+{;"\=?~()<>&*|$]/p'`  also works.
+# Deletes files containing these nasties:     + { ; " \ = ? ~ ( ) < > & * | $
+#
+  rm $badname 2>/dev/null 
+#			  ^^^^^^^^^^^^ Error messages deep-sixed.
+done
+
+# Now, take care of files containing all manner of whitespace.
+find . -name "* *" -exec rm -r {} \;
+# The path name of the file that _find finds replaces th "{}".
+# The '\' ensures that the ';' is interpreted literally, as end of command.
+
+exit 0
+
+# -----------------------------------------------
+# commands below this line will not execute because of _exit_ command.
+
+# An alternative to the above script；
+find . -name '*[+{;"\\=?~()<>&*|$ ]*' -maxdepth 0 \
+-exec rm -f '{}' \;
+#  The "-maxdepth 0" option ensure that _find_ will not search
+#+ subdirectories below $PWD.
+
+# (Thanks, S.C.)
+
+Example 15-4. Deleting a file by its inode number 
+#!/bin/bash
+# idelete.sh: Deleting a file by its inode number.
+
+#  This is useful when a filename starts with an illegal character,
+#+ such as ? or -.
+
+ARGCOUNT=1	 			# Filename arg must be passed to script.
+E_WRONGARGS=70
+E_FILE_NOT_EXISTS=71
+E_CHANGED_MIND=72
+
+if [[ $# -ne "$ARGCOUNT" ]]; then
+	exit $E_WRONGARGS
+fi
+
+if [[ ! -e "$1" ]]; then
+	echo "File \""$1"\" does not exist."
+	exit $E_FILE_NOT_EXISTS
+fi
+inum=`ls -i` | grep "$1" | awk '{print $1}'
+# inum = inode (index node) number of file
+# -----------------------------------------
+# Every file has an inode, a record that holds its physical address info.
+# -----------------------------------------
+
+echo; echo -n "Are you absolutely sure want to delete \"$1\" (y/n)?"
+# The '-v' option to 'rm' also asks this.
+read answer
+case "$answer" in
+	[nN] ) echo "Changed your mind, huh?"
+		   exit $E_CHANGE_MIND
+		;;
+	*    ) echo "Deleting file \"$1\"."
+;;
+esac
+
+find . inum $inum -exec rm {} \;
+#
+#		Curly brackets are placeholder
+#+		for text output by "find."
+echo "File "\$1"\" deleted!"
+
+exit 0
+
+#!/bin/bash
+#  Find suid root files.
+#  A strange suid file might indicate a security hole,
+#+ or even a system intrusion.
+
+directory="/usr/sbin"
+# Might also try /sbin, /bin, /usr/bin, /usr/local/bin, etc.
+permissions="+4000" 	# suid root (dangerous!)
+
+for file in $(find "$directory" -perm "$permissions")
+do
+	ls -ltF --author "$file"
+done
+
+find ~/mail -type f | xargs grep "Linux"
+
+Example 15-5. Logfile:Using exargs to monitor system log 
+#!/bin/bash
+
+# Generates a log file in current directory
+# from the tail end of /var/log/messages.
+
+# Note: /var/log/message must be world readable
+# if this script invoked by an ordinary user.
+#			# root chmod 644 /var/log/messages
+
+LINES=5
+
+( date; uname -a ) >> logfile
+# Time and machine name
+echo --------------------------------->>logfile 
+tail -n $LINES /var/log/messages |xargs |fmt -s >>logfile
+echo >>logfile 
+echo >>logfile
+
+exit 0
+
+# Note:
+# ------
+#  As Frank Wang points out,
+#+ unmatched quotes (either single or double quotes) in the source file
+#+ may give xrags indigestion.
+#
+#  He suggests the following substitution for line 15:
+#  tail -n $LINES /var/log/messages | tr -d "\"'" | xargs |fmt -s >>logfile
+
+
+
+#  Exercise:
+#  ------
+#  Modify this script to track changes in /var/log/messages at intervals
+#+ of 20 minutes.
+#  Hint: Use the "watch" command.
+
+Example 15-6. Copying files in current directory to another
+#!/bin/bash
+# copydir.sh
+
+#  Copy (verbose) all files in current directory ($PWD)
+#+ to directory specified on command line.
+
+E_NOARGS=65
+if [[ -z "$1" ]]; then
+	echo "Usage: `basename $0` diectory-to-cpoy-to"
+	exit $E_NOARGS
+fi
+
+ls . | xargs -i -t cp ./ {} $1
+#
+#  -t is "verbose" (output command line to stderr) option.
+#  -i is "replace strings" option.
+#  {} is a placeholder for output text.
+#  This is similar to the use of a curly bracket pair in "find."
+#
+#  List the files in current directory (ls .),
+#+ pass the output of "ls" as arguments to "xargs" (-i -t options).
+#+ then copy (cp) these arguments ({}) to new directory ($1).
+#
+#  The net result is the exact equivalent of
+#+     cp * $1
+#+ unless any of the filename has embedded "whitespace" charachters.
+
+exit 0
+
+Example 15-7. Killing process by name
+#!/bin/bash
+# kill-byname.sh: Killing processes by name.
+# Compare this script with kill-process.sh
+
+#  For instance,
+#+ try "./kill-byname.sh xterm" --
+#+ and watch all the xterms on your desktop disappear.
+
+#  Warning:
+#  ---------
+#  This is a fairly dangerous script.
+#  Running it carelessly (especially as root)
+#+ can cause data loss and other undesirable effects.
+
+E_BADARGS=66
+
+if [[ -z "$1" ]]; then
+	echo "Usage: `basename $0` Process(es)_to_kill"
+	exit $E_BADARGS
+fi
+
+PROCESS_NAME="$1"
+ps ax | grep "$PROCESS_NAME" | awk '{print $1}' | xargs -i kill {} 2&>/dev/null
+#
+
+#  Note:
+#  -i is the "replace strings" option to xargs.
+#  The curly brackets are the placeholder for the replacement.
+#  2& >/dev/null supresses unwanted error messages.
+#
+#  can grep "$PROCESS_NAME" be replaced by pidof "$PROCESS_NAME"?
+#  ---------------------------------------------------------------
+
+exit $?
+
+#  The "killall" command has the same effect as this script,
+#+ but using it is not quite as educational.
+
+Example 15-8. Word frequency analysis using xargs
+#!/bin/bash
+#  waf2.sh: Crude word frequency analysis on a text file.
+
+# Uses 'xargs' to decompose lines of text into single words.
+# Compare this example to the "wf.sh" script later on.
+
+#  Check for input file on command line.
+ARGS=1
+E_BADARGS=65
+E_NOFILE=66
+
+if [[ $# -ne "$ARGS" ]]; then
+	# Correct number of arguments passed to script?
+	echo "Usage: `basename $0` filename"
+	exit $E_BADARGS
+fi
+
+if [[ ! -f "$1" ]]; then 	# Check if file exists.
+	echo "File \"$1\""
+	exit $E_NOFILE
+fi
+
+
+###########################################################
+cat "$1" | xargs -n1 | \
+# List the file, one word per line.
+tr A-Z a-z | \
+#  Shift characters to lowercase.
+sed -e 's/\.//g' -e 's/\,//g' -e 's/ /\g' | \
+#  Filter out periods and commands, and
+#+ change space between words to linefeed,
+sort | uniq -c | sort -nr 
+#  Finally prefix occurrence count and sort numberically.
+#############################################################
+
+#  This does the same job as the "wf.sh" example,
+#+ but a bit more ponderously, and it runs more slowly (why?).
+
+exit 0
+
+Example 15-9. Using expr 
+#!/bin/bash
+
+#  Demonstrating some of the uses 'expr'
+#  ======================================
+
+echo 
+
+# Arithmetic Operators
+# ----------------------
+
+# echo "Arithmetic Opertors"
+echo 
+a=`expr 5 + 3`
+echo "5 + 3 = $a"
+a=`expr 5 + 3 = $a`
+
+a =`expr $a + 1`
+echo 
+echo "a + 1 = $a"
+echo "(incrementing a variable)"
+
+a=`expr 5 % 3`
+# modulo
+echo
+echo "5 mod 3 = $a"
+
+echo 
+echo 
+
+#  Logical Operators
+#  -------------------
+
+#  Returns 1 if true, 0 if false,
+#+ opposite of normal Bash convention.
+
+echo "Logical Operators"
+echo
+
+x=24
+y=25
+b=`expr $x =$y`		# Test equality.
+echo "b = $b"		# 0 ($x - ne $y)
+echo 
+
+a=3
+b= `expr $a \> 10`
+echo 'b=`expr $a \>10`, therefore... '
+echo "If a > 10, b = 0 (false)"
+echo "b = $b" 		# 0 ( 3 ! -gt 10)
+echo 
+
+b=`expr $a \< 10`
+echo "$If a < 10, b = 1 (True)"
+echo "b = $b"			# 1 ( 3 - lt 10)
+echo 
+# Note escaping of operators.
+
+b=`expr $a \< =3`
+echo "If a <=3, b = 1 (True)"
+echo "b = $b" 		# 1 ( 3 -le 3)
+# There is also a "\>=" operator (geater than or equal to).
+
+echo
+echo 
+
+
+# String Operators
+# ----------------
+
+echo "String Operators"
+echo 
+
+a=1234zipper43231
+echo "The string being operatorted upon is \"$a\"."
+
+# lenght: lenght of string
+b=`expr length $a`
+echo "Length of "\$a\" is $b."
+
+# length: length of string
+b=`expr length $a`
+echo "Length of \"$a\" is $b."
+
+# index: position of first character in substring
+#        that matches a character in string
+b=`expr substr $a 2 6`
+echo "Substring of \"$a\", staring at position 2, \
+and 6 chars long is \"$b"\."
+
+
+#  The default behavior of the 'match' operations is to 
+#+ search for the specified match at the ***begining*** of the string.
+#
+#	users Regular Expressions
+b=`expr match "$a" '[0-9]*'` 					# Numerical count.
+echo Number of digits at the begining of \"$a\" is $b.
+b=`expr match "$a" '\([0-9]*\)'`				# Note that escaped parentheses
+#					 ==      == 				+ trigger substring match.
+echo "The digits at the beginning of  \"$a\" are \"$b\"."
+
+echo 
+
+exit 0
+
+#!/bin/bash
+
+echo 
+echo "String operating using \"expr \$string : \" construct"
+echo "======================================================"
+echo
+
+a=1234zipper5FLIPPER4321
+
+echo "The string being operated upon is \"`expr "$a"  '\(.*\)'` \"."
+#	  Escaped parentheses grouping operator.           ==   ==
+
+#  *********************************
+#+ 			Escaped parentheses
+#+			  match a substring
+#  *********************************
+
+
+#  If no escaped parentheses...
+#+ then 'expr' converts the string operand to an integer.
+
+echo "Length of \"$a\" is `expr "$a" : '.*'`." 		#  Length of string
+
+echo "Number of digits at the begining of \"$a\" is `expr "$a" : '[0-9]*'`." 
+
+# -------------------------------------------------------- #
+
+echo 
+
+echo "The digits at the begining of  \"$a\" are `expr "$a" : '\([0-9]\)'`."
+#
+echo "The first 7 characters of \"$a\" are `expr "$a" : '\([0-9]*\)'`."
+#		  =======
+# "Again, escaped parentheses force a substring match."
+#
+echo "The last 7 characters of \"$a\" are `expr "$a" :'.*\(......\)'`."
+#
+#         ====                  end of string operator ^^
+#    （actually means skip over one or more of any characters until specified
+#+  substring)
+
+echo 
+
+exit 0
+
+15.3. Time / Date Commands 
+Time/date and timing 
+
+Example 15-10. Using date
+#!/bin/bash
+# Exercising the 'date' command
+echo "The number of days since the year's `date +%j`."
+# Needs a leading '+' to invoke formating.
+# %j gives day of year.
+
+echo "The number of seconds elapsed since 01/01/1970 is `date +%s`."
+#  %s yields number of seconds since "UNIX epoch" began,
+#+ but how is this useful?
+
+prefix=temp 
+suffix=$(date +%s)	# The "+%s" option to 'date' is GNU-specific.
+filename=$prefix.$suffix
+echo $filename
+#  It's great for creating "unique" temp filenames,
+#+ even between than using $$.
+
+# Read the 'date' man page for more formating options.
+
+exit 0
+
+cat list-1 list-2 list-3 |sort | uniq >final.list 
+# Concatenates the list files,
+# sorts them,
+# removes duplicate lines,
+# and finally writes the result to an output file.
+
+Example 15-11. Word Frequency Analysis 
+#!/bin/bash
+#  wf.sh: Crude wod frequenency analysis on a text file.
+#  This is a more efficient version of the "wf2.sh" script.
+
+
+# Check for input file on command line.
+ARGS=1
+E_BADARGS=65
+E_NOFILE=66
+
+if [[ $# -ne "$ARGS" ]]; then # Corrent number of arguments passed to script?
+	echo "Usage: `basename $0` filename"
+	exit $E_BADARGS
+fi
+
+if [[ ! -f "$1" ]]; then 	# Check if file exists.
+	echo "File \"$1\" does not exists."
+	exit $E_NOFILE
+fi
+
+############################################################
+# main()
+sed -e 's/\.//g' -e 's/\,//g' -e 's/ /\//g' "$1" | tr 'A-Z' 'a-z' | sort |uniq -c |sort -nr
+
+#			               ========================
+#							Frenquency of occurrence
+
+#  Filter out periods and commas, and
+#+ change space between words to linefeed,
+#+ then shift characters to lowercase, and
+#+ finally prefix occurrence count and sort numberically.
+
+#  Arun Giridhar suggests modifying the above to:
+#  ... | sort | uniq -c | sort +1 [-f] sort +0 -nr
+#  This adds secondary sort key, so instances of 
+#+ equal occurrence are sorted alphabetically,
+#  As he explains it:
+#  "This is effectively a radix sort, first on the
+#+ least significant column
+#+ (word os string, optionally case-insensitive
+#+ and last on the most significan column (frequency)."
+#
+#  As Frank Wang expalins , the above is equivalent to 
+#+ 		... | sort |unqi -c | sort +0 -nr
+#+ and the following also works:
+#+         ... | sort | uniq -c | sort -klnr -k
+###########################################################
+
+exit 0
+
+#  Exercises:
+# -------------
+# 1) Add 'sed' commands to filter out other punctuation,
+#+ such as semicolons.
+# 2) Modify the script to also filter out multiple spaces and
+#+ other whitespace.
+
+# List all the users in /etc/passwd.
+
+FILENAME=/etc/passwd
+fot user in $(cut -d: -f1 $FILENAME)
+do
+	echo $user 
+done
+
+# Thanks, Oleg Philon for suggesting this.
+
+Example 15-12. Which files are scripts?
+#!/bin/bash
+# script-detector.sh: Detects scripts within a directory.
+
+TESTCHARS=2		#  Test first 2 characters.
+SHABANG='#'!	#  Scripts begin with a "sha-bang."
+
+for file in * 	# Traverse all the files in current directory.
+do
+	if [[ `head -c$TESTCHARS "$file"` = "$SHABANG" ]]; then
+		#	head -2 		#!
+		#  The '-c' option to 'head' outputs a specified
+		#+ number of characters, rather than lines (the default).
+		echo "File \"$file\" is a script."
+	else
+		echo "File \"$file\" is *not* a script."
+	fi
+done
+
+exit 0
+
+#  Exercises:
+#  --------
+#  1) Modify this script to take as an optional argument
+#+    the directory to scan for scripts
+#+    (rather than just the current working directory).
+#
+#  2) As it stands, this script gives "false positives" for
+#+     Perl, awk and others script language scripts.
+#      Correct this.
+
+Example 15-13. Generating 10-digit random numbers
+
+#!/bin/bash
+# rnd.sh: Outputs a 10-digit random number
+
+# Script by Stephane Chazelas.
+
+head -c4 /dev/urandom | od -N4 -tu4 | sed -ne 'ls/.* //p'
+
+# ====================================================== #
+
+# Analysis
+# ---------
+
+# head:
+# -c4 option takes first 4 bytes.
+
+# od:
+# -N4 option limits output to 4 bytes.
+# -tu4 option selects unsigned decimal format for output.
+
+# sed:
+# -n option, in combination with "p" flag to the "s" command,
+# outputs only matched lines.
+
+
+# The author of this script explains the action of 'sed', as follows.
+
+# head -c4 /dev/urandom | od -N4 -tu4 | sed -ne 'ls/.* //p'
+
+# ----------------------------------> |
+
+# Assume output up to "sed" ---------> |
+# is 00000000 1198195154 \n
+
+#  sed begins reading characters: 00000000 1198195154\n.
+#  Here it finds a newline character,
+#+ so it is ready to process the first line (00000000 1198195154).
+#  It looks at its <range><action>s. The first and only one is 
+
+#  range action
+#  1     s/.* //p
+
+#  The line number is in the range, so it executes the action:
+#+ tries to substitute the longest string ending with a space in the line
+#  ("00000000 ") with nothing (//), and if it succeeds, prints the result
+#  ("p" is a flag to the "s" command here, this is different
+#+ from the "p" command).
+
+#  sed is now ready to continue reading its input. (Note that before
+#+ continuing, if -n option had not been passed, sed would have printed
+#+ the line once again).
+
+# Now, sed reads the remiander of the characters, and finds the
+#+ end of the file.
+#  It is now ready to process its 2nd line (which is also numbered '$' as
+#+ it's the last one).
+
+#  It sees it is not matched by any <range>, so its job is done.
+
+#  In few word this sed command means:
+#  "On the first line only, remove any character up  to the right-most space,
+#+ then print it."
+
+#  A better way to do this would have been:
+#			sed -e 's/.* //q'
+
+# Here, two <range><action>s (could have been written
+#		sed -e 's/.* // -e q'):
+
+#  range 					action
+#  nothing (matches line) 	s/.* //
+#  nothing (mathees line)	q (quit)
+
+#  Here, sed only reads its first line of input.
+#  It performs both actions, and prints the line (substituted) before
+#+ quitting (because of the "q" action) since the "-n" option is not passed.
+
+# =========================================================== #
+
+#  An even simpler altenative to the above one-line script would be:
+#				head -c4 /dev/urandom | od -An -tu4
+
+exit 0
+
+Example 15-14. Using tail to monitor the system log
+#!/bin/bash
+
+filename=sys.log 
+
+cat /dev/null > $filename; echo "Creating / cleaning out file."
+#  Creates file if it does not already exists,
+#+ and truncates it to zero length if it does.
+#  : > filename and > filename also work.
+
+tail /var/log/messages > $filename
+# /var/log/messages must have world read permission for this to work.
+
+echo "$filename contains tail end of system log."
+
+exit 0
+
+Example 15-15. Printing out the From lines in stored e-mail messages
+#!/bin/bash
+# from.sh
+
+#  Emulates the useful "from utility in Solaris, BSD, etc.
+#  Echoes the "From" header line in all messages
+#+ in your e-mail directory.
+
+MAILDIR=~/mail/* 				#  No quoting of variable. Why?
+GREP_OPTS="-H -A 5 --color"		#  Show file, plus extra context lines
+								#+ and display "From" in color.
+TARGETSTR="^From"				#  "From" at begining of line.
+
+for file in $MAILDIR			#  No quoting of variable.
+do
+	grep $GREP_OPTS "$TARGETSTR" "$file"
+	#    ^^^^^^^^^^ 			# Again, do not quote this variable.
+	echo 
+done
+
+exit $?
+
+#  Might wish to pipe the output of this script to 'more' or
+#+ redirectory it to a file...
+
+SUCCESS=0 		#  if grep lookup successds
+word=Linux
+filename=data.file 
+
+grep -q "$word" "$filename"		#  The "-q" option
+								#+ causes nothing to each to stdout.
+if [[ $? -eq "$SUCCESS" ]]; then
+	#
+	echo "$word found in $filename"
+else
+	echo "$word not found in $filename"
+fi
+
+Example 15-16. Emulating grep in a script 
+#!/bin/bash
+# grp.sh: Very crude reimplementation of 'grep'.
+
+E_BADARGS=65
+
+if [[ -z "$1" ]]; then 			# Check for argument to script.
+	echo "Usage: `basename $0` pattern"
+	exit $E_BADARGS
+fi
+
+echo 
+
+for file in * 	# Traverse all files in $PWD.
+do
+	output=$(sed -n /"$1"/p $file)  #  Command substitution.
+	if [[ ! -z "$output" ]]; then 	# What happens if "$output" is not quoted?
+		echo -n "$file: "
+		echo $output
+	fi 								# sed -ne "/$1/s|^|${file}: |p" is equivalent to above.
+
+	echo 
+done
+
+echo 
+
+exit 0
+
+#  Exercises:
+#  --------
+# 1) Add newlines to output, if more than one match on any given file.
+# 2) Add features.
+
+Example 15-17. Looking up definitions in Webster is 1913 Dictionary
+#!/bin/bash 
+# dict-lookup.sh 
+
+#  This script looks up definitions in the 1913 Webster is Dictionary.
+#  This Public Domain dictionary is available for download 
+#+ from variables sites, including
+#+ Project Gutenberg (http://www.gutenberg.org/etext247).
+#
+#  Convert it from DOS to UNIX format (only LF at end of line)
+#+ before using it with this script.
+#  Store the file in plain, uncompressed ASCII.
+#  Set DEFAULT_DICTFILE variable below to path/filename.
+
+
+E_BADARGS=65
+MAXCONTEXTLINES=50					# Maximum number of lines to show.
+DEFAULT_DICTFILE="/usr/share/dict/webster1913-dict.txt"
+									# Default dictionary file pathname.
+									# Change this as necessary.
+
+#  Note:
+#  ----
+#  This particular edition of the 1913 Webster's
+#+ begins each entry with an uppercase letter
+#+ (lowercase for the remaining characters).
+#  Only the *very first line* of an entry begins this way,
+#+ and that's why the search algorithm below works.
+
+
+if [[ -z $(echo $1 | sed -n '/^[A-Z]/p') ]]; then
+	#  Must at least specify word to look up, and
+	#+ it must start with an uppercase letter.
+	echo "Usage: `basename $0` Word-to-define [dictionary-file]"
+	echo
+	echo "Note: Word to look up must start with capital letter,"
+	echo "with the rest of the word in lowercase."
+	echo "---------------------------------------"
+	echo "Examples: Abandon, Dictionary, Marking,. etc."
+	exit $E_BADARGS
+fi
+
+if [[ -z "$2" ]]; then 				#  May specify different dictionary
+									#+ as an argument to this script.
+	dictfile=$DEFAULT_DICTFILE
+else
+	dictfile="$2"
+fi
+
+# ---------------------------------------------------
+Definition=$(fgrep -A $MAXCONTEXTLINES "$1 \\" "$dictfile")
+# 					Definitions in form "Word \..."
+#
+#  And, yes, "fgrep" is fast enough
+#+ to search even a very large text file.
+
+
+#  Now, snip out just the definition block.
+
+echo "$Definition" | sed -n '1,/^[A-Z]/p' |
+#  Print from first line of output
+#+ to the first line of the next entry.
+sed '$d' | sed '$d'
+#  Delete last two lines of output
+#+ (blank line and first line of next entry).
+# -------------------------------------------------
+
+exit 0
+
+#  Exercises:
+#  -------------
+#  1) Modify the script to accept any type of any alphabetic input
+#     + (uppercase, lowercase, mixed case), and convert it
+#     + to an acceptable format for processing.
+#
+#  2) Convert the script to a GUI application,
+#     + using something like 'gdialog'...
+#       The script will then no longer take its argument(s)
+#     + from the command line.
+#
+#   3) Modify the script to parse one of the other avaiable
+#     + Public Domain Dictionaries, such as the U.S. Census Bureau Gazetteer.
+
+Example 15-19. toupper: Transforms a file to all uppercase.
+
+#!/bin/bash
+#  Changes a file to all uppercase.
+
+E_BADARGS=65
+
+if [[ -z "$1" ]]; then 	# Standard check for command line arg.
+	echo "Usage: `basename $0` filename"
+	exit $E_BADARGS
+fi
+
+tr a-z A-Z < "$1"
+
+#  Same effect as above, but using POSIX character set notation:
+# 			tr '[:lower:]' '[:upper:]' < "$1"
+#  Thanks, S.C.
+
+exit 0
+
+#  Exercise:
+#  Rewrite this script to give the option of changing a file
+#+ to *either* upper of lowercase.
+
+Example 15-20. lowercase: Changes all filenames in working directory to lowercase.
+#!/bin/bash
+#
+#  Changes every filenames in workding directory to all all lowercase.
+#
+#  Inspired by a script of John Dubois,
+#+ which was teanslated into Bash by Chet Ramey,
+#+ and considerably simplified by the author of the ABS Guide.
+
+for filname in * 		#  Traverse all files in directory.
+do
+	fname=`banename $filename`
+	n=`echo $fname | tr A-Z a-z` 		# Change name to lowercase.
+	if [[ "$fname" != "$n" ]]; then 	# Rename only files not already lowercase.
+		mv $fname $n 
+	fi
+done
+
+exit $?
+
+#  Code below this line will not execute because of "exit".
+# ----------------------------------------------------- #
+# To run it, delete script above line.
+
+# The above script will not work on filenames containing blanks or newlines.
+# Stephane Chazelas therefore suggests the following alternative:
+
+for filename in * 		# Not necessary to use basename,
+						# since "*" won't return any file containing '/'.
+do
+	n=`echo $"filename/" |tr '[:upper:]' '[:lower:]'`
+	#                          POSIX   char  set notation.
+	#                     Slash added so that trailing newlines are not
+	#                     removed by command substitution.
+		#  Variable substitution:
+		n=${n%/} 		# Removes trailing slash, added above, from filename.
+		[[ $filename == $n ]] || mv "$filename" "$n"
+							#  Checks if filename already lowercase.
+done
+exit $?
+
+Example 15-28. Using cpio to move a directory tree 
+#!/bin/bash
+
+# Copying a directory of using 'cpio':
+#  Speed of copying. It's faster than 'tar' with pipes.
+#  Well suited for copying special files (named pipes, etc.)
+#+ that 'cp' may choke on.
+
+ARGS=2
+E_BADARGS=65
+
+if [[ $# -ne "$ARGS" ]]; then
+	echo "Usage: `basename $0` source destination"
+	exit $E_BADARGS
+fi
+source="$1"
+destination="$2"
+
+#########################################################
+find "$source" -depth | cpio -admvp "$destination"
+#			    ^^^^^^^       ^^^^^^
+#  Read the 'find' and 'cpio' info pages to decipher these options.
+#  The above works only relative to $PWD (current directory)...
+#+ full pathnames are specified.
+########################################################
+
+
+#  Exercise:
+#  ---------
+
+#  Add code to check the exit status ($?) of the 'find' | cpio pipe
+#+ and output appropriate error messages if anything went wrong.
+
+exit $?
+
+
+
 
 
 # 看到这里
-http://www.engr.iupui.edu/~dskim/tutorials/bash-advanced/html/randomvar.html
-
+http://www.engr.iupui.edu/~dskim/tutorials/bash-advanced/html/textproc.html
 
 http://www.engr.iupui.edu/~dskim/tutorials/bash-advanced/html/index.html
