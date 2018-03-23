@@ -1,0 +1,344 @@
+
+# 四 安装php-fpm
+# 1. 安装依赖包:
+# yum -y install libmcrypt libmcrypt-devel mhash mhash-devel libxml2 libxml2-devel bzip2 bzip2-devel
+
+#  2. 到官网下载源码包后,开始编译安装：
+
+cd /opt/soft/
+
+
+# wget http://softlayer.dl.sourceforge.net/sourceforge/mcrypt/libmcrypt-2.5.8.tar.gz
+# tar -zxvf libmcrypt-2.5.8.tar.gz
+# cd /usr/local/src/libmcrypt-2.5.8
+# ./configure --prefix=/usr/local
+# make
+# make install
+
+#安装第三方yum源
+wget http://www.atomicorp.com/installers/atomic
+sh ./atomic
+#2、使用yum命令安装
+yum -y install  php-mcrypt  libmcrypt  libmcrypt-devel
+yum -y install *mbstring.x86_64*
+
+yum -y install libc-*
+
+
+yum -y install  libXtst-*
+yum -y install  libl*
+
+yum -y install libmcrypt
+yum -y install libmcrypt-devel
+yum -y install mhash
+yum -y install mhash-devel
+yum -y install gd-devel libjpeg libjpeg-devel libpng libpng-devel libxml2 libxml2-devel freetype freetype-devel  gettext-devel glibc glibc-devel glib2 glib2-devel bzip2 bzip2-devel curl curl-devel  libtool-ltdl libtool-ltdl-devel libicu-devel  
+
+
+yum -y install php-gd php-mysql php-mcrypt php-mbstring
+yum -y install gcc gcc-c++ autoconf libjpeg libjpeg-devel libpng libpng-devel freetype freetype-devel libxml2 libxml2-devel glibc glibc-devel glib2 glib2-devel bzip2 bzip2-devel curl curl-devel openssl openssl-devel openldap openldap-devel nss_ldap openldap-clients openldap-servers pcre pcre-devel
+yum -y install libxml2-devel curl-devel libjpeg libjpeg-devel libpng libpng-devel freetype freetype-devel net-snmp net-snmp-devel
+
+yum -y  install apr* autoconf automake bison bzip2 bzip2* cloog-ppl compat* cpp curl curl-devel fontconfig fontconfig-devel freetype freetype* freetype-devel gcc gcc-c++ gtk+-devel gd gettext gettext-devel glibc kernel kernel-headers keyutils keyutils-libs-devel krb5-devel libcom_err-devel libpng libpng* libpng-devel libjpeg* libsepol-devel libselinux-devel libstdc++-devel libtool* libgomp libxml2 libxml2-devel libXpm* libX* libtiff libtiff* make mpfr ncurses* ntp openssl nasm nasm* openssl-devel patch pcre-devel perl php-common php-gd policycoreutils ppl telnet t1lib t1lib* wget zlib-devel --skip-broken
+
+
+wget http://cn2.php.net/distributions/php-5.6.32.tar.bz2
+
+#tar -xvf php-5.6.32.tar.bz2 -C /usr/local/
+tar -xvf php-5.6.32.tar.bz2 
+cd php-5.6.32
+
+# mysql5.7.20
+# ln -s /usr/local/mysql/lib/libmysqlclient.so /usr/lib/
+# ln -s /usr/local/mysql/lib/libmysqlclient.so.20 /usr/lib/libmysqlclient.so.20
+
+# mysql5.6.38
+ln -s /usr/local/mysql/lib/libmysqlclient.so /usr/lib/
+ln -s /usr/local/mysql/lib/libmysqlclient.so.18 /usr/lib/libmysqlclient.so.18
+
+cat >>/etc/ld.so.conf <<EOF
+# include ld.so.conf.d/*.conf
+/usr/local/lib
+EOF
+ldconfig 
+export LD_LIBRARY_PATH=/usr/local/mysql/lib:/lib/:/usr/lib/:/usr/local/lib
+
+# 执行下面的配置文件：
+########################################
+./configure --prefix=/usr/local/php \
+--with-config-file-path=/etc \
+--with-mysql=/usr/local/mysql \
+--with-mysqli=/usr/local/mysql/bin/mysql_config \
+--with-pdo-mysql=/usr/local/mysql \
+--enable-inline-optimization \
+--enable-mbregex               \
+--disable-debug \
+--with-libxml-dir=/usr/ \
+--disable-rpath \
+--enable-shared \
+--enable-opcache \
+--enable-mbstring \
+--with-gettext=/usr/lib64      \
+--with-iconv \
+--with-mcrypt \
+--with-mhash \
+--with-openssl \
+--enable-bcmath \
+--enable-soap \
+--enable-pcntl \
+--enable-fpm \
+--disable-fileinfo \
+--with-freetype-dir=/usr/lib64 \
+--with-jpeg-dir \
+--with-png-dir \
+--with-zlib \
+--enable-xml \
+--enable-shmop \
+--enable-exif \
+--with-curl \
+--enable-sysvsem \
+--with-gd \
+--enable-gd-native-ttf \
+--enable-sockets \
+--with-xmlrpc \
+--enable-ftp \
+--enable-zip \
+--with-bz2 \
+--with-pcre-regex \
+--disable-fileinfo
+
+# --with-pdo-mysql=mysqlnd       \
+# --with-mysqli=mysqlnd          \
+# --with-mysql=mysqlnd           \
+# --with-fpm-user=www          
+# --with-fpm-group=www 
+# --with-gettext \
+# --with-freetype-dir \
+
+make -j `grep processor /proc/cpuinfo | wc -l`  
+make -j `grep processor /proc/cpuinfo | wc -l`  install
+#make test
+
+# make ZEND_EXTRA_LIBS='-liconv' 
+# make install 
+
+# 3. 添加php和php-fpm配置文件。
+
+rm -rf /etc/php.ini
+cp /opt/soft/php-5.6.32/php.ini-production /etc/php.ini 
+cd /usr/local/php/etc/
+cp php-fpm.conf.default php-fpm.conf
+sed -i 's@;pid = run/php-fpm.pid@pid = /usr/local/php/var/run/php-fpm.pid@' php-fpm.conf
+
+#  4. 添加php-fpm启动脚本。
+cp /opt/soft/php-5.6.32/sapi/fpm/init.d.php-fpm /etc/init.d/php-fpm
+chmod +x /etc/init.d/php-fpm
+
+#  5. 添加php-fpm至服务列表并设置开机自启。
+chkconfig --add php-fpm
+chkconfig --list php-fpm
+chkconfig php-fpm on
+
+# 6. 启动服务
+#cp /usr/local/php/etc/php-fpm.d/www.conf.default  /usr/local/php/etc/php-fpm.d/www.conf
+service php-fpm start
+ps -ef|grep -v 'grep' | grep php
+
+#  注：启动时如出现错误：
+#  解决：到指定目录执行cp www.conf.default www.conf
+
+# 7. 添加nginx对fastcgi的支持,
+# 首先备份默认的配置文件。
+cp /etc/nginx/nginx.conf /etc/nginx/nginx.conf.bak
+rm -rf /etc/nginx/nginx.conf
+cp /etc/nginx/nginx.conf.default /etc/nginx/nginx.conf
+
+[root@webserver vhosts]# cat /etc/nginx/nginx.conf
+user  nginx;
+worker_processes  8;
+
+#error_log  logs/error.log;
+#error_log  logs/error.log  notice;
+#error_log  logs/error.log  info;
+
+#pid        logs/nginx.pid;
+
+
+events {
+    worker_connections  1024;
+}
+
+
+http {
+    include       mime.types;
+    default_type  application/octet-stream;
+
+    #log_format  main  '$remote_addr - $remote_user [] "$request" '
+    #                  '$status $body_bytes_sent "$http_referer" '
+    #                  '"$http_user_agent" "$http_x_forwarded_for"';
+
+    #access_log  logs/access.log  main;
+
+    sendfile        on;
+    #tcp_nopush     on;
+
+    #keepalive_timeout  0;
+    keepalive_timeout  65;
+
+    gzip  on;
+
+    server {
+        listen       8099;
+        server_name  localhost;
+
+        #charset koi8-r;
+
+        #access_log  logs/host.access.log  main;
+
+        location / {
+            root   /usr/local/nginx/html;
+            index index.php index.html index.htm;
+        }
+
+        #error_page  404              /404.html;
+
+        # redirect server error pages to the static page /50x.html
+        #
+        error_page   500 502 503 504  /50x.html;
+        location = /50x.html {
+            root   html;
+        }
+
+        # proxy the PHP scripts to Apache listening on 127.0.0.1:80
+        #
+        #location ~ \.php$ {
+        #    proxy_pass   http://127.0.0.1;
+        #}
+
+        # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
+        #
+        location ~ \.php$ {
+            root           /usr/local/nginx/html;
+            try_files      $uri =404;
+	    fastcgi_pass   127.0.0.1:9000;
+            fastcgi_index  index.php;
+            fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
+            include        fastcgi_params;
+	    include        fastcgi.conf;
+        }
+
+        # deny access to .htaccess files, if Apache's document root
+        # concurs with nginx's one
+        #
+        #location ~ /\.ht {
+        #    deny  all;
+        #}
+    }
+
+
+    # another virtual host using mix of IP-, name-, and port-based configuration
+    #
+    #server {
+    #    listen       8000;
+    #    listen       somename:8080;
+    #    server_name  somename  alias  another.alias;
+
+    #    location / {
+    #        root   html;
+    #        index  index.html index.htm;
+    #    }
+    #}
+
+
+    # HTTPS server
+    #
+    #server {
+    #    listen       443 ssl;
+    #    server_name  localhost;
+
+    #    ssl_certificate      cert.pem;
+    #    ssl_certificate_key  cert.key;
+
+    #    ssl_session_cache    shared:SSL:1m;
+    #    ssl_session_timeout  5m;
+
+    #    ssl_ciphers  HIGH:!aNULL:!MD5;
+    #    ssl_prefer_server_ciphers  on;
+
+    #    location / {
+    #        root   html;
+    #        index  index.html index.htm;
+    #    }
+    #}
+
+	include vhosts/*;
+##################################
+}
+[root@webserver vhosts]# 
+
+mkdir -p /etc/nginx/vhosts
+cd /etc/nginx/vhosts
+mkdir -p /usr/local/nginx/www/
+chown -R nginx.nginx /usr/local/nginx/*
+[root@php vhosts]# cat web 
+server{
+     charset utf-8;
+     listen 80;
+        server_name 172.16.210.180;
+       # autoindex on;
+       # autoindex_exact_size off;
+       # autoindex_localtime on;
+        index index.html index.htm index.php;
+     location / {
+            root /usr/local/nginx/www/;
+	#	fastcgi_pass   127.0.0.1:9000;
+            	fastcgi_index  index.php;
+            	fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
+            	include        fastcgi_params;
+            	include        fastcgi.conf;
+
+                #allow 58.71.118.58;
+                #deny all;
+     }
+	location ~ \.php$ {
+            root           /usr/local/nginx/www/;
+            try_files      $uri =404;
+            fastcgi_pass   127.0.0.1:9000;
+            fastcgi_index  index.php;
+            fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
+            include        fastcgi_params;
+            include        fastcgi.conf;
+        }
+	
+}
+[root@php vhosts]# 
+
+
+#9. nginx快捷方式
+# 启动和停止： 
+alias nginx.start='/usr/sbin/nginx'
+alias nginx.stop='/usr/sbin/nginx -s stop'
+alias nginx.reload='/usr/sbin/nginx -s reload'
+alias nginx.configtest='/usr/sbin/nginx -t'
+
+cat >>/root/.bashrc  <<EOF 
+alias nginx.start='/usr/sbin/nginx'
+alias nginx.stop='/usr/sbin/nginx -s stop'
+alias nginx.reload='/usr/sbin/nginx -s reload'
+alias nginx.configtest='/usr/sbin/nginx -t'
+EOF
+
+source  /root/.bash_profile
+# mkdir -p /usr/local/nginx/logs  如果需要开启日志的话
+cat >/usr/local/nginx/www/index.php<<EOF
+<?php
+phpinfo();
+?>
+EOF
+
+chown -R nginx.nginx /usr/local/nginx/
+chown -R nginx.nginx /etc/nginx/
+
+
+
+###################################################
