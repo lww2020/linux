@@ -1,0 +1,52 @@
+#!/bin/bash
+# 安装gitlab  
+cd /usr/local/src
+yum install -y curl policycoreutils-python openssh-server cronie
+lokkit -s http -s ssh
+
+yum  -y install postfix
+service postfix start
+chkconfig postfix on
+
+curl https://packages.gitlab.com/install/repositories/gitlab/gitlab-ee/script.rpm.sh | bash
+
+EXTERNAL_URL="http://gitlab.example.com" yum -y install gitlab-ee
+
+
+
+
+
+
+/var/opt/gitlab/git-data	git:root	
+/var/opt/gitlab/git-data/repositories git:git
+/var/opt/gitlab/gitlab-rails/shared	git:gitlab-www
+/var/opt/gitlab/gitlab-rails/shared/artifacts  git:root
+/var/opt/gitlab/gitlab-rails/shared/lfs-objects git:root 
+/var/opt/gitlab/gitlab-rails/uploads	git:root
+/var/opt/gitlab/gitlab-rails/shared/pages	git:gitlab-www	
+/var/opt/gitlab/gitlab-ci/builds git:root	
+/var/opt/gitlab/.ssh 0700 git:git	
+
+
+
+#    alias mysql.3306.start='/usr/local/mysql/bin/mysqld_safe --defaults-file=/data/mysql/mysql_3306/my_3306.cnf &'
+#    alias mysql.3306.stop='/usr/local/mysql/bin/mysqladmin --defaults-file=/data/mysql/mysql_3306/my_3306.cnf --login-path=3306_localhost_login shutdown &'
+#    alias mysql.3306.login='/usr/local/mysql/bin/mysql --defaults-file=/data/mysql/mysql_3306/my_3306.cnf --login-path=3306_localhost_login'
+
+cd /usr/local/src
+wget https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.9.5.tar.xz
+tar -xvf git-2.9.5.tar.xz 
+cd git-2.9.5
+make configure
+./configure --prefix=/usr/local
+make -j `grep processor /proc/cpuinfo | wc -l`  &&
+make -j `grep processor /proc/cpuinfo | wc -l`  install 
+ln -s /usr/local/bin/git /usr/bin/
+
+
+cd /usr/local/src
+curl -sS https://getcomposer.org/installer | php
+mv composer.phar /usr/local/bin/composer
+
+
+
